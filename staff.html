@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Soporte PlayCraftown</title>
+
+
+    <style>
+
+        /* ========================================
+           FONDO
+        ======================================== */
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(123, 44, 191, 0.25),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #000000,
+                    #001f3f,
+                    #004e9b
+                );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           PÁGINA
+        ======================================== */
+
+        .pagina {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            box-sizing: border-box;
+
+            padding: 45px 25px 80px 25px;
+
+        }
+
+
+        /* ========================================
+           CABECERA
+        ======================================== */
+
+        .cabecera {
+
+            text-align: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .cabecera h1 {
+
+            margin: 0;
+
+            font-size: 58px;
+
+            text-shadow:
+                0 0 10px #7b2cbf,
+                0 0 25px #7b2cbf,
+                0 0 45px rgba(157, 78, 221, 0.7);
+
+        }
+
+
+        .cabecera p {
+
+            max-width: 850px;
+
+            margin: 18px auto 0 auto;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #e7d5ff;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR
+        ======================================== */
+
+        .soporte {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        /* ========================================
+           TARJETAS
+        ======================================== */
+
+        .tarjeta {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #7b2cbf,
+                    #9d4edd
+                );
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            box-shadow:
+                0 12px 35px
+                rgba(0, 0, 0, 0.5);
+
+            transition: 0.3s;
+
+        }
+
+
+        .tarjeta:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(157, 78, 221, 0.45);
+
+        }
+
+
+        /* ========================================
+           ICONOS
+        ======================================== */
+
+        .icono {
+
+            text-align: center;
+
+            font-size: 55px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* ========================================
+           TÍTULOS
+        ======================================== */
+
+        .tarjeta h2 {
+
+            text-align: center;
+
+            margin-top: 0;
+
+            font-size: 29px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* ========================================
+           TEXTO
+        ======================================== */
+
+        .tarjeta p {
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 10px 0;
+
+        }
+
+
+        .destacado {
+
+            color: #ffd6ff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ========================================
+           TARJETA DISCORD GRANDE
+        ======================================== */
+
+        .discord {
+
+            grid-column: span 2;
+
+            text-align: center;
+
+        }
+
+
+        .discord p {
+
+            max-width: 750px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+        }
+
+
+        /* ========================================
+           BOTONES
+        ======================================== */
+
+        .boton {
+
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 15px 28px;
+
+            border-radius: 14px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton:hover {
+
+            transform: scale(1.06);
+
+        }
+
+
+        /* ========================================
+           DISCORD
+        ======================================== */
+
+        .discord-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5865F2,
+                    #4752C4
+                );
+
+            box-shadow:
+                0 8px 25px
+                rgba(88, 101, 242, 0.4);
+
+        }
+
+
+        .discord-btn:hover {
+
+            box-shadow:
+                0 0 30px
+                rgba(88, 101, 242, 0.8);
+
+        }
+
+
+        /* ========================================
+           WHATSAPP
+        ======================================== */
+
+        .whatsapp-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #128C7E,
+                    #25D366
+                );
+
+            box-shadow:
+                0 8px 25px
+                rgba(37, 211, 102, 0.25);
+
+        }
+
+
+        .whatsapp-btn:hover {
+
+            box-shadow:
+                0 0 30px
+                rgba(37, 211, 102, 0.65);
+
+        }
+
+
+        /* ========================================
+           GMAIL
+        ======================================== */
+
+        .gmail-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #b71c1c,
+                    #ea4335
+                );
+
+            box-shadow:
+                0 8px 25px
+                rgba(234, 67, 53, 0.3);
+
+        }
+
+
+        .gmail-btn:hover {
+
+            box-shadow:
+                0 0 30px
+                rgba(234, 67, 53, 0.65);
+
+        }
+
+
+        /* ========================================
+           TICKET
+        ======================================== */
+
+        .ticket {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5a189a,
+                    #9d4edd
+                );
+
+        }
+
+
+        .ticket:hover {
+
+            box-shadow:
+                0 0 30px
+                rgba(157, 78, 221, 0.7);
+
+        }
+
+
+        /* ========================================
+           INFORMACIÓN OWNER
+        ======================================== */
+
+        .contacto {
+
+            background:
+                rgba(0, 0, 0, 0.20);
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-top: 20px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+
+        }
+
+
+        .contacto p {
+
+            margin: 8px 0;
+
+        }
+
+
+        .dato {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            background:
+                rgba(0, 0, 0, 0.35);
+
+            border-radius: 8px;
+
+            font-family: monospace;
+
+            color: #f0d9ff;
+
+        }
+
+
+        /* ========================================
+           PRODUCTOS
+        ======================================== */
+
+        .productos {
+
+            grid-column: span 2;
+
+            text-align: center;
+
+        }
+
+
+        .productos p {
+
+            max-width: 800px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+        }
+
+
+        /* ========================================
+           NOTA
+        ======================================== */
+
+        .nota {
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(0, 0, 0, 0.25);
+
+            border-left:
+                5px solid #d8b4fe;
+
+            text-align: left;
+
+        }
+
+
+        /* ========================================
+           VOLVER
+        ======================================== */
+
+        .volver {
+
+            display: block;
+
+            width: 210px;
+
+            margin: 45px auto 0 auto;
+
+            padding: 16px;
+
+            box-sizing: border-box;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #7b2cbf,
+                    #9d4edd
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.4);
+
+            transition: 0.3s;
+
+        }
+
+
+        .volver:hover {
+
+            transform: scale(1.07);
+
+            box-shadow:
+                0 0 25px
+                rgba(157, 78, 221, 0.8);
+
+        }
+
+
+        /* ========================================
+           MÓVIL
+        ======================================== */
+
+        @media (max-width: 800px) {
+
+            .pagina {
+
+                padding:
+                    35px 15px 60px 15px;
+
+            }
+
+
+            .cabecera h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .cabecera p {
+
+                font-size: 17px;
+
+            }
+
+
+            .soporte {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .discord,
+            .productos {
+
+                grid-column: span 1;
+
+            }
+
+
+            .tarjeta {
+
+                padding: 25px 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="pagina">
+
+
+        <!-- ========================================
+             CABECERA
+        ======================================== -->
+
+        <header class="cabecera">
+
+            <h1>
+                🎧 Soporte PlayCraftown
+            </h1>
+
+            <p>
+
+                ¿Necesitas ayuda?
+
+                En PlayCraftown ponemos a tu disposición
+                diferentes formas de contactar con nuestro
+                equipo para resolver tus dudas y ayudarte
+                con cualquier problema relacionado con
+                el servidor.
+
+            </p>
+
+        </header>
+
+
+        <main class="soporte">
+
+
+            <!-- ====================================
+                 DISCORD
+            ==================================== -->
+
+            <section class="tarjeta discord">
+
+                <div class="icono">
+                    💬
+                </div>
+
+                <h2>
+                    Discord
+                </h2>
+
+                <p>
+
+                    Nuestro principal medio de soporte
+                    es nuestro servidor de
+                    <span class="destacado">
+                        Discord
+                    </span>.
+
+                </p>
+
+                <p>
+
+                    Allí podrás encontrar diferentes
+                    canales de ayuda y contactar con
+                    nuestro equipo.
+
+                </p>
+
+
+                <a
+                    href="https://discord.gg/QAzEX8xwYT"
+                    class="boton discord-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    💬 Entrar al Discord
+                </a>
+
+            </section>
+
+
+            <!-- ====================================
+                 ABRIR TICKET
+            ==================================== -->
+
+            <section class="tarjeta">
+
+                <div class="icono">
+                    🎫
+                </div>
+
+                <h2>
+                    Abrir un Ticket
+                </h2>
+
+                <p>
+
+                    Si necesitas ayuda personalizada,
+                    puedes abrir un
+                    <span class="destacado">
+                        ticket
+                    </span>
+                    dentro de nuestro Discord.
+
+                </p>
+
+                <p>
+
+                    Nuestro equipo podrá revisar tu
+                    situación y ayudarte con tu problema.
+
+                </p>
+
+
+                <a
+                    href="https://discord.gg/QAzEX8xwYT"
+                    class="boton ticket"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🎫 Abrir Ticket
+                </a>
+
+            </section>
+
+
+            <!-- ====================================
+                 OWNER
+            ==================================== -->
+
+            <section class="tarjeta">
+
+                <div class="icono">
+                    👑
+                </div>
+
+                <h2>
+                    Contactar con el Owner
+                </h2>
+
+                <p>
+
+                    Si necesitas hablar directamente con
+                    el Owner de PlayCraftown sobre
+                    determinados asuntos del servidor,
+                    productos o tienda, puedes utilizar
+                    los siguientes medios.
+
+                </p>
+
+
+                <div class="contacto">
+
+                    <p>
+                        💬 Discord:
+                    </p>
+
+                    <span class="dato">
+                        angel_david_yiyi
+                    </span>
+
+
+                    <p>
+                        🇪🇸 WhatsApp:
+                    </p>
+
+                    <span class="dato">
+                        +34 614 12 42 98
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="https://wa.me/34614124298"
+                    class="boton whatsapp-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🇪🇸 Contactar por WhatsApp
+                </a>
+
+            </section>
+
+
+            <!-- ====================================
+                 GMAIL
+            ==================================== -->
+
+            <section class="tarjeta">
+
+                <div class="icono">
+                    📧
+                </div>
+
+                <h2>
+                    Contacto por Gmail
+                </h2>
+
+                <p>
+
+                    También puedes contactar con
+                    PlayCraftown mediante correo
+                    electrónico.
+
+                </p>
+
+                <p>
+
+                    Utiliza este medio si quieres realizar
+                    una consulta o ponerte en contacto
+                    con nosotros.
+
+                </p>
+
+
+                <div class="contacto">
+
+                    <p>
+                        📧 Correo:
+                    </p>
+
+                    <span class="dato">
+                        PlayCraftown.gmail.com
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="mailto:PlayCraftown.gmail.com"
+                    class="boton gmail-btn"
+                >
+                    📧 Enviar correo
+                </a>
+
+            </section>
+
+
+            <!-- ====================================
+                 PRODUCTOS Y TIENDA
+            ==================================== -->
+
+            <section class="tarjeta productos">
+
+                <div class="icono">
+                    🛒
+                </div>
+
+                <h2>
+                    Productos y Tienda
+                </h2>
+
+                <p>
+
+                    ¿Tienes alguna pregunta relacionada
+                    con los
+                    <span class="destacado">
+                        productos de PlayCraftown,
+                        rangos, kits o la tienda
+                    </span>?
+
+                </p>
+
+                <p>
+
+                    Puedes contactar con el Owner para
+                    consultar cualquier duda relacionada
+                    con estos productos.
+
+                </p>
+
+
+                <div class="nota">
+
+                    💡 <span class="destacado">
+                    Consejo:
+                    </span>
+
+                    Para problemas relacionados con el
+                    servidor o con otros jugadores,
+                    recomendamos utilizar primero
+                    nuestro sistema de soporte mediante
+                    Discord y tickets.
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- ========================================
+             VOLVER
+        ======================================== -->
+
+        <a
+            href="ndex.html"
+            class="volver"
+        >
+            🏠 Volver al inicio
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>

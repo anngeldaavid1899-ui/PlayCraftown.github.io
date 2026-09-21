@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modalidades - PlayCraftown</title>
+
+
+    <style>
+
+        /* ========================================
+           FONDO
+        ======================================== */
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(123, 44, 191, 0.22),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #000000,
+                    #001f3f,
+                    #004e9b
+                );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           PÁGINA
+        ======================================== */
+
+        .pagina {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            box-sizing: border-box;
+
+            padding: 45px 25px 80px 25px;
+
+        }
+
+
+        /* ========================================
+           CABECERA
+        ======================================== */
+
+        .cabecera {
+
+            text-align: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .cabecera h1 {
+
+            margin: 0;
+
+            font-size: 58px;
+
+            text-shadow:
+                0 0 10px #7b2cbf,
+                0 0 25px #7b2cbf,
+                0 0 45px rgba(157, 78, 221, 0.7);
+
+        }
+
+
+        .cabecera p {
+
+            max-width: 900px;
+
+            margin: 18px auto 0 auto;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #e7d5ff;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR DE MODALIDADES
+        ======================================== */
+
+        .modalidades {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 30px;
+
+        }
+
+
+        /* ========================================
+           TARJETA DE MODALIDAD
+        ======================================== */
+
+        .modalidad {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #7b2cbf,
+                    #9d4edd
+                );
+
+            border-radius: 30px;
+
+            padding: 35px;
+
+            box-sizing: border-box;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.16);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.5);
+
+        }
+
+
+        .modalidad::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+
+            height: 300px;
+
+            top: -170px;
+
+            right: -100px;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            border-radius: 50%;
+
+            filter: blur(50px);
+
+        }
+
+
+        .modalidad-contenido {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* ========================================
+           TÍTULO MODALIDAD
+        ======================================== */
+
+        .modalidad-titulo {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .modalidad-titulo h2 {
+
+            font-size: 40px;
+
+            margin: 0;
+
+            text-shadow:
+                0 0 12px rgba(255,255,255,0.25);
+
+        }
+
+
+        .modalidad-titulo p {
+
+            font-size: 18px;
+
+            color: #f0dcff;
+
+            margin-top: 10px;
+
+        }
+
+
+        /* ========================================
+           DESCRIPCIÓN
+        ======================================== */
+
+        .descripcion {
+
+            background:
+                rgba(0, 0, 0, 0.20);
+
+            padding: 22px;
+
+            border-radius: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .descripcion p {
+
+            margin: 0;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ========================================
+           GRID DE CARACTERÍSTICAS
+        ======================================== */
+
+        .caracteristicas {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        /* ========================================
+           TARJETAS PEQUEÑAS
+        ======================================== */
+
+        .seccion {
+
+            background:
+                rgba(0, 0, 0, 0.20);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+
+            transition: 0.3s;
+
+        }
+
+
+        .seccion:hover {
+
+            transform: translateY(-5px);
+
+            background:
+                rgba(0, 0, 0, 0.28);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.25);
+
+        }
+
+
+        .seccion h3 {
+
+            margin-top: 0;
+
+            font-size: 23px;
+
+            color: #f0d9ff;
+
+        }
+
+
+        .seccion p {
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            margin: 10px 0;
+
+        }
+
+
+        /* ========================================
+           COMANDOS
+        ======================================== */
+
+        .comando {
+
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            margin: 3px 2px;
+
+            background:
+                rgba(0, 0, 0, 0.45);
+
+            border-radius: 8px;
+
+            color: #e8c7ff;
+
+            font-family: monospace;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ========================================
+           TEXTO DESTACADO
+        ======================================== */
+
+        .destacado {
+
+            color: #ffd6ff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ========================================
+           CAJA DE ADVERTENCIA
+        ======================================== */
+
+        .advertencia {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background:
+                rgba(0, 0, 0, 0.30);
+
+            border-radius: 18px;
+
+            border-left:
+                5px solid #d8b4fe;
+
+        }
+
+
+        .advertencia p {
+
+            margin: 0;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ========================================
+           BOTÓN EVENTOS
+        ======================================== */
+
+        .boton-eventos {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 13px 20px;
+
+            background: #5865F2;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton-eventos:hover {
+
+            background: #4752C4;
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 20px
+                rgba(88, 101, 242, 0.7);
+
+        }
+
+
+        /* ========================================
+           LIFESTEAL VACÍO
+        ======================================== */
+
+        .vacio {
+
+            min-height: 220px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+        }
+
+
+        .vacio-contenido {
+
+            max-width: 700px;
+
+        }
+
+
+        .vacio-contenido .icono {
+
+            font-size: 60px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .vacio-contenido h2 {
+
+            font-size: 35px;
+
+            margin: 10px 0;
+
+        }
+
+
+        .vacio-contenido p {
+
+            color: #e0cfff;
+
+            font-size: 17px;
+
+        }
+
+
+        /* ========================================
+           VOLVER
+        ======================================== */
+
+        .volver {
+
+            display: block;
+
+            width: 210px;
+
+            margin: 45px auto 0 auto;
+
+            padding: 16px;
+
+            box-sizing: border-box;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #7b2cbf,
+                    #9d4edd
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.4);
+
+            transition: 0.3s;
+
+        }
+
+
+        .volver:hover {
+
+            transform: scale(1.07);
+
+            box-shadow:
+                0 0 25px
+                rgba(157, 78, 221, 0.8);
+
+        }
+
+
+        /* ========================================
+           MÓVIL
+        ======================================== */
+
+        @media (max-width: 800px) {
+
+            .pagina {
+
+                padding:
+                    35px 15px 60px 15px;
+
+            }
+
+
+            .cabecera h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .cabecera p {
+
+                font-size: 17px;
+
+            }
+
+
+            .modalidad {
+
+                padding: 25px 18px;
+
+            }
+
+
+            .modalidad-titulo h2 {
+
+                font-size: 32px;
+
+            }
+
+
+            .caracteristicas {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="pagina">
+
+
+        <!-- ========================================
+             CABECERA
+        ======================================== -->
+
+        <header class="cabecera">
+
+            <h1>
+                ⚔️ Modalidades de PlayCraftown
+            </h1>
+
+            <p>
+
+                Descubre las modalidades disponibles
+                en PlayCraftown y todo lo que puedes
+                hacer dentro de ellas.
+
+            </p>
+
+        </header>
+
+
+        <main class="modalidades">
+
+
+            <!-- ====================================
+                 SEMI-CUSTOM
+            ==================================== -->
+
+            <section class="modalidad">
+
+                <div class="modalidad-contenido">
+
+
+                    <div class="modalidad-titulo">
+
+                        <h2>
+                            ⚔️ SEMI-CUSTOM
+                        </h2>
+
+                        <p>
+                            Survival • PvP • Kits • Crates
+                        </p>
+
+                    </div>
+
+
+                    <!-- DESCRIPCIÓN -->
+
+                    <div class="descripcion">
+
+                        <p>
+
+                            <span class="destacado">
+                                Semi-Custom
+                            </span>
+                            es una modalidad de
+                            <span class="destacado">
+                                Survival
+                            </span>
+                            donde podrás encontrar
+                            diferentes elementos OP y
+                            personalizados para disfrutar
+                            de una experiencia diferente.
+
+                        </p>
+
+
+                        <p>
+
+                            Dentro de la modalidad encontrarás
+                            <span class="destacado">
+                                kits avanzados, kits de temporada,
+                                protecciones, MinaPvP, minijuegos
+                                PvP y mucho más.
+                            </span>
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================
+                         CARACTERÍSTICAS
+                    ================================== -->
+
+                    <div class="caracteristicas">
+
+
+                        <!-- COMENZAR -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                🚀 ¿Cómo comenzar?
+                            </h3>
+
+                            <p>
+
+                                Cuando entres por primera vez
+                                a la modalidad podrás reclamar
+                                tu kit inicial utilizando:
+
+                            </p>
+
+                            <span class="comando">
+                                /kits
+                            </span>
+
+
+                            <p>
+
+                                Además, si encuentras a algún
+                                <span class="destacado">
+                                    Admin u Owner
+                                </span>,
+                                puedes avisarle de que eres
+                                nuevo.
+
+                            </p>
+
+
+                            <p>
+
+                                En ocasiones podrán regalarte
+                                llaves para los
+                                <span class="destacado">
+                                    Crates
+                                </span>,
+                                donde podrás conseguir
+                                diferentes recompensas.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- RANGOS -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                👑 Rangos
+                            </h3>
+
+                            <p>
+
+                                Si quieres conseguir un rango
+                                dentro de la modalidad puedes
+                                utilizar:
+
+                            </p>
+
+                            <span class="comando">
+                                /rangos
+                            </span>
+
+
+                            <p>
+
+                                Desde este menú podrás ver los
+                                diferentes rangos disponibles.
+
+                                Algunos rangos podrán
+                                conseguirse utilizando el
+                                dinero del propio juego.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- WARPS -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                🗺️ /Warps
+                            </h3>
+
+                            <p>
+
+                                El comando
+
+                                <span class="comando">
+                                    /warps
+                                </span>
+
+                                abrirá un menú donde podrás
+                                encontrar los diferentes
+                                lugares disponibles de la
+                                modalidad.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- MINA PVP -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                ⛏️ MinaPvP
+                            </h3>
+
+                            <p>
+
+                                La
+                                <span class="destacado">
+                                    MinaPvP
+                                </span>
+                                es una mina donde podrás
+                                conseguir materiales como
+                                diamantes, oro y muchos otros
+                                recursos.
+
+                            </p>
+
+                            <p>
+
+                                Los materiales obtenidos
+                                pueden venderse utilizando:
+
+                            </p>
+
+                            <span class="comando">
+                                /sellgui
+                            </span>
+
+
+                            <p>
+
+                                El objetivo es conseguir
+                                dinero y convertirte en uno
+                                de los jugadores más ricos
+                                del servidor.
+
+                            </p>
+
+
+                            <p>
+
+                                🏆 También podremos ofrecer
+                                recompensas a los jugadores
+                                que consigan estar en el
+                                <span class="destacado">
+                                    TOP 1 o TOP 2
+                                </span>
+                                del servidor.
+
+                            </p>
+
+
+                            <div class="advertencia">
+
+                                <p>
+
+                                    ⚠️ <span class="destacado">
+                                    ¡Cuidado!
+                                    </span>
+
+                                    Como indica su nombre,
+                                    la MinaPvP es una zona
+                                    donde puedes encontrarte
+                                    con cualquier jugador.
+
+                                    Tanto el jugador más
+                                    experimentado como el
+                                    más nuevo puede aparecer
+                                    para hacer PvP.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CRATES -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                🎁 /Warp Crates
+                            </h3>
+
+                            <p>
+
+                                El Warp Crates está ubicado
+                                en el Spawn.
+
+                                Allí encontrarás
+                                <span class="destacado">
+                                    cajas misteriosas
+                                </span>
+                                que pueden darte recompensas
+                                increíbles... o alguna
+                                recompensa menos afortunada
+                                😅.
+
+                            </p>
+
+
+                            <p>
+
+                                Las cajas se abren utilizando
+                                <span class="destacado">
+                                    Keys / Llaves
+                                </span>.
+
+                            </p>
+
+
+                            <p>
+
+                                Podemos entregar llaves
+                                durante eventos como
+                                <span class="destacado">
+                                    Key-All y KOTH
+                                </span>.
+
+                            </p>
+
+
+                            <a
+                                href="eventos.html"
+                                class="boton-eventos"
+                            >
+                                🎉 Ver información de eventos
+                            </a>
+
+
+                            <p>
+
+                                También existen llaves de
+                                <span class="destacado">
+                                    pago
+                                </span>
+                                que pueden ofrecer objetos
+                                únicos y personalizados.
+
+                            </p>
+
+
+                            <p>
+
+                                Además, algunos kits de eventos
+                                pueden ser exclusivos y,
+                                después de cierto tiempo,
+                                dejar de estar disponibles.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- PVP -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                ⚔️ /Warp PvP
+                            </h3>
+
+                            <p>
+
+                                El Warp PvP es un
+                                <span class="destacado">
+                                    minijuego de PvP
+                                </span>
+                                donde podrás enfrentarte
+                                contra tus amigos u otros
+                                jugadores.
+
+                            </p>
+
+
+                            <p>
+
+                                Al entrar recibirás un kit
+                                preparado para combatir.
+
+                            </p>
+
+
+                            <p>
+
+                                🛡️ Los objetos de tu inventario
+                                no se perderán al participar
+                                en este minijuego.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- PARKOUR -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                🌀 /Warp Parkour
+                            </h3>
+
+                            <p>
+
+                                En este Warp encontrarás
+                                un parkour en espiral.
+
+                            </p>
+
+
+                            <p>
+
+                                Durante el recorrido podrás
+                                encontrar diferentes puntos
+                                de aparición para continuar
+                                desde ellos.
+
+                            </p>
+
+
+                            <p>
+
+                                🏆 Si consigues llegar hasta
+                                el final recibirás:
+
+                            </p>
+
+
+                            <span class="comando">
+                                $100K
+                            </span>
+
+
+                            <p>
+
+                                Con ese dinero podrás comprar
+                                diferentes cosas dentro de
+                                la modalidad.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- PROTECCIONES -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                🏠 /Protecciones
+                            </h3>
+
+                            <p>
+
+                                El comando
+
+                                <span class="comando">
+                                    /protecciones
+                                </span>
+
+                                abrirá un menú donde podrás
+                                comprar diferentes
+                                protecciones para tu casa.
+
+                            </p>
+
+
+                            <p>
+
+                                Existen diferentes tamaños
+                                de protección y diferentes
+                                precios para adaptarse a
+                                cada jugador.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- BANK -->
+
+                        <div class="seccion">
+
+                            <h3>
+                                🏦 /Bank
+                            </h3>
+
+                            <p>
+
+                                El comando
+
+                                <span class="comando">
+                                    /bank
+                                </span>
+
+                                te permitirá guardar tu
+                                dinero en el banco.
+
+                            </p>
+
+
+                            <p>
+
+                                Si llevas tu dinero fuera
+                                del banco y mueres o eres
+                                eliminado, puedes perder
+                                <span class="destacado">
+                                    la mitad de tu dinero.
+                                </span>
+
+                            </p>
+
+
+                            <p>
+
+                                Si guardas tu dinero en el
+                                banco, no perderás ese dinero
+                                al morir.
+
+                            </p>
+
+
+                            <p>
+
+                                💰 Además, cada día recibirás
+                                un
+                                <span class="destacado">
+                                    10%
+                                </span>
+                                de tu dinero almacenado
+                                en el banco.
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================
+                 LIFESTEAL
+            ==================================== -->
+
+            <section class="modalidad vacio">
+
+                <div class="modalidad-contenido vacio-contenido">
+
+
+                    <div class="icono">
+                        ❤️
+                    </div>
+
+
+                    <h2>
+                        LIFESTEAL
+                    </h2>
+
+
+                    <p>
+
+                        La información de esta modalidad
+                        estará disponible próximamente.
+
+                    </p>
+
+
+                    <p>
+
+                        🔒 Estamos preparando toda la
+                        información para añadirla a esta
+                        sección.
+
+                    </p>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- ========================================
+             VOLVER
+        ======================================== -->
+
+        <a
+            href="ndex.html"
+            class="volver"
+        >
+            🏠 Volver al inicio
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>

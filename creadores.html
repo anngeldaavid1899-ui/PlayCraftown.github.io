@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Creadores de Contenido - PlayCraftown</title>
+
+
+    <style>
+
+        /* ========================================
+           FONDO PRINCIPAL
+        ======================================== */
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(123, 44, 191, 0.25),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #000000,
+                    #001f3f,
+                    #004e9b
+                );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR PRINCIPAL
+        ======================================== */
+
+        .pagina {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            box-sizing: border-box;
+
+            padding: 45px 25px 80px 25px;
+
+        }
+
+
+        /* ========================================
+           TITULO PRINCIPAL
+        ======================================== */
+
+        .cabecera {
+
+            text-align: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .cabecera h1 {
+
+            margin: 0;
+
+            font-size: 58px;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 0 10px #7b2cbf,
+                0 0 25px #7b2cbf,
+                0 0 45px rgba(157, 78, 221, 0.7);
+
+        }
+
+
+        .cabecera p {
+
+            max-width: 850px;
+
+            margin: 18px auto 0 auto;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #e7d5ff;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR GENERAL
+        ======================================== */
+
+        .contenido {
+
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+        }
+
+
+        /* ========================================
+           TARJETAS SUPERIORES
+        ======================================== */
+
+        .fila-info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .tarjeta {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #7b2cbf,
+                    #9d4edd
+                );
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.15);
+
+            box-shadow:
+                0 12px 35px
+                rgba(0, 0, 0, 0.45);
+
+            transition: 0.3s;
+
+        }
+
+
+        .tarjeta:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(157, 78, 221, 0.45);
+
+        }
+
+
+        .tarjeta h2 {
+
+            text-align: center;
+
+            font-size: 28px;
+
+            margin-top: 0;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .tarjeta p {
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 10px 0;
+
+        }
+
+
+        .destacado {
+
+            color: #ffd6ff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ========================================
+           BOTON POSTULACIONES
+        ======================================== */
+
+        .boton-postulaciones {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 14px 24px;
+
+            background: white;
+
+            color: #5a189a;
+
+            text-decoration: none;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            border-radius: 13px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton-postulaciones:hover {
+
+            transform: scale(1.06);
+
+            box-shadow:
+                0 0 20px
+                rgba(255, 255, 255, 0.55);
+
+        }
+
+
+        /* ========================================
+           VOTACION
+        ======================================== */
+
+        .votacion {
+
+            margin-top: 5px;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+
+        }
+
+
+        .votacion h2 {
+
+            font-size: 32px;
+
+            margin-top: 0;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .votacion p {
+
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color: #f1e5ff;
+
+        }
+
+
+        .caja-votacion {
+
+            margin-top: 22px;
+
+            padding: 22px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(0, 0, 0, 0.28);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.12);
+
+        }
+
+
+        /* ========================================
+           ZONA TIKTOK
+        ======================================== */
+
+        .zona-creadores {
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-top: 35px;
+
+            padding: 40px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #000000 0%,
+                    #090909 35%,
+                    #1b0a29 68%,
+                    #4b0082 100%
+                );
+
+            border-radius: 30px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.14);
+
+            box-shadow:
+                0 15px 45px
+                rgba(0, 0, 0, 0.65);
+
+        }
+
+
+        /* BRILLO MORADO */
+
+        .zona-creadores::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+
+            height: 300px;
+
+            top: -160px;
+
+            right: -100px;
+
+            background:
+                rgba(157, 78, 221, 0.35);
+
+            filter: blur(90px);
+
+            border-radius: 50%;
+
+        }
+
+
+        .zona-creadores::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            bottom: -120px;
+
+            left: -80px;
+
+            background:
+                rgba(88, 101, 242, 0.20);
+
+            filter: blur(90px);
+
+            border-radius: 50%;
+
+        }
+
+
+        .zona-contenido {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .zona-creadores h2 {
+
+            text-align: center;
+
+            font-size: 38px;
+
+            margin-top: 0;
+
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 0 15px
+                rgba(255, 255, 255, 0.25);
+
+        }
+
+
+        .descripcion-tiktok {
+
+            max-width: 850px;
+
+            margin: 0 auto 35px auto;
+
+            text-align: center;
+
+            color: #dedede;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ========================================
+           GRID DE CREADORES
+        ======================================== */
+
+        .creadores-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        /* ========================================
+           TARJETA DE CREADOR
+        ======================================== */
+
+        .creador {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(20, 20, 20, 0.95),
+                    rgba(45, 10, 65, 0.95)
+                );
+
+            border-radius: 20px;
+
+            padding: 24px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.10);
+
+            transition: 0.3s;
+
+        }
+
+
+        .creador:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(157, 78, 221, 0.65);
+
+            box-shadow:
+                0 10px 30px
+                rgba(123, 44, 191, 0.25);
+
+        }
+
+
+        .creador h3 {
+
+            margin-top: 0;
+
+            margin-bottom: 10px;
+
+            font-size: 23px;
+
+        }
+
+
+        .creador p {
+
+            color: #d0d0d0;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+
+        }
+
+
+        /* ========================================
+           BOTON DE RED SOCIAL
+        ======================================== */
+
+        .boton-red {
+
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 11px 18px;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00f2ea,
+                    #7b2cbf,
+                    #ff0050
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .boton-red:hover {
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 20px
+                rgba(255, 0, 80, 0.5);
+
+        }
+
+
+        /* ========================================
+           MENSAJE SIN CREADORES
+        ======================================== */
+
+        .proximamente {
+
+            grid-column: span 2;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0, 0, 0, 0.35);
+
+            border:
+                1px dashed
+                rgba(157, 78, 221, 0.55);
+
+        }
+
+
+        .proximamente .icono {
+
+            font-size: 55px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .proximamente h3 {
+
+            font-size: 25px;
+
+            margin: 10px 0;
+
+        }
+
+
+        .proximamente p {
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            color: #d5d5d5;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ========================================
+           PIE DE LA ZONA
+        ======================================== */
+
+        .zona-footer {
+
+            margin-top: 35px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+
+            text-align: center;
+
+            color: #cfcfcf;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ========================================
+           BOTON VOLVER
+        ======================================== */
+
+        .volver {
+
+            display: block;
+
+            width: 210px;
+
+            margin: 45px auto 0 auto;
+
+            padding: 16px;
+
+            box-sizing: border-box;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #7b2cbf,
+                    #9d4edd
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.4);
+
+            transition: 0.3s;
+
+        }
+
+
+        .volver:hover {
+
+            transform: scale(1.07);
+
+            box-shadow:
+                0 0 25px
+                rgba(157, 78, 221, 0.8);
+
+        }
+
+
+        /* ========================================
+           MOVIL
+        ======================================== */
+
+        @media (max-width: 800px) {
+
+            .pagina {
+
+                padding:
+                    35px 15px 60px 15px;
+
+            }
+
+
+            .cabecera h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .cabecera p {
+
+                font-size: 17px;
+
+            }
+
+
+            .fila-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .creadores-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .proximamente {
+
+                grid-column: span 1;
+
+            }
+
+
+            .zona-creadores {
+
+                padding: 25px 18px;
+
+            }
+
+
+            .zona-creadores h2 {
+
+                font-size: 30px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="pagina">
+
+
+        <!-- ========================================
+             CABECERA
+        ======================================== -->
+
+        <header class="cabecera">
+
+            <h1>
+                🎥 Creadores de Contenido
+            </h1>
+
+            <p>
+
+                En esta sección encontrarás a los
+                creadores de contenido de
+                <span class="destacado">
+                    PlayCraftown
+                </span>.
+
+                Aquí iremos colocando sus perfiles y
+                enlaces para que toda la comunidad
+                pueda conocer su contenido.
+
+            </p>
+
+        </header>
+
+
+        <main class="contenido">
+
+
+            <!-- ====================================
+                 INFORMACION SUPERIOR
+            ==================================== -->
+
+            <div class="fila-info">
+
+
+                <!-- TARJETA INFORMACION -->
+
+                <section class="tarjeta">
+
+                    <h2>
+                        🎬 ¿Quieres ser creador?
+                    </h2>
+
+                    <p>
+
+                        ¿Quieres convertirte en uno de
+                        los creadores de contenido de
+                        PlayCraftown?
+
+                    </p>
+
+                    <p>
+
+                        En nuestra sección de
+                        <span class="destacado">
+                            Postulaciones
+                        </span>
+                        encontrarás toda la información,
+                        requisitos y el proceso para
+                        solicitar el rango
+                        <span class="destacado">
+                            MEDIA
+                        </span>.
+
+                    </p>
+
+                    <a
+                        href="postulaciones.html"
+                        class="boton-postulaciones"
+                    >
+                        📝 Ver Postulaciones
+                    </a>
+
+                </section>
+
+
+                <!-- TARJETA VOTACION -->
+
+                <section class="tarjeta votacion">
+
+                    <h2>
+                        🏆 Votación de la Comunidad
+                    </h2>
+
+                    <p>
+
+                        También realizaremos votaciones
+                        especiales donde la comunidad
+                        podrá elegir al
+                        <span class="destacado">
+                            mejor creador de contenido
+                        </span>
+                        de PlayCraftown.
+
+                    </p>
+
+                    <div class="caja-votacion">
+
+                        <p>
+
+                            🗳️ Las votaciones y toda la
+                            información sobre ellas se
+                            anunciarán cuando estén
+                            disponibles.
+
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- ====================================
+                 ZONA PRINCIPAL
+            ==================================== -->
+
+            <section class="zona-creadores">
+
+
+                <div class="zona-contenido">
+
+
+                    <h2>
+                        🎵 CREADORES DE PLAYCRAFTOWN
+                    </h2>
+
+
+                    <p class="descripcion-tiktok">
+
+                        Bienvenido a la zona de creadores.
+
+                        Aquí estarán recopilados todos los
+                        <span class="destacado">
+                            enlaces de los creadores de
+                            contenido
+                        </span>
+                        que forman parte de PlayCraftown.
+
+                        Podrás encontrar sus diferentes
+                        plataformas de entretenimiento
+                        y descubrir su contenido relacionado
+                        con nuestro servidor.
+
+                    </p>
+
+
+                    <!-- =================================
+                         LISTA DE CREADORES
+                    ================================== -->
+
+                    <div class="creadores-grid">
+
+
+                        <!-- =================================
+                             PLANTILLA DE CREADOR
+                        ================================== -->
+
+                        <div class="proximamente">
+
+                            <div class="icono">
+                                🎥
+                            </div>
+
+                            <h3>
+                                Próximamente...
+                            </h3>
+
+                            <p>
+
+                                Los perfiles y enlaces de
+                                nuestros creadores de
+                                contenido aparecerán aquí.
+
+                                ¡Estate atento para conocer
+                                a todos los creadores de
+                                PlayCraftown!
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- =================================
+                             EJEMPLO DE TARJETA
+                             PARA FUTUROS CREADORES
+                        ================================== -->
+
+                        <!--
+
+                        <div class="creador">
+
+                            <h3>
+                                🎥 Nombre del creador
+                            </h3>
+
+                            <p>
+                                Descripción del creador
+                                y de su contenido.
+                            </p>
+
+                            <a
+                                href="AQUI_EL_ENLACE"
+                                class="boton-red"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                🔗 Ver contenido
+                            </a>
+
+                        </div>
+
+                        -->
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         PIE DE LA ZONA
+                    ================================== -->
+
+                    <div class="zona-footer">
+
+                        ⭐ Esta sección se irá actualizando
+                        con nuevos creadores de contenido.
+
+                        <br>
+
+                        🎬 ¡Gracias a todos los jugadores
+                        que crean contenido de PlayCraftown!
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+        <!-- ========================================
+             VOLVER AL INICIO
+        ======================================== -->
+
+        <a
+            href="ndex.html"
+            class="volver"
+        >
+            🏠 Volver al inicio
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>

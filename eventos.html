@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eventos - PlayCraftown</title>
+
+
+    <style>
+
+        /* ========================================
+           FONDO
+        ======================================== */
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #000000,
+                #001f3f,
+                #004e9b
+            );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR
+        ======================================== */
+
+        .pagina {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            box-sizing: border-box;
+
+            padding: 50px 30px 80px 30px;
+
+        }
+
+
+        /* ========================================
+           TÍTULO
+        ======================================== */
+
+        .titulo {
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .titulo h1 {
+
+            font-size: 55px;
+
+            margin: 0;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px #7b2cbf,
+                0 0 25px #7b2cbf;
+
+        }
+
+
+        .subtitulo {
+
+            text-align: center;
+
+            font-size: 20px;
+
+            color: #d8b4fe;
+
+            max-width: 900px;
+
+            margin: 0 auto 50px auto;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR DE EVENTOS
+        ======================================== */
+
+        .eventos {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(
+                2,
+                1fr
+            );
+
+            gap: 25px;
+
+        }
+
+
+        /* ========================================
+           TARJETAS
+        ======================================== */
+
+        .evento {
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5);
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.15);
+
+            transition: 0.3s;
+
+        }
+
+
+        .evento:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(157, 78, 221, 0.5);
+
+        }
+
+
+        /* ========================================
+           EVENTO GRANDE
+        ======================================== */
+
+        .evento-grande {
+
+            grid-column: span 2;
+
+        }
+
+
+        /* ========================================
+           TÍTULO DEL EVENTO
+        ======================================== */
+
+        .evento h2 {
+
+            margin-top: 0;
+
+            font-size: 30px;
+
+            text-align: center;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        /* ========================================
+           TEXTO
+        ======================================== */
+
+        .evento p {
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 10px 0;
+
+        }
+
+
+        /* ========================================
+           LISTA
+        ======================================== */
+
+        .evento ul {
+
+            padding-left: 25px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .evento li {
+
+            margin-bottom: 12px;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* ========================================
+           TEXTO DESTACADO
+        ======================================== */
+
+        .importante {
+
+            color: #ffd6ff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ========================================
+           CAJA DE HORARIOS
+        ======================================== */
+
+        .horarios {
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            background: rgba(
+                0,
+                0,
+                0,
+                0.20
+            );
+
+            border-radius: 15px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.12);
+
+        }
+
+
+        .horarios h3 {
+
+            margin-top: 0;
+
+            font-size: 21px;
+
+        }
+
+
+        .horarios p {
+
+            margin: 8px 0;
+
+        }
+
+
+        /* ========================================
+           BOTONES DISCORD
+        ======================================== */
+
+        .discord-link {
+
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 13px 20px;
+
+            background: #5865F2;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .discord-link:hover {
+
+            background: #4752C4;
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 20px
+                rgba(88, 101, 242, 0.7);
+
+        }
+
+
+        /* ========================================
+           BOTÓN VOLVER
+        ======================================== */
+
+        .volver {
+
+            display: block;
+
+            width: 200px;
+
+            margin: 45px auto 0 auto;
+
+            padding: 16px;
+
+            box-sizing: border-box;
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.4);
+
+            transition: 0.3s;
+
+        }
+
+
+        .volver:hover {
+
+            transform: scale(1.07);
+
+            box-shadow:
+                0 0 25px
+                rgba(157, 78, 221, 0.8);
+
+        }
+
+
+        /* ========================================
+           MÓVIL
+        ======================================== */
+
+        @media (max-width: 800px) {
+
+            .pagina {
+
+                padding: 35px 15px 60px 15px;
+
+            }
+
+
+            .titulo h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .subtitulo {
+
+                font-size: 17px;
+
+            }
+
+
+            .eventos {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .evento-grande {
+
+                grid-column: span 1;
+
+            }
+
+
+            .evento {
+
+                padding: 25px 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="pagina">
+
+
+        <!-- ========================================
+             TÍTULO
+        ======================================== -->
+
+        <div class="titulo">
+
+            <h1>
+                🎉 Eventos de PlayCraftown
+            </h1>
+
+        </div>
+
+
+        <p class="subtitulo">
+
+            En PlayCraftown organizamos eventos para
+            todas nuestras modalidades. Algunos son
+            programados con antelación y otros pueden
+            aparecer de forma especial durante la
+            actividad del servidor.
+
+        </p>
+
+
+        <!-- ========================================
+             EVENTOS
+        ======================================== -->
+
+        <div class="eventos">
+
+
+            <!-- ====================================
+                 EVENTOS GRANDES
+            ==================================== -->
+
+            <div class="evento evento-grande">
+
+                <h2>
+                    🎉 EVENTOS GRANDES
+                </h2>
+
+
+                <p>
+
+                    Los <span class="importante">
+                    Eventos Grandes</span> son eventos
+                    especiales de PlayCraftown donde
+                    podemos hacer una gran variedad de
+                    juegos y actividades para toda la
+                    comunidad.
+
+                </p>
+
+
+                <p>
+
+                    Intentamos hacerlos
+                    <span class="importante">
+                    todos los meses</span> y, cuando
+                    podemos, organizamos uno
+                    <span class="importante">
+                    cada semana</span>.
+
+                </p>
+
+
+                <p>
+
+                    Normalmente los realizamos los
+                    <span class="importante">
+                    sábados a las 20:00 (8 PM, hora de España)
+                    </span>,
+                    aunque el horario puede cambiar
+                    dependiendo del evento.
+
+                </p>
+
+
+                <p>
+
+                    También podemos realizar eventos en
+                    otros horarios, por ejemplo:
+
+                </p>
+
+
+                <div class="horarios">
+
+                    <h3>
+                        🕒 Horarios posibles
+                    </h3>
+
+                    <p>
+                        📅 Sábado - 20:00 🇪🇸
+                    </p>
+
+                    <p>
+                        📅 Viernes - 21:00 🇪🇸
+                    </p>
+
+                    <p>
+                        📅 Domingo - 18:00 🇪🇸
+                    </p>
+
+                    <p>
+                        📅 Horarios especiales según el evento
+                    </p>
+
+                </div>
+
+
+                <p>
+
+                    En estos eventos puede haber
+                    <span class="importante">
+                    muchísima variedad de juegos</span>:
+                    PvP, minijuegos, competiciones,
+                    desafíos, búsquedas, juegos por
+                    equipos y muchas otras actividades.
+
+                </p>
+
+
+                <p>
+
+                    El horario exacto, el juego y toda la
+                    información del evento serán anunciados
+                    previamente en nuestro canal de eventos
+                    de Discord.
+
+                </p>
+
+
+                <a
+                    href="https://discord.com/channels/1522203502347157534/1537801003687215114"
+                    class="discord-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    📢 Canal de Eventos
+                </a>
+
+            </div>
+
+
+            <!-- ====================================
+                 KEY-ALL
+            ==================================== -->
+
+            <div class="evento">
+
+                <h2>
+                    🔑 KEY-ALL
+                </h2>
+
+
+                <p>
+
+                    Un <span class="importante">
+                    Key-All</span> es un evento en el
+                    que se entregan varias llaves o
+                    recompensas a los jugadores de una
+                    modalidad.
+
+                </p>
+
+
+                <p>
+
+                    En PlayCraftown podemos hacer
+                    Key-All en <span class="importante">
+                    todas las modalidades</span>.
+
+                    Normalmente aparecen cuando ocurre
+                    algo importante o cuando los
+                    administradores están generosos
+                    ese día 😂.
+
+                </p>
+
+
+                <p>
+
+                    También solemos realizar un Key-All
+                    cuando superamos una determinada
+                    <span class="importante">
+                    cantidad de jugadores</span>
+                    dentro de una modalidad.
+
+                </p>
+
+
+                <p>
+
+                    El momento exacto del Key-All será
+                    anunciado en nuestro canal de
+                    Discord para que los jugadores
+                    puedan estar preparados.
+
+                </p>
+
+
+                <a
+                    href="https://discord.com/channels/1522203502347157534/1537800870727647282"
+                    class="discord-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🔑 Canal de Key-All
+                </a>
+
+            </div>
+
+
+            <!-- ====================================
+                 KOTH
+            ==================================== -->
+
+            <div class="evento">
+
+                <h2>
+                    👑 KOTH
+                </h2>
+
+
+                <p>
+
+                    <span class="importante">
+                    KOTH</span> significa
+                    <span class="importante">
+                    King of the Hill</span>, es decir,
+                    "Rey de la Colina".
+
+                </p>
+
+
+                <p>
+
+                    En este evento los jugadores tienen
+                    que luchar por conseguir y mantener
+                    una zona determinada durante el
+                    tiempo establecido.
+
+                </p>
+
+
+                <p>
+
+                    El objetivo es conseguir controlar
+                    la zona y aguantar frente a los
+                    demás jugadores mientras el evento
+                    está activo.
+
+                </p>
+
+
+                <p>
+
+                    En PlayCraftown se realizará un
+                    <span class="importante">
+                    KOTH cada semana acordada</span>.
+
+                    El día y la hora serán anunciados
+                    previamente para que todos puedan
+                    participar.
+
+                </p>
+
+
+                <a
+                    href="https://discord.com/channels/1522203502347157534/1537800634533937243"
+                    class="discord-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    👑 Canal de KOTH
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ========================================
+             VOLVER
+        ======================================== -->
+
+        <a
+            href="ndex.html"
+            class="volver"
+        >
+            🏠 Volver al inicio
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>

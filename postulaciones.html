@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Postulaciones - PlayCraftown</title>
+
+
+    <style>
+
+        /* ========================================
+           FONDO
+        ======================================== */
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #000000,
+                #001f3f,
+                #004e9b
+            );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR
+        ======================================== */
+
+        .pagina {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            box-sizing: border-box;
+
+            padding: 50px 30px 80px 30px;
+
+        }
+
+
+        /* ========================================
+           TÍTULO
+        ======================================== */
+
+        .titulo {
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .titulo h1 {
+
+            font-size: 55px;
+
+            margin: 0;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px #7b2cbf,
+                0 0 25px #7b2cbf;
+
+        }
+
+
+        .subtitulo {
+
+            text-align: center;
+
+            font-size: 20px;
+
+            color: #d8b4fe;
+
+            max-width: 900px;
+
+            margin: 0 auto 50px auto;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR DE APARTADOS
+        ======================================== */
+
+        .postulaciones {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 25px;
+
+        }
+
+
+        /* ========================================
+           TARJETAS
+        ======================================== */
+
+        .postulacion {
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            box-sizing: border-box;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5);
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.15);
+
+            transition: 0.3s;
+
+        }
+
+
+        .postulacion:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(157, 78, 221, 0.5);
+
+        }
+
+
+        /* ========================================
+           TÍTULO DE CADA APARTADO
+        ======================================== */
+
+        .postulacion h2 {
+
+            margin-top: 0;
+
+            font-size: 32px;
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* ========================================
+           SUBTÍTULOS
+        ======================================== */
+
+        .postulacion h3 {
+
+            font-size: 23px;
+
+            margin-top: 30px;
+
+            margin-bottom: 15px;
+
+            color: #f0d9ff;
+
+        }
+
+
+        /* ========================================
+           TEXTO
+        ======================================== */
+
+        .postulacion p {
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 12px 0;
+
+        }
+
+
+        /* ========================================
+           LISTAS
+        ======================================== */
+
+        .postulacion ul {
+
+            padding-left: 28px;
+
+            margin-top: 12px;
+
+        }
+
+
+        .postulacion li {
+
+            margin-bottom: 12px;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* ========================================
+           TEXTO DESTACADO
+        ======================================== */
+
+        .importante {
+
+            color: #ffd6ff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* ========================================
+           CAJA DE INFORMACIÓN
+        ======================================== */
+
+        .caja-info {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background: rgba(
+                0,
+                0,
+                0,
+                0.20
+            );
+
+            border-radius: 15px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.12);
+
+        }
+
+
+        .caja-info p {
+
+            margin: 8px 0;
+
+        }
+
+
+        /* ========================================
+           FASES
+        ======================================== */
+
+        .fase {
+
+            margin-top: 20px;
+
+            padding: 22px;
+
+            background: rgba(
+                0,
+                0,
+                0,
+                0.18
+            );
+
+            border-radius: 18px;
+
+            border-left: 5px solid #d8b4fe;
+
+        }
+
+
+        .fase h4 {
+
+            margin: 0 0 12px 0;
+
+            font-size: 21px;
+
+        }
+
+
+        /* ========================================
+           BOTÓN DISCORD
+        ======================================== */
+
+        .discord-link {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 14px 22px;
+
+            background: #5865F2;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .discord-link:hover {
+
+            background: #4752C4;
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 20px
+                rgba(88, 101, 242, 0.7);
+
+        }
+
+
+        /* ========================================
+           BOTÓN VOLVER
+        ======================================== */
+
+        .volver {
+
+            display: block;
+
+            width: 200px;
+
+            margin: 45px auto 0 auto;
+
+            padding: 16px;
+
+            box-sizing: border-box;
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.4);
+
+            transition: 0.3s;
+
+        }
+
+
+        .volver:hover {
+
+            transform: scale(1.07);
+
+            box-shadow:
+                0 0 25px
+                rgba(157, 78, 221, 0.8);
+
+        }
+
+
+        /* ========================================
+           MÓVIL
+        ======================================== */
+
+        @media (max-width: 800px) {
+
+            .pagina {
+
+                padding: 35px 15px 60px 15px;
+
+            }
+
+
+            .titulo h1 {
+
+                font-size: 40px;
+
+            }
+
+
+            .subtitulo {
+
+                font-size: 17px;
+
+            }
+
+
+            .postulacion {
+
+                padding: 25px 20px;
+
+            }
+
+
+            .postulacion h2 {
+
+                font-size: 27px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="pagina">
+
+
+        <!-- ========================================
+             TÍTULO
+        ======================================== -->
+
+        <div class="titulo">
+
+            <h1>
+                📢 Postulaciones de PlayCraftown
+            </h1>
+
+        </div>
+
+
+        <p class="subtitulo">
+
+            ¿Quieres formar parte del equipo de PlayCraftown
+            o crear contenido para nuestra comunidad?
+            Aquí encontrarás toda la información.
+
+        </p>
+
+
+        <!-- ========================================
+             CONTENEDOR
+        ======================================== -->
+
+        <div class="postulaciones">
+
+
+            <!-- ====================================
+                 POSTULACIONES STAFF
+            ==================================== -->
+
+            <div class="postulacion">
+
+                <h2>
+                    🛡️ POSTULACIONES PARA STAFF
+                </h2>
+
+
+                <p>
+
+                    ¡Ha llegado el momento! 🎉
+
+                    Las postulaciones para formar parte
+                    del equipo de <span class="importante">
+                    Staff</span> están abiertas.
+
+                </p>
+
+
+                <p>
+
+                    Buscamos personas
+                    <span class="importante">
+                    responsables, activas, respetuosas
+                    </span>
+                    y con ganas de ayudar a mejorar
+                    nuestra comunidad.
+
+                </p>
+
+
+                <p>
+
+                    No buscamos solamente experiencia.
+                    Queremos personas capaces de trabajar
+                    en equipo, ayudar a los jugadores y
+                    representar correctamente a
+                    PlayCraftown.
+
+                </p>
+
+
+                <!-- ====================================
+                     FASE 1
+                ==================================== -->
+
+                <div class="fase">
+
+                    <h4>
+                        🟦 FASE 1 — FORMULARIO
+                    </h4>
+
+
+                    <p>
+
+                        El primer paso será completar el
+                        formulario de postulación.
+
+                    </p>
+
+
+                    <p>
+                        En esta fase podremos evaluar:
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            Experiencia previa.
+                        </li>
+
+                        <li>
+                            Disponibilidad.
+                        </li>
+
+                        <li>
+                            Motivación.
+                        </li>
+
+                        <li>
+                            Conocimiento de las normas.
+                        </li>
+
+                        <li>
+                            Capacidad para resolver
+                            diferentes situaciones.
+                        </li>
+
+                        <li>
+                            Actitud y compromiso.
+                        </li>
+
+                    </ul>
+
+
+                    <p>
+
+                        Los candidatos que superen esta
+                        fase podrán ser contactados para
+                        continuar con el proceso.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ====================================
+                     FASE 2
+                ==================================== -->
+
+                <div class="fase">
+
+                    <h4>
+                        🟨 FASE 2 — ENTREVISTA Y PRUEBA
+                    </h4>
+
+
+                    <p>
+
+                        Los candidatos seleccionados
+                        pasarán a una entrevista para
+                        conocerlos mejor y comprobar
+                        las respuestas del formulario.
+
+                    </p>
+
+
+                    <p>
+
+                        Después de la entrevista,
+                        podrán recibir el rango
+                        <span class="importante">
+                        Helper</span> y comenzar como
+                        Staff en prácticas.
+
+                    </p>
+
+
+                    <p>
+
+                        Durante esta etapa se tendrá
+                        en cuenta:
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            Actividad dentro del servidor.
+                        </li>
+
+                        <li>
+                            Forma de atender a los jugadores.
+                        </li>
+
+                        <li>
+                            Aplicación correcta de las normas
+                            y sanciones.
+                        </li>
+
+                        <li>
+                            Responsabilidad.
+                        </li>
+
+                        <li>
+                            Trabajo en equipo.
+                        </li>
+
+                        <li>
+                            Comportamiento ante diferentes
+                            situaciones.
+                        </li>
+
+                    </ul>
+
+
+                    <p>
+
+                        También podrán realizarse
+                        <span class="importante">
+                        reuniones internas</span> para
+                        tratar sanciones, problemas del
+                        servidor y el desempeño de los
+                        miembros en prácticas.
+
+                    </p>
+
+
+                    <p>
+
+                        Dependiendo del desempeño,
+                        una persona podrá continuar como
+                        <span class="importante">
+                        Helper</span>, avanzar a
+                        <span class="importante">
+                        Soporte</span> o salir del proceso
+                        si no cumple con las expectativas.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ====================================
+                     FASE 3
+                ==================================== -->
+
+                <div class="fase">
+
+                    <h4>
+                        🟥 FASE 3 — EVALUACIÓN FINAL
+                    </h4>
+
+
+                    <p>
+
+                        En esta fase se realizará una
+                        evaluación más completa del
+                        desempeño del candidato.
+
+                    </p>
+
+
+                    <p>
+
+                        Se tendrá en cuenta todo el trabajo
+                        realizado durante las fases anteriores,
+                        incluyendo:
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            Actividad.
+                        </li>
+
+                        <li>
+                            Comportamiento.
+                        </li>
+
+                        <li>
+                            Ayuda a los usuarios.
+                        </li>
+
+                        <li>
+                            Aplicación de las normas.
+                        </li>
+
+                        <li>
+                            Colaboración con el equipo.
+                        </li>
+
+                        <li>
+                            Responsabilidad y compromiso.
+                        </li>
+
+                    </ul>
+
+
+                    <p>
+
+                        Tras la evaluación, la Administración
+                        determinará si el candidato está
+                        preparado para continuar formando
+                        parte del Staff y qué puesto puede
+                        corresponderle según su desempeño.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ====================================
+                     IMPORTANTE STAFF
+                ==================================== -->
+
+                <div class="caja-info">
+
+                    <h3>
+                        ⚠️ IMPORTANTE
+                    </h3>
+
+
+                    <p>
+
+                        Superar una fase
+                        <span class="importante">
+                        no garantiza</span> el acceso
+                        permanente al Staff.
+
+                    </p>
+
+
+                    <p>
+
+                        Cada persona será evaluada de forma
+                        individual durante todo el proceso.
+
+                    </p>
+
+
+                    <p>
+
+                        Las decisiones tendrán en cuenta
+                        el desempeño, compromiso,
+                        comportamiento, actividad y
+                        capacidad para trabajar en equipo.
+
+                    </p>
+
+
+                    <p>
+
+                        🎉 Si crees que tienes lo necesario
+                        para formar parte de nuestro equipo,
+                        esta puede ser tu oportunidad.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ====================================
+                 RANGO MEDIA
+            ==================================== -->
+
+            <div class="postulacion">
+
+                <h2>
+                    🎥 RANGO MEDIA
+                </h2>
+
+
+                <p>
+
+                    El rango <span class="importante">
+                    MEDIA</span> está destinado a
+                    jugadores que crean contenido de
+                    PlayCraftown en plataformas de
+                    entretenimiento.
+
+                </p>
+
+
+                <p>
+
+                    Buscamos creadores que ayuden a dar
+                    a conocer nuestro servidor mediante
+                    vídeos y contenido relacionado con
+                    PlayCraftown.
+
+                </p>
+
+
+                <h3>
+                    🎬 ¿Cómo solicitar el rango MEDIA?
+                </h3>
+
+
+                <p>
+
+                    Para solicitar el rango deberás abrir
+                    un <span class="importante">
+                    ticket en Soporte General</span>
+                    dentro de nuestro servidor de Discord.
+
+                </p>
+
+
+                <a
+                    href="https://discord.com/channels/1522203502347157534/1537927208805474314"
+                    class="discord-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🎫 Abrir Soporte General
+                </a>
+
+
+                <h3>
+                    ✅ Requisitos
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Crear contenido relacionado con
+                        <span class="importante">
+                        PlayCraftown</span>.
+                    </li>
+
+                    <li>
+                        Realizar un vídeo sobre nuestro
+                        servidor para presentar la
+                        solicitud.
+                    </li>
+
+                    <li>
+                        Mantener una actividad constante
+                        como creador.
+                    </li>
+
+                    <li>
+                        Publicar
+                        <span class="importante">
+                        al menos un vídeo cada semana
+                        </span>
+                        relacionado con PlayCraftown.
+                    </li>
+
+                    <li>
+                        Mantener un comportamiento
+                        respetuoso y adecuado.
+                    </li>
+
+                </ul>
+
+
+                <h3>
+                    🎁 ¿Qué recibes con el rango MEDIA?
+                </h3>
+
+
+                <p>
+
+                    Cuando se concede el rango
+                    <span class="importante">
+                    MEDIA</span>, el creador podrá
+                    reclamar su
+                    <span class="importante">
+                    kit especial</span> correspondiente
+                    a los creadores de contenido.
+
+                </p>
+
+
+                <div class="caja-info">
+
+                    <p>
+
+                        ⭐ También podrá reclamar el
+                        <span class="importante">
+                        Kit Induminus</span>,
+                        un kit de pago disponible dentro
+                        de PlayCraftown.
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    📢 Importante
+                </h3>
+
+
+                <p>
+
+                    El rango MEDIA está pensado para
+                    creadores que realmente mantengan
+                    actividad y continúen creando contenido
+                    del servidor.
+
+                </p>
+
+
+                <p>
+
+                    Por este motivo, se espera que los
+                    creadores mantengan el compromiso de
+                    publicar contenido de
+                    <span class="importante">
+                    PlayCraftown cada semana</span>.
+
+                </p>
+
+
+                <p>
+
+                    🎥 ¿Crees que puedes aportar contenido
+                    a nuestra comunidad?
+
+                    ¡Abre tu ticket y presenta tu
+                    contenido!
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ========================================
+             VOLVER
+        ======================================== -->
+
+        <a
+            href="ndex.html"
+            class="volver"
+        >
+            🏠 Volver al inicio
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>

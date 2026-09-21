@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlayCraftown</title>
+
+
+    <style>
+
+        /* ========================================
+           FONDO
+        ======================================== */
+
+        body {
+
+            margin: 0;
+
+            min-height: 150vh;
+
+            background: linear-gradient(
+                135deg,
+                #000000,
+                #001f3f,
+                #004e9b
+            );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            text-align: center;
+
+        }
+
+
+        /* ========================================
+           CONTENEDOR PRINCIPAL
+        ======================================== */
+
+        .pagina {
+
+            position: relative;
+
+            width: 100%;
+
+            min-height: 150vh;
+
+            box-sizing: border-box;
+
+            padding-top: 60px;
+
+            padding-bottom: 80px;
+
+        }
+
+
+        /* ========================================
+           BOTONES DE ARRIBA
+        ======================================== */
+
+        .botones-arriba {
+
+            position: absolute;
+
+            top: 25px;
+
+            right: 25px;
+
+            display: flex;
+
+            flex-direction: row;
+
+            gap: 12px;
+
+            z-index: 100;
+
+        }
+
+
+        /* ========================================
+           BOTONES CIRCULARES
+        ======================================== */
+
+        .boton-circular {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-decoration: none;
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.5);
+
+            transition: 0.25s;
+
+        }
+
+
+        .boton-circular:hover {
+
+            transform: scale(1.12);
+
+            box-shadow:
+                0 0 20px rgba(157, 78, 221, 0.9);
+
+        }
+
+
+        /* ========================================
+           MENÚ DEL BOTÓN =
+        ======================================== */
+
+        .menu-contenedor {
+
+            position: relative;
+
+        }
+
+
+        /* BOTÓN = */
+
+        #boton-menu {
+
+            border: none;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ========================================
+           LISTA DEL MENÚ
+        ======================================== */
+
+        .menu-lista {
+
+            position: absolute;
+
+            top: 70px;
+
+            right: 0;
+
+            width: 280px;
+
+            padding: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.6);
+
+            display: none;
+
+            z-index: 200;
+
+        }
+
+
+        /* ========================================
+           OPCIONES DEL MENÚ
+        ======================================== */
+
+        .menu-lista a {
+
+            display: block;
+
+            padding: 15px;
+
+            margin: 5px 0;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            text-align: left;
+
+            border-radius: 12px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .menu-lista a:hover {
+
+            background: rgba(255, 255, 255, 0.18);
+
+            transform: translateX(5px);
+
+        }
+
+
+        /* MOSTRAR MENÚ */
+
+        .menu-lista.mostrar {
+
+            display: block;
+
+        }
+
+
+        /* ========================================
+           LOGO
+        ======================================== */
+
+        .logo {
+
+            width: 340px;
+
+            height: auto;
+
+            display: block;
+
+            margin: 0 auto 15px auto;
+
+            transition: 0.3s;
+
+        }
+
+
+        .logo:hover {
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* ========================================
+           TÍTULO
+        ======================================== */
+
+        .titulo-imagen {
+
+            width: 800px;
+
+            max-width: 60%;
+
+            height: auto;
+
+            display: block;
+
+            margin: 0 auto 35px auto;
+
+            transition: 0.3s;
+
+        }
+
+
+        .titulo-imagen:hover {
+
+            transform: scale(1.03);
+
+        }
+
+
+        /* ========================================
+           SKIN
+        ======================================== */
+
+        .skin {
+
+            position: absolute;
+
+            left: 20px;
+
+            top: 160px;
+
+            width: 340px;
+
+            height: 400px;
+
+            object-fit: contain;
+
+            z-index: 2;
+
+            transition: 0.3s;
+
+            cursor: pointer;
+
+        }
+
+
+        .skin:hover {
+
+            transform: scale(1.04);
+
+        }
+
+
+        /* ========================================
+           INFORMACIÓN DEL SERVIDOR
+        ======================================== */
+
+        .info-servidor {
+
+            width: 750px;
+
+            max-width: 60%;
+
+            margin: 0 auto 35px auto;
+
+            padding: 30px 40px;
+
+            box-sizing: border-box;
+
+            background: linear-gradient(
+                135deg,
+                #4b0082,
+                #7b2cbf,
+                #9d4edd
+            );
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.45);
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+        /* TEXTO */
+
+        .info-servidor p {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            margin: 12px 0;
+
+        }
+
+
+        /* ========================================
+           BOTONES SOCIALES
+        ======================================== */
+
+        .botones {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        /* BOTÓN GENERAL */
+
+        .boton {
+
+            display: inline-flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            width: 210px;
+
+            height: 75px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 18px;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        /* ========================================
+           DISCORD
+        ======================================== */
+
+        .discord-btn {
+
+            background: #5865F2;
+
+        }
+
+
+        .discord-btn:hover {
+
+            background: #4752C4;
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 25px rgba(88, 101, 242, 0.8);
+
+        }
+
+
+        /* ========================================
+           YOUTUBE
+        ======================================== */
+
+        .youtube-btn {
+
+            background: #FF0000;
+
+        }
+
+
+        .youtube-btn:hover {
+
+            background: #CC0000;
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 25px rgba(255, 0, 0, 0.7);
+
+        }
+
+
+        /* ========================================
+           TIKTOK
+        ======================================== */
+
+        .tiktok-btn {
+
+            background: linear-gradient(
+                135deg,
+                #00f2ea,
+                #000000,
+                #ff0050
+            );
+
+        }
+
+
+        .tiktok-btn:hover {
+
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 25px rgba(255, 0, 80, 0.8);
+
+        }
+
+
+        /* ==================================================
+           EFECTO DE INFORMACIÓN DE LA SKIN
+        ================================================== */
+
+
+        /* FONDO OSCURO Y BORROSO */
+
+        .fondo-owner {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            backdrop-filter: blur(7px);
+
+            -webkit-backdrop-filter: blur(7px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+
+            z-index: 500;
+
+            pointer-events: none;
+
+        }
+
+
+        /* PANEL DEL OWNER */
+
+        .panel-owner {
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0.65);
+
+            width: 550px;
+
+            max-width: 85%;
+
+            padding: 35px;
+
+            box-sizing: border-box;
+
+            background: linear-gradient(
+                135deg,
+                #14001f,
+                #4b0082,
+                #7b2cbf,
+                #14001f
+            );
+
+            border-radius: 30px;
+
+            border: 2px solid rgba(157, 78, 221, 0.7);
+
+            box-shadow:
+                0 0 50px rgba(157, 78, 221, 0.7),
+                0 20px 60px rgba(0, 0, 0, 0.8);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease,
+                visibility 0.35s ease;
+
+            z-index: 501;
+
+            pointer-events: none;
+
+        }
+
+
+        /* TÍTULO OWNER */
+
+        .owner-titulo {
+
+            color: #ff2020;
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+
+            text-shadow:
+                0 0 15px rgba(255, 0, 0, 0.7);
+
+        }
+
+
+        /* INFORMACIÓN */
+
+        .owner-info {
+
+            background: rgba(0, 0, 0, 0.35);
+
+            border-radius: 18px;
+
+            padding: 18px;
+
+            margin: 12px 0;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            line-height: 1.5;
+
+        }
+
+
+        .owner-info span {
+
+            display: block;
+
+            font-size: 15px;
+
+            color: #cccccc;
+
+            margin-top: 4px;
+
+            font-weight: normal;
+
+        }
+
+
+        /* ENLACES */
+
+        .owner-info a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+
+        .owner-info a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ========================================
+           CUANDO SE PASA EL MOUSE POR LA SKIN
+        ======================================== */
+
+        body.owner-activo .fondo-owner {
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+        body.owner-activo .panel-owner {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+
+        }
+
+
+        /* ========================================
+           MÓVIL
+        ======================================== */
+
+        @media (max-width: 900px) {
+
+            .botones-arriba {
+
+                top: 15px;
+
+                right: 15px;
+
+                gap: 8px;
+
+            }
+
+
+            .boton-circular {
+
+                width: 50px;
+
+                height: 50px;
+
+                font-size: 25px;
+
+            }
+
+
+            .menu-lista {
+
+                width: 240px;
+
+            }
+
+
+            .titulo-imagen {
+
+                width: 600px;
+
+                max-width: 85%;
+
+            }
+
+
+            .info-servidor {
+
+                max-width: 85%;
+
+            }
+
+
+            .skin {
+
+                position: static;
+
+                display: block;
+
+                width: 370px;
+
+                height: 500px;
+
+                margin: 20px auto;
+
+            }
+
+
+            .botones {
+
+                flex-direction: column;
+
+            }
+
+
+            .boton {
+
+                width: 210px;
+
+                height: 70px;
+
+            }
+
+
+            .panel-owner {
+
+                width: 90%;
+
+                padding: 25px;
+
+            }
+
+
+            .owner-titulo {
+
+                font-size: 27px;
+
+            }
+
+
+            .owner-info {
+
+                font-size: 17px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         FONDO OSCURO Y BORROSO
+    ======================================== -->
+
+    <div class="fondo-owner"></div>
+
+
+    <!-- ========================================
+         PANEL DEL OWNER
+    ======================================== -->
+
+    <div class="panel-owner">
+
+
+        <div class="owner-titulo">
+
+            🔴 Owner AngelDavid1899
+
+        </div>
+
+
+        <div class="owner-info">
+
+            🇪🇸 +34 614 12 42 98
+
+            <span>
+                Teléfono de contacto
+            </span>
+
+        </div>
+
+
+        <div class="owner-info">
+
+            💬 Angel_David_yiyi
+
+            <span>
+                Discord
+            </span>
+
+        </div>
+
+
+        <div class="owner-info">
+
+            🎵 AngelDavid1899
+
+            <span>
+                TikTok
+            </span>
+
+        </div>
+
+
+        <div class="owner-info">
+
+            ▶️ AngelDavid1899
+
+            <span>
+                YouTube
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="pagina">
+
+
+        <!-- ========================================
+             BOTONES DE ARRIBA
+        ======================================== -->
+
+        <div class="botones-arriba">
+
+
+            <!-- 🛒 TIENDA -->
+
+            <a
+                href="tienda.html"
+                class="boton-circular"
+                title="Tienda"
+            >
+                🛒
+            </a>
+
+
+            <!-- 👩🏻‍💻 STAFF -->
+
+            <a
+                href="staff.html"
+                class="boton-circular"
+                title="Staff"
+            >
+                👩🏻‍💻
+            </a>
+
+
+            <!-- MENÚ = -->
+
+            <div class="menu-contenedor">
+
+
+                <button
+                    class="boton-circular"
+                    id="boton-menu"
+                    title="Menú"
+                >
+                    =
+                </button>
+
+
+                <!-- LISTA DEL MENÚ -->
+
+                <div
+                    class="menu-lista"
+                    id="menu-lista"
+                >
+
+                    <a href="reglas.html">
+                        📜 Reglas
+                    </a>
+
+                    <a href="eventos.html">
+                        🎉 Eventos
+                    </a>
+
+                    <a href="informacion.html">
+                        ℹ️ Información
+                    </a>
+
+                    <a href="postulaciones.html">
+                        📝 Postulaciones
+                    </a>
+
+                    <a href="creadores.html">
+                        🎥 Creadores de contenido
+                    </a>
+
+                    <a href="modalidades.html">
+                        ⚔️ Modalidades
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ========================================
+             LOGO
+        ======================================== -->
+
+        <img
+            src="logo.png"
+            class="logo"
+            alt="Logo de PlayCraftown"
+        >
+
+
+
+        <!-- ========================================
+             TÍTULO
+        ======================================== -->
+
+        <img
+            src="Playcraftown_title.png"
+            class="titulo-imagen"
+            alt="PlayCraftown"
+        >
+
+
+
+        <!-- ========================================
+             SKIN
+        ======================================== -->
+
+        <img
+            src="skin.png"
+            class="skin"
+            id="skin-owner"
+            alt="Skin de Minecraft"
+        >
+
+
+
+        <!-- ========================================
+             INFORMACIÓN DEL SERVIDOR
+        ======================================== -->
+
+        <div class="info-servidor">
+
+            <p>
+                IP: PlayCraftown.holy.GG
+            </p>
+
+            <p>
+                IP/BEDROCK: 51.81.48.74
+            </p>
+
+            <p>
+                Puerto: 26219
+            </p>
+
+        </div>
+
+
+
+        <!-- ========================================
+             BOTONES SOCIALES
+        ======================================== -->
+
+        <div class="botones">
+
+
+            <!-- DISCORD -->
+
+            <a
+                href="https://discord.gg/22gVa5paTP"
+                class="boton discord-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/@playcraftown-n4g?si=BbWWRvLbL9Ann_cD"
+                class="boton youtube-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+
+
+            <!-- TIKTOK -->
+
+            <a
+                href="https://www.tiktok.com/@playcraftown_oficial?is_from_webapp=1&sender_device=pc"
+                class="boton tiktok-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                TikTok
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+
+        /* ========================================
+           MENÚ =
+        ======================================== */
+
+        const botonMenu =
+            document.getElementById("boton-menu");
+
+        const menuLista =
+            document.getElementById("menu-lista");
+
+
+        botonMenu.addEventListener(
+            "click",
+            function() {
+
+                menuLista.classList.toggle("mostrar");
+
+            }
+        );
+
+
+        /* ========================================
+           PANEL DEL OWNER
+        ======================================== */
+
+        const skinOwner =
+            document.getElementById("skin-owner");
+
+
+        skinOwner.addEventListener(
+            "mouseenter",
+            function() {
+
+                document.body.classList.add("owner-activo");
+
+            }
+        );
+
+
+        skinOwner.addEventListener(
+            "mouseleave",
+            function() {
+
+                document.body.classList.remove("owner-activo");
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
