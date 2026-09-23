@@ -9,8 +9,38 @@
 
     <title>Reglas - PlayCraftown</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
+        /* ========================================
+           TOKENS
+        ======================================== */
+
+        :root {
+
+            --bg-0: #05070b;
+            --panel: #10141d;
+            --panel-line: rgba(255, 255, 255, 0.08);
+
+            --text-1: #eef1f6;
+            --text-2: #9aa4b2;
+
+            --accent: #3e7bfa;
+            --accent-dim: rgba(62, 123, 250, 0.14);
+            --accent-line: rgba(62, 123, 250, 0.35);
+
+            --radius: 16px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
 
         /* ========================================
            FONDO
@@ -22,16 +52,37 @@
 
             min-height: 100vh;
 
-            background: linear-gradient(
-                135deg,
-                #000000,
-                #001f3f,
-                #004e9b
+            background:
+                radial-gradient(1100px 600px at 15% -10%, rgba(62, 123, 250, 0.12), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(62, 123, 250, 0.07), transparent 55%),
+                var(--bg-0);
+
+            color: var(--text-1);
+
+            font-family: 'Inter', Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        .luz-cursor {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            background: radial-gradient(
+                650px circle at var(--x, 50%) var(--y, 15%),
+                rgba(90, 100, 245, 0.13),
+                transparent 62%
             );
-
-            color: white;
-
-            font-family: Arial, sans-serif;
 
         }
 
@@ -42,13 +93,17 @@
 
         .pagina {
 
+            position: relative;
+
+            z-index: 1;
+
             width: 100%;
 
             min-height: 100vh;
 
             box-sizing: border-box;
 
-            padding: 50px 30px 80px 30px;
+            padding: 60px 30px 90px 30px;
 
         }
 
@@ -61,22 +116,22 @@
 
             text-align: center;
 
-            margin-bottom: 15px;
+            margin-bottom: 10px;
 
         }
 
 
         .titulo h1 {
 
-            font-size: 55px;
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 44px;
+
+            font-weight: 700;
 
             margin: 0;
 
-            color: white;
-
-            text-shadow:
-                0 0 10px #7b2cbf,
-                0 0 25px #7b2cbf;
+            color: var(--text-1);
 
         }
 
@@ -85,11 +140,13 @@
 
             text-align: center;
 
-            font-size: 20px;
+            font-size: 16px;
 
-            color: #d8b4fe;
+            color: var(--text-2);
 
-            margin-bottom: 50px;
+            max-width: 480px;
+
+            margin: 0 auto 46px auto;
 
         }
 
@@ -106,12 +163,9 @@
 
             display: grid;
 
-            grid-template-columns: repeat(
-                2,
-                1fr
-            );
+            grid-template-columns: repeat(2, 1fr);
 
-            gap: 25px;
+            gap: 20px;
 
         }
 
@@ -122,37 +176,26 @@
 
         .regla {
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            border-radius: 25px;
+            border-radius: var(--radius);
 
             padding: 30px;
 
             box-sizing: border-box;
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--panel-line);
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.15);
-
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .regla:hover {
 
-            transform: translateY(-7px);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 15px 35px
-                rgba(157, 78, 221, 0.5);
+            transform: translateY(-4px);
 
         }
 
@@ -163,13 +206,21 @@
 
         .regla h2 {
 
+            font-family: 'Rajdhani', sans-serif;
+
             margin-top: 0;
 
-            font-size: 28px;
+            font-size: 21px;
 
-            text-align: center;
+            font-weight: 700;
 
-            margin-bottom: 25px;
+            text-align: left;
+
+            margin-bottom: 20px;
+
+            padding-bottom: 14px;
+
+            border-bottom: 1px solid var(--panel-line);
 
         }
 
@@ -180,7 +231,7 @@
 
         .regla ul {
 
-            padding-left: 25px;
+            padding-left: 20px;
 
             margin: 0;
 
@@ -189,11 +240,20 @@
 
         .regla li {
 
-            margin-bottom: 15px;
+            margin-bottom: 13px;
 
-            font-size: 17px;
+            font-size: 15px;
 
-            line-height: 1.5;
+            line-height: 1.55;
+
+            color: var(--text-2);
+
+        }
+
+
+        .regla li::marker {
+
+            color: var(--accent);
 
         }
 
@@ -204,9 +264,9 @@
 
         .importante {
 
-            color: #ffd6ff;
+            color: var(--text-1);
 
-            font-weight: bold;
+            font-weight: 600;
 
         }
 
@@ -219,48 +279,44 @@
 
             display: block;
 
-            width: 200px;
+            width: fit-content;
 
-            margin: 45px auto 0 auto;
+            margin: 50px auto 0 auto;
 
-            padding: 16px;
+            padding: 14px 28px;
 
             box-sizing: border-box;
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            color: white;
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             text-decoration: none;
 
             text-align: center;
 
-            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-weight: bold;
+            font-size: 16px;
 
-            border-radius: 15px;
+            font-weight: 600;
 
-            box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
 
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .volver:hover {
 
-            transform: scale(1.07);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 0 25px
-                rgba(157, 78, 221, 0.8);
+            background: var(--accent-dim);
+
+            transform: translateY(-2px);
 
         }
 
@@ -273,14 +329,14 @@
 
             .pagina {
 
-                padding: 35px 15px 60px 15px;
+                padding: 45px 16px 70px 16px;
 
             }
 
 
             .titulo h1 {
 
-                font-size: 40px;
+                font-size: 32px;
 
             }
 
@@ -294,7 +350,7 @@
 
             .regla {
 
-                padding: 25px 20px;
+                padding: 24px 20px;
 
             }
 
@@ -306,6 +362,9 @@
 
 
 <body>
+
+
+    <div class="luz-cursor" id="luz-cursor"></div>
 
 
     <div class="pagina">
@@ -594,6 +653,219 @@
             </div>
 
 
+            <!-- ====================================
+                 CONSTRUCCIÓN Y TERRENOS
+            ==================================== -->
+
+            <div class="regla">
+
+                <h2>
+                    🏗️ Construcción y Terrenos
+                </h2>
+
+
+                <ul>
+
+                    <li>
+                        Todo terreno reclamado debe
+                        respetar la distancia mínima
+                        establecida con otras construcciones.
+                    </li>
+
+                    <li>
+                        Está prohibido
+                        <span class="importante">
+                            construir cerca de spawns,
+                            zonas protegidas o puntos
+                            de interés
+                        </span>
+                        sin autorización del Staff.
+                    </li>
+
+                    <li>
+                        No se permiten estructuras
+                        ofensivas, con simbología
+                        inapropiada o contenido
+                        que infrinja las normas.
+                    </li>
+
+                    <li>
+                        El uso de lag machines o
+                        granjas que afecten el
+                        rendimiento del servidor
+                        está estrictamente prohibido.
+                    </li>
+
+                    <li>
+                        Los terrenos abandonados
+                        durante un periodo prolongado
+                        podrán ser liberados por el equipo.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ====================================
+                 ECONOMÍA Y COMERCIO
+            ==================================== -->
+
+            <div class="regla">
+
+                <h2>
+                    💰 Economía y Comercio
+                </h2>
+
+
+                <ul>
+
+                    <li>
+                        Las transacciones entre
+                        jugadores son responsabilidad
+                        de ambas partes; el Staff no
+                        puede revertir tratos ya cerrados.
+                    </li>
+
+                    <li>
+                        Está prohibida la
+                        <span class="importante">
+                            estafa o el incumplimiento
+                            deliberado de un intercambio.
+                        </span>
+                    </li>
+
+                    <li>
+                        No se permite el uso de
+                        dupes, exploits económicos
+                        ni la venta de bienes obtenidos
+                        de forma ilegítima.
+                    </li>
+
+                    <li>
+                        La compra y venta de rangos,
+                        cuentas o beneficios del
+                        servidor con dinero real fuera
+                        de la tienda oficial está prohibida.
+                    </li>
+
+                    <li>
+                        El Staff puede solicitar
+                        pruebas de una transacción
+                        en caso de disputa.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ====================================
+                 SEGURIDAD DE CUENTA
+            ==================================== -->
+
+            <div class="regla">
+
+                <h2>
+                    🔒 Seguridad de Cuenta
+                </h2>
+
+
+                <ul>
+
+                    <li>
+                        Cada jugador es responsable
+                        de la seguridad de su propia
+                        cuenta y credenciales.
+                    </li>
+
+                    <li>
+                        Está prohibido compartir
+                        contraseñas o acceder a
+                        cuentas de otros usuarios,
+                        incluso con su consentimiento.
+                    </li>
+
+                    <li>
+                        El Staff
+                        <span class="importante">
+                            nunca solicitará tu contraseña
+                        </span>
+                        por ningún medio; cualquier
+                        intento de suplantación debe
+                        reportarse de inmediato.
+                    </li>
+
+                    <li>
+                        Recomendamos activar la
+                        verificación en dos pasos
+                        siempre que sea posible.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ====================================
+                 SISTEMA DE SANCIONES
+            ==================================== -->
+
+            <div class="regla">
+
+                <h2>
+                    ⚖️ Sistema de Sanciones
+                </h2>
+
+
+                <ul>
+
+                    <li>
+                        Las sanciones se aplican de
+                        forma
+                        <span class="importante">
+                            gradual y proporcional
+                        </span>
+                        a la gravedad de la infracción:
+                        aviso, mute, kick, ban temporal
+                        o ban permanente.
+                    </li>
+
+                    <li>
+                        Las faltas graves, como el uso
+                        de hacks o conductas
+                        discriminatorias, pueden
+                        conllevar sanción inmediata
+                        sin aviso previo.
+                    </li>
+
+                    <li>
+                        Todo jugador tiene derecho a
+                        presentar una
+                        <span class="importante">
+                            apelación
+                        </span>
+                        a través de Discord si considera
+                        que una sanción fue injusta.
+                    </li>
+
+                    <li>
+                        Las decisiones del Staff se
+                        basan en pruebas objetivas
+                        y se revisan de forma interna
+                        antes de confirmarse.
+                    </li>
+
+                    <li>
+                        Reincidir en una misma falta
+                        agrava la sanción aplicada.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
         </div>
 
 
@@ -610,6 +882,21 @@
 
 
     </div>
+
+
+    <script>
+
+        document.addEventListener("mousemove", function (e) {
+
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+
+            document.documentElement.style.setProperty("--x", x + "%");
+            document.documentElement.style.setProperty("--y", y + "%");
+
+        });
+
+    </script>
 
 
 </body>
