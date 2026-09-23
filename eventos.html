@@ -9,8 +9,39 @@
 
     <title>Eventos - PlayCraftown</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
+        /* ========================================
+           TOKENS
+        ======================================== */
+
+        :root {
+
+            --bg-0: #05070b;
+            --panel: #10141d;
+            --panel-2: #151a25;
+            --panel-line: rgba(255, 255, 255, 0.08);
+
+            --text-1: #eef1f6;
+            --text-2: #9aa4b2;
+
+            --accent: #3e7bfa;
+            --accent-dim: rgba(62, 123, 250, 0.14);
+            --accent-line: rgba(62, 123, 250, 0.35);
+
+            --radius: 16px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
 
         /* ========================================
            FONDO
@@ -22,16 +53,37 @@
 
             min-height: 100vh;
 
-            background: linear-gradient(
-                135deg,
-                #000000,
-                #001f3f,
-                #004e9b
+            background:
+                radial-gradient(1100px 600px at 15% -10%, rgba(62, 123, 250, 0.12), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(62, 123, 250, 0.07), transparent 55%),
+                var(--bg-0);
+
+            color: var(--text-1);
+
+            font-family: 'Inter', Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        .luz-cursor {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            background: radial-gradient(
+                650px circle at var(--x, 50%) var(--y, 15%),
+                rgba(90, 100, 245, 0.13),
+                transparent 62%
             );
-
-            color: white;
-
-            font-family: Arial, sans-serif;
 
         }
 
@@ -42,13 +94,17 @@
 
         .pagina {
 
+            position: relative;
+
+            z-index: 1;
+
             width: 100%;
 
             min-height: 100vh;
 
             box-sizing: border-box;
 
-            padding: 50px 30px 80px 30px;
+            padding: 60px 30px 90px 30px;
 
         }
 
@@ -61,22 +117,22 @@
 
             text-align: center;
 
-            margin-bottom: 15px;
+            margin-bottom: 10px;
 
         }
 
 
         .titulo h1 {
 
-            font-size: 55px;
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 44px;
+
+            font-weight: 700;
 
             margin: 0;
 
-            color: white;
-
-            text-shadow:
-                0 0 10px #7b2cbf,
-                0 0 25px #7b2cbf;
+            color: var(--text-1);
 
         }
 
@@ -85,13 +141,13 @@
 
             text-align: center;
 
-            font-size: 20px;
+            font-size: 16px;
 
-            color: #d8b4fe;
+            color: var(--text-2);
 
-            max-width: 900px;
+            max-width: 620px;
 
-            margin: 0 auto 50px auto;
+            margin: 0 auto 46px auto;
 
             line-height: 1.6;
 
@@ -110,12 +166,9 @@
 
             display: grid;
 
-            grid-template-columns: repeat(
-                2,
-                1fr
-            );
+            grid-template-columns: repeat(2, 1fr);
 
-            gap: 25px;
+            gap: 20px;
 
         }
 
@@ -126,37 +179,26 @@
 
         .evento {
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            border-radius: 25px;
+            border-radius: var(--radius);
 
-            padding: 30px;
+            padding: 32px;
 
             box-sizing: border-box;
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--panel-line);
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.15);
-
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .evento:hover {
 
-            transform: translateY(-7px);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 15px 35px
-                rgba(157, 78, 221, 0.5);
+            transform: translateY(-4px);
 
         }
 
@@ -169,6 +211,43 @@
 
             grid-column: span 2;
 
+            background: linear-gradient(
+                160deg,
+                var(--panel-2),
+                var(--panel)
+            );
+
+        }
+
+
+        /* ========================================
+           ETIQUETA DEL EVENTO
+        ======================================== */
+
+        .evento-etiqueta {
+
+            display: inline-block;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            color: var(--accent);
+
+            background: var(--accent-dim);
+
+            border: 1px solid var(--accent-line);
+
+            border-radius: 999px;
+
+            padding: 5px 12px;
+
+            margin-bottom: 14px;
+
         }
 
 
@@ -178,13 +257,17 @@
 
         .evento h2 {
 
+            font-family: 'Rajdhani', sans-serif;
+
             margin-top: 0;
 
-            font-size: 30px;
+            font-size: 24px;
 
-            text-align: center;
+            font-weight: 700;
 
-            margin-bottom: 22px;
+            text-align: left;
+
+            margin-bottom: 6px;
 
         }
 
@@ -195,35 +278,13 @@
 
         .evento p {
 
-            font-size: 17px;
+            font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.65;
 
-            margin: 10px 0;
+            color: var(--text-2);
 
-        }
-
-
-        /* ========================================
-           LISTA
-        ======================================== */
-
-        .evento ul {
-
-            padding-left: 25px;
-
-            margin-top: 15px;
-
-        }
-
-
-        .evento li {
-
-            margin-bottom: 12px;
-
-            font-size: 17px;
-
-            line-height: 1.5;
+            margin: 12px 0;
 
         }
 
@@ -234,9 +295,9 @@
 
         .importante {
 
-            color: #ffd6ff;
+            color: var(--text-1);
 
-            font-weight: bold;
+            font-weight: 600;
 
         }
 
@@ -249,35 +310,74 @@
 
             margin-top: 20px;
 
-            padding: 18px;
+            padding: 20px;
 
-            background: rgba(
-                0,
-                0,
-                0,
-                0.20
-            );
+            background: rgba(0, 0, 0, 0.25);
 
-            border-radius: 15px;
+            border-radius: 12px;
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--panel-line);
 
         }
 
 
         .horarios h3 {
 
+            font-family: 'Rajdhani', sans-serif;
+
             margin-top: 0;
 
-            font-size: 21px;
+            margin-bottom: 12px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            color: var(--text-2);
 
         }
 
 
-        .horarios p {
+        .horario-fila {
 
-            margin: 8px 0;
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 9px 0;
+
+            border-top: 1px solid var(--panel-line);
+
+            font-size: 14px;
+
+        }
+
+
+        .horario-fila:first-of-type {
+
+            border-top: none;
+
+        }
+
+
+        .horario-fila span:first-child {
+
+            color: var(--text-2);
+
+        }
+
+
+        .horario-fila span:last-child {
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
+
+            color: var(--text-1);
 
         }
 
@@ -288,38 +388,44 @@
 
         .discord-link {
 
-            display: inline-block;
+            display: inline-flex;
 
-            margin-top: 18px;
+            align-items: center;
 
-            padding: 13px 20px;
+            gap: 8px;
 
-            background: #5865F2;
+            margin-top: 22px;
 
-            color: white;
+            padding: 12px 20px;
+
+            background: var(--panel-2);
+
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             text-decoration: none;
 
-            border-radius: 12px;
+            border-radius: 10px;
 
-            font-size: 16px;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-weight: bold;
+            font-size: 15px;
 
-            transition: 0.3s;
+            font-weight: 600;
+
+            transition: 0.2s ease;
 
         }
 
 
         .discord-link:hover {
 
-            background: #4752C4;
+            border-color: var(--accent-line);
 
-            transform: scale(1.05);
+            background: var(--accent-dim);
 
-            box-shadow:
-                0 0 20px
-                rgba(88, 101, 242, 0.7);
+            transform: translateY(-2px);
 
         }
 
@@ -332,49 +438,44 @@
 
             display: block;
 
-            width: 200px;
+            width: fit-content;
 
-            margin: 45px auto 0 auto;
+            margin: 50px auto 0 auto;
 
-            padding: 16px;
+            padding: 14px 28px;
 
             box-sizing: border-box;
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            color: white;
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             text-decoration: none;
 
             text-align: center;
 
-            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-weight: bold;
+            font-size: 16px;
 
-            border-radius: 15px;
+            font-weight: 600;
 
-            box-shadow:
-                0 8px 20px
-                rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
 
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .volver:hover {
 
-            transform: scale(1.07);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 0 25px
-                rgba(157, 78, 221, 0.8);
+            background: var(--accent-dim);
+
+            transform: translateY(-2px);
 
         }
 
@@ -387,21 +488,21 @@
 
             .pagina {
 
-                padding: 35px 15px 60px 15px;
+                padding: 45px 16px 70px 16px;
 
             }
 
 
             .titulo h1 {
 
-                font-size: 40px;
+                font-size: 32px;
 
             }
 
 
             .subtitulo {
 
-                font-size: 17px;
+                font-size: 15px;
 
             }
 
@@ -422,7 +523,7 @@
 
             .evento {
 
-                padding: 25px 20px;
+                padding: 24px 20px;
 
             }
 
@@ -434,6 +535,9 @@
 
 
 <body>
+
+
+    <div class="luz-cursor" id="luz-cursor"></div>
 
 
     <div class="pagina">
@@ -476,8 +580,12 @@
 
             <div class="evento evento-grande">
 
+                <span class="evento-etiqueta">
+                    EVENTO PRINCIPAL
+                </span>
+
                 <h2>
-                    🎉 EVENTOS GRANDES
+                    🎉 Eventos Grandes
                 </h2>
 
 
@@ -528,24 +636,28 @@
                 <div class="horarios">
 
                     <h3>
-                        🕒 Horarios posibles
+                        HORARIOS POSIBLES
                     </h3>
 
-                    <p>
-                        📅 Sábado - 20:00 🇪🇸
-                    </p>
+                    <div class="horario-fila">
+                        <span>Sábado</span>
+                        <span>20:00 🇪🇸</span>
+                    </div>
 
-                    <p>
-                        📅 Viernes - 21:00 🇪🇸
-                    </p>
+                    <div class="horario-fila">
+                        <span>Viernes</span>
+                        <span>21:00 🇪🇸</span>
+                    </div>
 
-                    <p>
-                        📅 Domingo - 18:00 🇪🇸
-                    </p>
+                    <div class="horario-fila">
+                        <span>Domingo</span>
+                        <span>18:00 🇪🇸</span>
+                    </div>
 
-                    <p>
-                        📅 Horarios especiales según el evento
-                    </p>
+                    <div class="horario-fila">
+                        <span>Otros días</span>
+                        <span>Según el evento</span>
+                    </div>
 
                 </div>
 
@@ -590,8 +702,12 @@
 
             <div class="evento">
 
+                <span class="evento-etiqueta">
+                    RECOMPENSAS
+                </span>
+
                 <h2>
-                    🔑 KEY-ALL
+                    🔑 Key-All
                 </h2>
 
 
@@ -658,6 +774,10 @@
             ==================================== -->
 
             <div class="evento">
+
+                <span class="evento-etiqueta">
+                    PVP SEMANAL
+                </span>
 
                 <h2>
                     👑 KOTH
@@ -736,6 +856,21 @@
 
 
     </div>
+
+
+    <script>
+
+        document.addEventListener("mousemove", function (e) {
+
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+
+            document.documentElement.style.setProperty("--x", x + "%");
+            document.documentElement.style.setProperty("--y", y + "%");
+
+        });
+
+    </script>
 
 
 </body>
