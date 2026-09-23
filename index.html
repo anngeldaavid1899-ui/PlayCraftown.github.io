@@ -9,8 +9,41 @@
 
     <title>PlayCraftown</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
+        /* ========================================
+           TOKENS
+        ======================================== */
+
+        :root {
+
+            --bg-0: #05070b;
+            --bg-1: #0b0f16;
+            --panel: #10141d;
+            --panel-line: rgba(255, 255, 255, 0.08);
+
+            --text-1: #eef1f6;
+            --text-2: #9aa4b2;
+
+            --accent: #3e7bfa;
+            --accent-dim: rgba(62, 123, 250, 0.18);
+            --accent-line: rgba(62, 123, 250, 0.35);
+
+            --danger: #ef4444;
+
+            --radius: 14px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
 
         /* ========================================
            FONDO
@@ -20,18 +53,16 @@
 
             margin: 0;
 
-            min-height: 150vh;
+            min-height: 100vh;
 
-            background: linear-gradient(
-                135deg,
-                #000000,
-                #001f3f,
-                #004e9b
-            );
+            background:
+                radial-gradient(1100px 600px at 15% -10%, rgba(62, 123, 250, 0.14), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(62, 123, 250, 0.08), transparent 55%),
+                var(--bg-0);
 
-            color: white;
+            color: var(--text-1);
 
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
 
             text-align: center;
 
@@ -46,15 +77,38 @@
 
             position: relative;
 
+            z-index: 1;
+
             width: 100%;
 
-            min-height: 150vh;
+            min-height: 100vh;
 
             box-sizing: border-box;
 
-            padding-top: 60px;
+            padding: 100px 24px 90px 24px;
 
-            padding-bottom: 80px;
+        }
+
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        .luz-cursor {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            background: radial-gradient(
+                650px circle at var(--x, 50%) var(--y, 20%),
+                rgba(90, 100, 245, 0.14),
+                transparent 62%
+            );
 
         }
 
@@ -65,17 +119,17 @@
 
         .botones-arriba {
 
-            position: absolute;
+            position: fixed;
 
-            top: 25px;
+            top: 22px;
 
-            right: 25px;
+            right: 24px;
 
             display: flex;
 
             flex-direction: row;
 
-            gap: 12px;
+            gap: 10px;
 
             z-index: 100;
 
@@ -88,20 +142,17 @@
 
         .boton-circular {
 
-            width: 60px;
+            width: 52px;
 
-            height: 60px;
+            height: 52px;
 
             border-radius: 50%;
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            color: white;
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             display: flex;
 
@@ -111,30 +162,28 @@
 
             text-decoration: none;
 
-            font-size: 32px;
+            font-size: 22px;
 
-            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 
-            box-shadow:
-                0 5px 15px rgba(0, 0, 0, 0.5);
-
-            transition: 0.25s;
+            transition: 0.2s ease;
 
         }
 
 
         .boton-circular:hover {
 
-            transform: scale(1.12);
+            border-color: rgba(255, 255, 255, 0.22);
 
-            box-shadow:
-                0 0 20px rgba(157, 78, 221, 0.9);
+            background: #171b25;
+
+            transform: translateY(-2px);
 
         }
 
 
         /* ========================================
-           MENÚ DEL BOTÓN =
+           MENÚ
         ======================================== */
 
         .menu-contenedor {
@@ -144,13 +193,15 @@
         }
 
 
-        /* BOTÓN = */
-
         #boton-menu {
 
-            border: none;
+            border: 1px solid var(--panel-line);
 
             cursor: pointer;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
 
         }
 
@@ -163,72 +214,66 @@
 
             position: absolute;
 
-            top: 70px;
+            top: 62px;
 
             right: 0;
 
-            width: 280px;
+            width: 250px;
 
-            padding: 12px;
+            padding: 10px;
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            border-radius: 18px;
+            border: 1px solid var(--panel-line);
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.6);
+            border-radius: var(--radius);
+
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
 
             display: none;
 
             z-index: 200;
 
+            text-align: left;
+
         }
 
 
-        /* ========================================
-           OPCIONES DEL MENÚ
-        ======================================== */
-
         .menu-lista a {
 
-            display: block;
+            display: flex;
 
-            padding: 15px;
+            align-items: center;
 
-            margin: 5px 0;
+            gap: 10px;
 
-            color: white;
+            padding: 12px 14px;
+
+            margin: 2px 0;
+
+            color: var(--text-2);
 
             text-decoration: none;
 
-            font-size: 18px;
+            font-size: 15px;
 
-            font-weight: bold;
+            font-weight: 500;
 
-            text-align: left;
+            border-radius: 10px;
 
-            border-radius: 12px;
-
-            transition: 0.2s;
+            transition: 0.15s ease;
 
         }
 
 
         .menu-lista a:hover {
 
-            background: rgba(255, 255, 255, 0.18);
+            background: var(--accent-dim);
 
-            transform: translateX(5px);
+            color: var(--text-1);
 
         }
 
-
-        /* MOSTRAR MENÚ */
 
         .menu-lista.mostrar {
 
@@ -238,55 +283,80 @@
 
 
         /* ========================================
-           LOGO
+           CABECERA / MARCA
         ======================================== */
+
+        .cabecera {
+
+            max-width: 760px;
+
+            margin: 0 auto 44px auto;
+
+        }
+
 
         .logo {
 
-            width: 340px;
+            width: 200px;
 
             height: auto;
 
             display: block;
 
-            margin: 0 auto 15px auto;
-
-            transition: 0.3s;
+            margin: 0 auto 18px auto;
 
         }
 
 
-        .logo:hover {
+        .titulo-imagen {
 
-            transform: scale(1.05);
+            width: 640px;
+
+            max-width: 100%;
+
+            height: auto;
+
+            display: block;
+
+            margin: 0 auto 14px auto;
+
+        }
+
+
+        .eslogan {
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
+
+            font-size: 17px;
+
+            letter-spacing: 0.3px;
+
+            color: var(--text-2);
+
+            margin: 0;
 
         }
 
 
         /* ========================================
-           TÍTULO
+           BLOQUE PRINCIPAL (skin + info)
         ======================================== */
 
-        .titulo-imagen {
+        .contenido-principal {
 
-            width: 800px;
+            max-width: 980px;
 
-            max-width: 60%;
+            margin: 0 auto 46px auto;
 
-            height: auto;
+            display: flex;
 
-            display: block;
+            align-items: center;
 
-            margin: 0 auto 35px auto;
+            justify-content: center;
 
-            transition: 0.3s;
-
-        }
-
-
-        .titulo-imagen:hover {
-
-            transform: scale(1.03);
+            gap: 48px;
 
         }
 
@@ -295,32 +365,46 @@
            SKIN
         ======================================== */
 
-        .skin {
+        .skin-envoltorio {
 
-            position: absolute;
-
-            left: 20px;
-
-            top: 160px;
-
-            width: 340px;
-
-            height: 400px;
-
-            object-fit: contain;
-
-            z-index: 2;
-
-            transition: 0.3s;
+            flex: 0 0 auto;
 
             cursor: pointer;
 
         }
 
 
-        .skin:hover {
+        .skin {
 
-            transform: scale(1.04);
+            width: 240px;
+
+            height: auto;
+
+            display: block;
+
+            filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55));
+
+            transition: transform 0.25s ease;
+
+        }
+
+
+        .skin-envoltorio:hover .skin {
+
+            transform: translateY(-6px);
+
+        }
+
+
+        .skin-etiqueta {
+
+            margin-top: 10px;
+
+            font-size: 13px;
+
+            color: var(--text-2);
+
+            font-weight: 500;
 
         }
 
@@ -331,44 +415,120 @@
 
         .info-servidor {
 
-            width: 750px;
+            flex: 1 1 auto;
 
-            max-width: 60%;
+            max-width: 480px;
 
-            margin: 0 auto 35px auto;
+            text-align: left;
 
-            padding: 30px 40px;
+            padding: 30px 34px;
 
-            box-sizing: border-box;
+            background: var(--panel);
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            border: 1px solid var(--panel-line);
 
-            border-radius: 25px;
+            border-radius: var(--radius);
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.45);
-
-            position: relative;
-
-            z-index: 1;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 
         }
 
 
-        /* TEXTO */
+        .info-etiqueta {
 
-        .info-servidor p {
+            font-family: 'Rajdhani', sans-serif;
 
-            font-size: 25px;
+            font-size: 13px;
 
-            font-weight: bold;
+            font-weight: 600;
 
-            margin: 12px 0;
+            letter-spacing: 1px;
+
+            color: var(--accent);
+
+            margin: 0 0 14px 0;
+
+        }
+
+
+        .info-fila {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 12px 0;
+
+            border-top: 1px solid var(--panel-line);
+
+        }
+
+
+        .info-fila:first-of-type {
+
+            border-top: none;
+
+        }
+
+
+        .info-fila span:first-child {
+
+            color: var(--text-2);
+
+            font-size: 14px;
+
+        }
+
+
+        .info-fila span:last-child {
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
+
+            font-size: 17px;
+
+            color: var(--text-1);
+
+        }
+
+
+        .info-copiar {
+
+            margin-top: 18px;
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: var(--accent);
+
+            color: #051022;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .info-copiar:hover {
+
+            background: #5b90ff;
 
         }
 
@@ -379,20 +539,22 @@
 
         .botones {
 
+            max-width: 760px;
+
+            margin: 0 auto;
+
             display: flex;
 
             justify-content: center;
 
             align-items: center;
 
-            gap: 15px;
+            gap: 14px;
 
             flex-wrap: wrap;
 
         }
 
-
-        /* BOTÓN GENERAL */
 
         .boton {
 
@@ -402,103 +564,47 @@
 
             align-items: center;
 
-            width: 210px;
+            gap: 10px;
 
-            height: 75px;
+            width: 180px;
 
-            color: white;
+            height: 58px;
+
+            color: var(--text-1);
 
             text-decoration: none;
 
-            border-radius: 18px;
+            border-radius: 10px;
 
-            font-size: 24px;
+            border: 1px solid var(--panel-line);
 
-            font-weight: bold;
+            background: var(--panel);
 
-            transition: 0.3s;
+            font-family: 'Rajdhani', sans-serif;
 
-        }
+            font-size: 17px;
 
+            font-weight: 600;
 
-        /* ========================================
-           DISCORD
-        ======================================== */
-
-        .discord-btn {
-
-            background: #5865F2;
+            transition: 0.2s ease;
 
         }
 
 
-        .discord-btn:hover {
+        .boton:hover {
 
-            background: #4752C4;
+            transform: translateY(-2px);
 
-            transform: scale(1.08);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 0 25px rgba(88, 101, 242, 0.8);
-
-        }
-
-
-        /* ========================================
-           YOUTUBE
-        ======================================== */
-
-        .youtube-btn {
-
-            background: #FF0000;
-
-        }
-
-
-        .youtube-btn:hover {
-
-            background: #CC0000;
-
-            transform: scale(1.08);
-
-            box-shadow:
-                0 0 25px rgba(255, 0, 0, 0.7);
-
-        }
-
-
-        /* ========================================
-           TIKTOK
-        ======================================== */
-
-        .tiktok-btn {
-
-            background: linear-gradient(
-                135deg,
-                #00f2ea,
-                #000000,
-                #ff0050
-            );
-
-        }
-
-
-        .tiktok-btn:hover {
-
-            transform: scale(1.08);
-
-            box-shadow:
-                0 0 25px rgba(255, 0, 80, 0.8);
+            background: var(--accent-dim);
 
         }
 
 
         /* ==================================================
-           EFECTO DE INFORMACIÓN DE LA SKIN
+           PANEL DE PROPIETARIO
         ================================================== */
-
-
-        /* FONDO OSCURO Y BORROSO */
 
         .fondo-owner {
 
@@ -506,28 +612,22 @@
 
             inset: 0;
 
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(2, 4, 8, 0.7);
 
-            backdrop-filter: blur(7px);
+            backdrop-filter: blur(6px);
 
-            -webkit-backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(6px);
 
             opacity: 0;
 
             visibility: hidden;
 
-            transition:
-                opacity 0.35s ease,
-                visibility 0.35s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
 
             z-index: 500;
 
-            pointer-events: none;
-
         }
 
-
-        /* PANEL DEL OWNER */
 
         .panel-owner {
 
@@ -537,85 +637,125 @@
 
             top: 50%;
 
-            transform:
-                translate(-50%, -50%)
-                scale(0.65);
+            transform: translate(-50%, -50%) scale(0.96);
 
-            width: 550px;
+            width: 420px;
 
-            max-width: 85%;
+            max-width: 88%;
 
-            padding: 35px;
+            padding: 30px;
 
             box-sizing: border-box;
 
-            background: linear-gradient(
-                135deg,
-                #14001f,
-                #4b0082,
-                #7b2cbf,
-                #14001f
-            );
+            background: var(--panel);
 
-            border-radius: 30px;
+            border: 1px solid var(--panel-line);
 
-            border: 2px solid rgba(157, 78, 221, 0.7);
+            border-radius: 18px;
 
-            box-shadow:
-                0 0 50px rgba(157, 78, 221, 0.7),
-                0 20px 60px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
 
             opacity: 0;
 
             visibility: hidden;
 
-            transition:
-                opacity 0.35s ease,
-                transform 0.35s ease,
-                visibility 0.35s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 
             z-index: 501;
 
-            pointer-events: none;
+            text-align: left;
 
         }
 
 
-        /* TÍTULO OWNER */
+        .owner-cerrar {
+
+            position: absolute;
+
+            top: 14px;
+
+            right: 14px;
+
+            width: 30px;
+
+            height: 30px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--panel-line);
+
+            background: transparent;
+
+            color: var(--text-2);
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            line-height: 1;
+
+        }
+
+
+        .owner-cerrar:hover {
+
+            color: var(--text-1);
+
+            border-color: var(--accent-line);
+
+        }
+
 
         .owner-titulo {
 
-            color: #ff2020;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-size: 34px;
+            color: var(--text-1);
 
-            font-weight: bold;
+            font-size: 22px;
 
-            margin-bottom: 25px;
+            font-weight: 700;
 
-            text-shadow:
-                0 0 15px rgba(255, 0, 0, 0.7);
+            margin: 0 0 4px 0;
 
         }
 
 
-        /* INFORMACIÓN */
+        .owner-rol {
+
+            font-size: 13px;
+
+            color: var(--danger);
+
+            font-weight: 600;
+
+            margin: 0 0 22px 0;
+
+        }
+
 
         .owner-info {
 
-            background: rgba(0, 0, 0, 0.35);
+            display: flex;
 
-            border-radius: 18px;
+            align-items: center;
 
-            padding: 18px;
+            gap: 12px;
 
-            margin: 12px 0;
+            padding: 12px 0;
 
-            font-size: 20px;
+            border-top: 1px solid var(--panel-line);
 
-            font-weight: bold;
+            font-size: 15px;
 
-            line-height: 1.5;
+            font-weight: 500;
+
+        }
+
+
+        .owner-info:first-of-type {
+
+            border-top: none;
 
         }
 
@@ -624,37 +764,19 @@
 
             display: block;
 
-            font-size: 15px;
+            font-size: 12px;
 
-            color: #cccccc;
+            color: var(--text-2);
 
-            margin-top: 4px;
+            font-weight: 400;
 
-            font-weight: normal;
-
-        }
-
-
-        /* ENLACES */
-
-        .owner-info a {
-
-            color: white;
-
-            text-decoration: none;
-
-        }
-
-
-        .owner-info a:hover {
-
-            text-decoration: underline;
+            margin-top: 2px;
 
         }
 
 
         /* ========================================
-           CUANDO SE PASA EL MOUSE POR LA SKIN
+           CUANDO SE ABRE EL PANEL
         ======================================== */
 
         body.owner-activo .fondo-owner {
@@ -672,9 +794,7 @@
 
             visibility: visible;
 
-            transform:
-                translate(-50%, -50%)
-                scale(1);
+            transform: translate(-50%, -50%) scale(1);
 
         }
 
@@ -685,101 +805,52 @@
 
         @media (max-width: 900px) {
 
-            .botones-arriba {
+            .pagina {
 
-                top: 15px;
-
-                right: 15px;
-
-                gap: 8px;
+                padding: 90px 16px 70px 16px;
 
             }
 
 
-            .boton-circular {
+            .contenido-principal {
 
-                width: 50px;
+                flex-direction: column;
 
-                height: 50px;
-
-                font-size: 25px;
-
-            }
-
-
-            .menu-lista {
-
-                width: 240px;
-
-            }
-
-
-            .titulo-imagen {
-
-                width: 600px;
-
-                max-width: 85%;
+                gap: 26px;
 
             }
 
 
             .info-servidor {
 
-                max-width: 85%;
+                max-width: 400px;
+
+                width: 100%;
 
             }
 
 
-            .skin {
+            .titulo-imagen {
 
-                position: static;
-
-                display: block;
-
-                width: 370px;
-
-                height: 500px;
-
-                margin: 20px auto;
-
-            }
-
-
-            .botones {
-
-                flex-direction: column;
+                width: 440px;
 
             }
 
 
             .boton {
 
-                width: 210px;
+                width: 100%;
 
-                height: 70px;
+                max-width: 320px;
 
             }
 
 
             .panel-owner {
 
-                width: 90%;
+                width: 92%;
 
-                padding: 25px;
-
-            }
-
-
-            .owner-titulo {
-
-                font-size: 27px;
-
-            }
-
-
-            .owner-info {
-
-                font-size: 17px;
+                padding: 24px;
 
             }
 
@@ -794,69 +865,44 @@
 
 
     <!-- ========================================
-         FONDO OSCURO Y BORROSO
+         LUZ QUE SIGUE AL RATÓN
     ======================================== -->
 
-    <div class="fondo-owner"></div>
+    <div class="luz-cursor" id="luz-cursor"></div>
 
 
     <!-- ========================================
          PANEL DEL OWNER
     ======================================== -->
 
+    <div class="fondo-owner" id="fondo-owner"></div>
+
     <div class="panel-owner">
 
+        <button class="owner-cerrar" id="owner-cerrar" title="Cerrar" type="button">✕</button>
 
-        <div class="owner-titulo">
-
-            🔴 Owner AngelDavid1899
-
-        </div>
-
+        <p class="owner-titulo">AngelDavid1899</p>
+        <p class="owner-rol">● Fundador</p>
 
         <div class="owner-info">
-
             🇪🇸 +34 614 12 42 98
-
-            <span>
-                Teléfono de contacto
-            </span>
-
+            <span>Teléfono de contacto</span>
         </div>
 
-
         <div class="owner-info">
-
             💬 Angel_David_yiyi
-
-            <span>
-                Discord
-            </span>
-
+            <span>Discord</span>
         </div>
 
-
         <div class="owner-info">
-
             🎵 AngelDavid1899
-
-            <span>
-                TikTok
-            </span>
-
+            <span>TikTok</span>
         </div>
-
 
         <div class="owner-info">
-
             ▶️ AngelDavid1899
-
-            <span>
-                YouTube
-            </span>
-
+            <span>YouTube</span>
         </div>
-
 
     </div>
 
@@ -871,73 +917,22 @@
 
         <div class="botones-arriba">
 
+            <a href="tienda.html" class="boton-circular" title="Tienda">🛒</a>
 
-            <!-- 🛒 TIENDA -->
-
-            <a
-                href="tienda.html"
-                class="boton-circular"
-                title="Tienda"
-            >
-                🛒
-            </a>
-
-
-            <!-- 👩🏻‍💻 STAFF -->
-
-            <a
-                href="staff.html"
-                class="boton-circular"
-                title="Staff"
-            >
-                👩🏻‍💻
-            </a>
-
-
-            <!-- MENÚ = -->
+            <a href="staff.html" class="boton-circular" title="Staff">👩🏻‍💻</a>
 
             <div class="menu-contenedor">
 
+                <button class="boton-circular" id="boton-menu" title="Menú" type="button">☰</button>
 
-                <button
-                    class="boton-circular"
-                    id="boton-menu"
-                    title="Menú"
-                >
-                    =
-                </button>
+                <div class="menu-lista" id="menu-lista">
 
-
-                <!-- LISTA DEL MENÚ -->
-
-                <div
-                    class="menu-lista"
-                    id="menu-lista"
-                >
-
-                    <a href="reglas.html">
-                        📜 Reglas
-                    </a>
-
-                    <a href="eventos.html">
-                        🎉 Eventos
-                    </a>
-
-                    <a href="informacion.html">
-                        ℹ️ Información
-                    </a>
-
-                    <a href="postulaciones.html">
-                        📝 Postulaciones
-                    </a>
-
-                    <a href="creadores.html">
-                        🎥 Creadores de contenido
-                    </a>
-
-                    <a href="modalidades.html">
-                        ⚔️ Modalidades
-                    </a>
+                    <a href="reglas.html">📜 Reglas</a>
+                    <a href="eventos.html">🎉 Eventos</a>
+                    <a href="informacion.html">ℹ️ Información</a>
+                    <a href="postulaciones.html">📝 Postulaciones</a>
+                    <a href="creadores.html">🎥 Creadores de contenido</a>
+                    <a href="modalidades.html">⚔️ Modalidades</a>
 
                 </div>
 
@@ -948,59 +943,58 @@
 
 
         <!-- ========================================
-             LOGO
+             CABECERA
         ======================================== -->
 
-        <img
-            src="logo.png"
-            class="logo"
-            alt="Logo de PlayCraftown"
-        >
+        <div class="cabecera">
+
+            <img src="logo.png" class="logo" alt="Logo de PlayCraftown">
+
+            <img src="Playcraftown_title.png" class="titulo-imagen" alt="PlayCraftown">
+
+            <p class="eslogan">Servidor de Minecraft · Java &amp; Bedrock</p>
+
+        </div>
 
 
 
         <!-- ========================================
-             TÍTULO
+             SKIN + INFORMACIÓN
         ======================================== -->
 
-        <img
-            src="Playcraftown_title.png"
-            class="titulo-imagen"
-            alt="PlayCraftown"
-        >
+        <div class="contenido-principal">
+
+            <div class="skin-envoltorio" id="skin-owner">
+
+                <img src="skin.png" class="skin" alt="Skin de Minecraft del fundador">
+
+                <p class="skin-etiqueta">Fundador del servidor</p>
+
+            </div>
 
 
+            <div class="info-servidor">
 
-        <!-- ========================================
-             SKIN
-        ======================================== -->
+                <p class="info-etiqueta">CONEXIÓN AL SERVIDOR</p>
 
-        <img
-            src="skin.png"
-            class="skin"
-            id="skin-owner"
-            alt="Skin de Minecraft"
-        >
+                <div class="info-fila">
+                    <span>IP (Java)</span>
+                    <span>PlayCraftown.holy.GG</span>
+                </div>
 
+                <div class="info-fila">
+                    <span>IP (Bedrock)</span>
+                    <span>51.81.48.74</span>
+                </div>
 
+                <div class="info-fila">
+                    <span>Puerto</span>
+                    <span>26219</span>
+                </div>
 
-        <!-- ========================================
-             INFORMACIÓN DEL SERVIDOR
-        ======================================== -->
+                <button class="info-copiar" id="boton-copiar" type="button">Copiar IP</button>
 
-        <div class="info-servidor">
-
-            <p>
-                IP: PlayCraftown.holy.GG
-            </p>
-
-            <p>
-                IP/BEDROCK: 51.81.48.74
-            </p>
-
-            <p>
-                Puerto: 26219
-            </p>
+            </div>
 
         </div>
 
@@ -1012,44 +1006,11 @@
 
         <div class="botones">
 
+            <a href="https://discord.gg/22gVa5paTP" class="boton" target="_blank" rel="noopener noreferrer">Discord</a>
 
-            <!-- DISCORD -->
+            <a href="https://youtube.com/@playcraftown-n4g?si=BbWWRvLbL9Ann_cD" class="boton" target="_blank" rel="noopener noreferrer">YouTube</a>
 
-            <a
-                href="https://discord.gg/22gVa5paTP"
-                class="boton discord-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Discord
-            </a>
-
-
-
-            <!-- YOUTUBE -->
-
-            <a
-                href="https://youtube.com/@playcraftown-n4g?si=BbWWRvLbL9Ann_cD"
-                class="boton youtube-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                YouTube
-            </a>
-
-
-
-            <!-- TIKTOK -->
-
-            <a
-                href="https://www.tiktok.com/@playcraftown_oficial?is_from_webapp=1&sender_device=pc"
-                class="boton tiktok-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                TikTok
-            </a>
-
+            <a href="https://www.tiktok.com/@playcraftown_oficial?is_from_webapp=1&sender_device=pc" class="boton" target="_blank" rel="noopener noreferrer">TikTok</a>
 
         </div>
 
@@ -1065,53 +1026,72 @@
     <script>
 
 
-        /* ========================================
-           MENÚ =
-        ======================================== */
+        /* LUZ QUE SIGUE AL RATÓN */
 
-        const botonMenu =
-            document.getElementById("boton-menu");
+        document.addEventListener("mousemove", function (e) {
 
-        const menuLista =
-            document.getElementById("menu-lista");
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+
+            document.documentElement.style.setProperty("--x", x + "%");
+            document.documentElement.style.setProperty("--y", y + "%");
+
+        });
 
 
-        botonMenu.addEventListener(
-            "click",
-            function() {
+        /* MENÚ */
 
-                menuLista.classList.toggle("mostrar");
+        const botonMenu = document.getElementById("boton-menu");
+        const menuLista = document.getElementById("menu-lista");
 
+        botonMenu.addEventListener("click", function (e) {
+            e.stopPropagation();
+            menuLista.classList.toggle("mostrar");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!menuLista.contains(e.target) && e.target !== botonMenu) {
+                menuLista.classList.remove("mostrar");
             }
-        );
+        });
 
 
-        /* ========================================
-           PANEL DEL OWNER
-        ======================================== */
+        /* PANEL DEL OWNER */
 
-        const skinOwner =
-            document.getElementById("skin-owner");
+        const skinOwner = document.getElementById("skin-owner");
+        const fondoOwner = document.getElementById("fondo-owner");
+        const ownerCerrar = document.getElementById("owner-cerrar");
+
+        function abrirOwner() {
+            document.body.classList.add("owner-activo");
+        }
+
+        function cerrarOwner() {
+            document.body.classList.remove("owner-activo");
+        }
+
+        skinOwner.addEventListener("click", abrirOwner);
+        fondoOwner.addEventListener("click", cerrarOwner);
+        ownerCerrar.addEventListener("click", cerrarOwner);
 
 
-        skinOwner.addEventListener(
-            "mouseenter",
-            function() {
+        /* COPIAR IP */
 
-                document.body.classList.add("owner-activo");
+        const botonCopiar = document.getElementById("boton-copiar");
 
-            }
-        );
+        botonCopiar.addEventListener("click", function () {
 
+            navigator.clipboard.writeText("PlayCraftown.holy.GG").then(function () {
 
-        skinOwner.addEventListener(
-            "mouseleave",
-            function() {
+                botonCopiar.textContent = "¡IP copiada!";
 
-                document.body.classList.remove("owner-activo");
+                setTimeout(function () {
+                    botonCopiar.textContent = "Copiar IP";
+                }, 1800);
 
-            }
-        );
+            });
+
+        });
 
 
     </script>
