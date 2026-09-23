@@ -9,8 +9,41 @@
 
     <title>Modalidades - PlayCraftown</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
+        /* ========================================
+           TOKENS
+        ======================================== */
+
+        :root {
+
+            --bg-0: #05070b;
+            --bg-1: #0b0f16;
+            --panel: #10141d;
+            --panel-line: rgba(255, 255, 255, 0.08);
+
+            --text-1: #eef1f6;
+            --text-2: #9aa4b2;
+
+            --accent: #3e7bfa;
+            --accent-dim: rgba(62, 123, 250, 0.18);
+            --accent-line: rgba(62, 123, 250, 0.35);
+
+            --danger: #ef4444;
+
+            --radius: 14px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
 
         /* ========================================
            FONDO
@@ -23,21 +56,36 @@
             min-height: 100vh;
 
             background:
-                radial-gradient(
-                    circle at top,
-                    rgba(123, 44, 191, 0.22),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #000000,
-                    #001f3f,
-                    #004e9b
-                );
+                radial-gradient(1100px 600px at 15% -10%, rgba(62, 123, 250, 0.14), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(62, 123, 250, 0.08), transparent 55%),
+                var(--bg-0);
 
-            color: white;
+            color: var(--text-1);
 
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        .luz-cursor {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            background: radial-gradient(
+                650px circle at var(--x, 50%) var(--y, 20%),
+                rgba(90, 100, 245, 0.14),
+                transparent 62%
+            );
 
         }
 
@@ -48,13 +96,82 @@
 
         .pagina {
 
+            position: relative;
+
+            z-index: 1;
+
             width: 100%;
 
             min-height: 100vh;
 
             box-sizing: border-box;
 
-            padding: 45px 25px 80px 25px;
+            padding: 100px 24px 90px 24px;
+
+        }
+
+
+        /* ========================================
+           BOTONES DE ARRIBA
+        ======================================== */
+
+        .botones-arriba {
+
+            position: fixed;
+
+            top: 22px;
+
+            right: 24px;
+
+            display: flex;
+
+            flex-direction: row;
+
+            gap: 10px;
+
+            z-index: 100;
+
+        }
+
+
+        .boton-circular {
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 50%;
+
+            background: var(--panel);
+
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-decoration: none;
+
+            font-size: 22px;
+
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .boton-circular:hover {
+
+            border-color: rgba(255, 255, 255, 0.22);
+
+            background: #171b25;
+
+            transform: translateY(-2px);
 
         }
 
@@ -67,36 +184,37 @@
 
             text-align: center;
 
-            margin-bottom: 45px;
+            max-width: 760px;
+
+            margin: 0 auto 50px auto;
 
         }
 
 
         .cabecera h1 {
 
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 700;
+
             margin: 0;
 
-            font-size: 58px;
+            font-size: 44px;
 
-            text-shadow:
-                0 0 10px #7b2cbf,
-                0 0 25px #7b2cbf,
-                0 0 45px rgba(157, 78, 221, 0.7);
+            letter-spacing: 0.3px;
 
         }
 
 
         .cabecera p {
 
-            max-width: 900px;
+            margin: 16px auto 0 auto;
 
-            margin: 18px auto 0 auto;
-
-            font-size: 19px;
+            font-size: 16px;
 
             line-height: 1.7;
 
-            color: #e7d5ff;
+            color: var(--text-2);
 
         }
 
@@ -107,7 +225,7 @@
 
         .modalidades {
 
-            max-width: 1150px;
+            max-width: 1080px;
 
             margin: auto;
 
@@ -115,7 +233,7 @@
 
             flex-direction: column;
 
-            gap: 30px;
+            gap: 28px;
 
         }
 
@@ -126,63 +244,17 @@
 
         .modalidad {
 
-            position: relative;
+            background: var(--panel);
 
-            overflow: hidden;
+            border: 1px solid var(--panel-line);
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #4b0082,
-                    #7b2cbf,
-                    #9d4edd
-                );
+            border-radius: var(--radius);
 
-            border-radius: 30px;
-
-            padding: 35px;
+            padding: 34px;
 
             box-sizing: border-box;
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.16);
-
-            box-shadow:
-                0 15px 40px
-                rgba(0, 0, 0, 0.5);
-
-        }
-
-
-        .modalidad::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 300px;
-
-            height: 300px;
-
-            top: -170px;
-
-            right: -100px;
-
-            background:
-                rgba(255, 255, 255, 0.08);
-
-            border-radius: 50%;
-
-            filter: blur(50px);
-
-        }
-
-
-        .modalidad-contenido {
-
-            position: relative;
-
-            z-index: 2;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 
         }
 
@@ -193,32 +265,45 @@
 
         .modalidad-titulo {
 
-            text-align: center;
+            text-align: left;
 
-            margin-bottom: 30px;
+            margin-bottom: 26px;
+
+            padding-bottom: 22px;
+
+            border-bottom: 1px solid var(--panel-line);
 
         }
 
 
         .modalidad-titulo h2 {
 
-            font-size: 40px;
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 700;
+
+            font-size: 28px;
 
             margin: 0;
 
-            text-shadow:
-                0 0 12px rgba(255,255,255,0.25);
+            color: var(--text-1);
 
         }
 
 
         .modalidad-titulo p {
 
-            font-size: 18px;
+            font-family: 'Rajdhani', sans-serif;
 
-            color: #f0dcff;
+            font-weight: 600;
 
-            margin-top: 10px;
+            font-size: 14px;
+
+            letter-spacing: 0.6px;
+
+            color: var(--accent);
+
+            margin-top: 8px;
 
         }
 
@@ -229,14 +314,15 @@
 
         .descripcion {
 
-            background:
-                rgba(0, 0, 0, 0.20);
+            background: var(--bg-1);
 
-            padding: 22px;
+            border: 1px solid var(--panel-line);
 
-            border-radius: 18px;
+            padding: 20px 22px;
 
-            margin-bottom: 25px;
+            border-radius: 10px;
+
+            margin-bottom: 24px;
 
         }
 
@@ -245,9 +331,18 @@
 
             margin: 0;
 
-            font-size: 17px;
+            font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.75;
+
+            color: var(--text-2);
+
+        }
+
+
+        .descripcion p + p {
+
+            margin-top: 12px;
 
         }
 
@@ -260,10 +355,9 @@
 
             display: grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
-            gap: 20px;
+            gap: 18px;
 
         }
 
@@ -274,32 +368,24 @@
 
         .seccion {
 
-            background:
-                rgba(0, 0, 0, 0.20);
+            background: var(--bg-1);
 
-            border-radius: 20px;
+            border-radius: 10px;
 
-            padding: 25px;
+            padding: 22px;
 
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.10);
+            border: 1px solid var(--panel-line);
 
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .seccion:hover {
 
-            transform: translateY(-5px);
+            border-color: var(--accent-line);
 
-            background:
-                rgba(0, 0, 0, 0.28);
-
-            box-shadow:
-                0 10px 25px
-                rgba(0, 0, 0, 0.25);
+            background: #12161f;
 
         }
 
@@ -308,20 +394,26 @@
 
             margin-top: 0;
 
-            font-size: 23px;
+            font-family: 'Rajdhani', sans-serif;
 
-            color: #f0d9ff;
+            font-weight: 700;
+
+            font-size: 18px;
+
+            color: var(--text-1);
 
         }
 
 
         .seccion p {
 
-            font-size: 16px;
+            font-size: 14.5px;
 
             line-height: 1.7;
 
             margin: 10px 0;
+
+            color: var(--text-2);
 
         }
 
@@ -334,20 +426,23 @@
 
             display: inline-block;
 
-            padding: 5px 10px;
+            padding: 4px 9px;
 
             margin: 3px 2px;
 
-            background:
-                rgba(0, 0, 0, 0.45);
+            background: rgba(62, 123, 250, 0.12);
 
-            border-radius: 8px;
+            border: 1px solid var(--accent-line);
 
-            color: #e8c7ff;
+            border-radius: 6px;
 
-            font-family: monospace;
+            color: #bcd0ff;
 
-            font-weight: bold;
+            font-family: 'Rajdhani', monospace;
+
+            font-weight: 700;
+
+            font-size: 14px;
 
         }
 
@@ -358,9 +453,9 @@
 
         .destacado {
 
-            color: #ffd6ff;
+            color: var(--text-1);
 
-            font-weight: bold;
+            font-weight: 600;
 
         }
 
@@ -371,17 +466,15 @@
 
         .advertencia {
 
-            margin-top: 25px;
+            margin-top: 20px;
 
-            padding: 20px;
+            padding: 16px 18px;
 
-            background:
-                rgba(0, 0, 0, 0.30);
+            background: rgba(239, 68, 68, 0.08);
 
-            border-radius: 18px;
+            border-radius: 10px;
 
-            border-left:
-                5px solid #d8b4fe;
+            border-left: 3px solid var(--danger);
 
         }
 
@@ -390,9 +483,11 @@
 
             margin: 0;
 
-            font-size: 16px;
+            font-size: 14px;
 
             line-height: 1.7;
+
+            color: var(--text-2);
 
         }
 
@@ -405,34 +500,32 @@
 
             display: inline-block;
 
-            margin-top: 15px;
+            margin-top: 12px;
 
-            padding: 13px 20px;
+            padding: 12px 18px;
 
-            background: #5865F2;
+            background: var(--accent);
 
-            color: white;
+            color: #051022;
 
             text-decoration: none;
 
-            border-radius: 12px;
+            border-radius: 10px;
 
-            font-weight: bold;
+            font-family: 'Rajdhani', sans-serif;
 
-            transition: 0.3s;
+            font-weight: 700;
+
+            font-size: 15px;
+
+            transition: 0.2s ease;
 
         }
 
 
         .boton-eventos:hover {
 
-            background: #4752C4;
-
-            transform: scale(1.05);
-
-            box-shadow:
-                0 0 20px
-                rgba(88, 101, 242, 0.7);
+            background: #5b90ff;
 
         }
 
@@ -443,7 +536,7 @@
 
         .vacio {
 
-            min-height: 220px;
+            min-height: 200px;
 
             display: flex;
 
@@ -458,23 +551,29 @@
 
         .vacio-contenido {
 
-            max-width: 700px;
+            max-width: 640px;
 
         }
 
 
         .vacio-contenido .icono {
 
-            font-size: 60px;
+            font-size: 40px;
 
-            margin-bottom: 10px;
+            margin-bottom: 6px;
+
+            opacity: 0.7;
 
         }
 
 
         .vacio-contenido h2 {
 
-            font-size: 35px;
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 700;
+
+            font-size: 26px;
 
             margin: 10px 0;
 
@@ -483,9 +582,11 @@
 
         .vacio-contenido p {
 
-            color: #e0cfff;
+            color: var(--text-2);
 
-            font-size: 17px;
+            font-size: 15px;
+
+            line-height: 1.7;
 
         }
 
@@ -498,50 +599,44 @@
 
             display: block;
 
-            width: 210px;
+            width: 200px;
 
-            margin: 45px auto 0 auto;
+            margin: 46px auto 0 auto;
 
-            padding: 16px;
+            padding: 15px;
 
             box-sizing: border-box;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #4b0082,
-                    #7b2cbf,
-                    #9d4edd
-                );
+            background: var(--panel);
 
-            color: white;
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             text-decoration: none;
 
             text-align: center;
 
-            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-weight: bold;
+            font-size: 17px;
 
-            border-radius: 15px;
+            font-weight: 700;
 
-            box-shadow:
-                0 8px 20px
-                rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
 
-            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
+            transition: 0.2s ease;
 
         }
 
 
         .volver:hover {
 
-            transform: scale(1.07);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 0 25px
-                rgba(157, 78, 221, 0.8);
+            background: var(--accent-dim);
 
         }
 
@@ -554,36 +649,35 @@
 
             .pagina {
 
-                padding:
-                    35px 15px 60px 15px;
+                padding: 90px 16px 60px 16px;
 
             }
 
 
             .cabecera h1 {
 
-                font-size: 40px;
+                font-size: 32px;
 
             }
 
 
             .cabecera p {
 
-                font-size: 17px;
+                font-size: 15px;
 
             }
 
 
             .modalidad {
 
-                padding: 25px 18px;
+                padding: 24px 18px;
 
             }
 
 
             .modalidad-titulo h2 {
 
-                font-size: 32px;
+                font-size: 24px;
 
             }
 
@@ -604,7 +698,29 @@
 <body>
 
 
+    <!-- ========================================
+         LUZ QUE SIGUE AL RATÓN
+    ======================================== -->
+
+    <div class="luz-cursor" id="luz-cursor"></div>
+
+
     <div class="pagina">
+
+
+        <!-- ========================================
+             BOTONES DE ARRIBA
+        ======================================== -->
+
+        <div class="botones-arriba">
+
+            <a href="tienda.html" class="boton-circular" title="Tienda">🛒</a>
+
+            <a href="staff.html" class="boton-circular" title="Staff">👩🏻‍💻</a>
+
+            <a href="index.html" class="boton-circular" title="Inicio">🏠</a>
+
+        </div>
 
 
         <!-- ========================================
@@ -613,9 +729,7 @@
 
         <header class="cabecera">
 
-            <h1>
-                ⚔️ Modalidades de PlayCraftown
-            </h1>
+            <h1>Modalidades de PlayCraftown</h1>
 
             <p>
 
@@ -637,519 +751,478 @@
 
             <section class="modalidad">
 
-                <div class="modalidad-contenido">
+
+                <div class="modalidad-titulo">
+
+                    <h2>Semi-Custom</h2>
+
+                    <p>SURVIVAL · PVP · KITS · CRATES</p>
+
+                </div>
 
 
-                    <div class="modalidad-titulo">
+                <!-- DESCRIPCIÓN -->
 
-                        <h2>
-                            ⚔️ SEMI-CUSTOM
-                        </h2>
+                <div class="descripcion">
+
+                    <p>
+
+                        <span class="destacado">
+                            Semi-Custom
+                        </span>
+                        es una modalidad de
+                        <span class="destacado">
+                            Survival
+                        </span>
+                        donde podrás encontrar
+                        diferentes elementos OP y
+                        personalizados para disfrutar
+                        de una experiencia diferente.
+
+                    </p>
+
+
+                    <p>
+
+                        Dentro de la modalidad encontrarás
+                        <span class="destacado">
+                            kits avanzados, kits de temporada,
+                            protecciones, MinaPvP, minijuegos
+                            PvP y mucho más.
+                        </span>
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================
+                     CARACTERÍSTICAS
+                ================================== -->
+
+                <div class="caracteristicas">
+
+
+                    <!-- COMENZAR -->
+
+                    <div class="seccion">
+
+                        <h3>¿Cómo comenzar?</h3>
 
                         <p>
-                            Survival • PvP • Kits • Crates
+
+                            Cuando entres por primera vez
+                            a la modalidad podrás reclamar
+                            tu kit inicial utilizando:
+
+                        </p>
+
+                        <span class="comando">/kits</span>
+
+
+                        <p>
+
+                            Además, si encuentras a algún
+                            <span class="destacado">
+                                Admin u Owner
+                            </span>,
+                            puedes avisarle de que eres
+                            nuevo.
+
+                        </p>
+
+
+                        <p>
+
+                            En ocasiones podrán regalarte
+                            llaves para los
+                            <span class="destacado">
+                                Crates
+                            </span>,
+                            donde podrás conseguir
+                            diferentes recompensas.
+
                         </p>
 
                     </div>
 
 
-                    <!-- DESCRIPCIÓN -->
+                    <!-- RANGOS -->
 
-                    <div class="descripcion">
+                    <div class="seccion">
+
+                        <h3>Rangos</h3>
 
                         <p>
 
-                            <span class="destacado">
-                                Semi-Custom
-                            </span>
-                            es una modalidad de
-                            <span class="destacado">
-                                Survival
-                            </span>
-                            donde podrás encontrar
-                            diferentes elementos OP y
-                            personalizados para disfrutar
-                            de una experiencia diferente.
+                            Si quieres conseguir un rango
+                            dentro de la modalidad puedes
+                            utilizar:
 
                         </p>
 
+                        <span class="comando">/rangos</span>
+
 
                         <p>
 
-                            Dentro de la modalidad encontrarás
-                            <span class="destacado">
-                                kits avanzados, kits de temporada,
-                                protecciones, MinaPvP, minijuegos
-                                PvP y mucho más.
-                            </span>
+                            Desde este menú podrás ver los
+                            diferentes rangos disponibles.
+
+                            Algunos rangos podrán
+                            conseguirse utilizando el
+                            dinero del propio juego.
 
                         </p>
 
                     </div>
 
 
-                    <!-- =================================
-                         CARACTERÍSTICAS
-                    ================================== -->
+                    <!-- WARPS -->
 
-                    <div class="caracteristicas">
+                    <div class="seccion">
+
+                        <h3>/Warps</h3>
+
+                        <p>
+
+                            El comando
+
+                            <span class="comando">/warps</span>
+
+                            abrirá un menú donde podrás
+                            encontrar los diferentes
+                            lugares disponibles de la
+                            modalidad.
+
+                        </p>
+
+                    </div>
 
 
-                        <!-- COMENZAR -->
+                    <!-- MINA PVP -->
 
-                        <div class="seccion">
+                    <div class="seccion">
 
-                            <h3>
-                                🚀 ¿Cómo comenzar?
-                            </h3>
+                        <h3>MinaPvP</h3>
+
+                        <p>
+
+                            La
+                            <span class="destacado">
+                                MinaPvP
+                            </span>
+                            es una mina donde podrás
+                            conseguir materiales como
+                            diamantes, oro y muchos otros
+                            recursos.
+
+                        </p>
+
+                        <p>
+
+                            Los materiales obtenidos
+                            pueden venderse utilizando:
+
+                        </p>
+
+                        <span class="comando">/sellgui</span>
+
+
+                        <p>
+
+                            El objetivo es conseguir
+                            dinero y convertirte en uno
+                            de los jugadores más ricos
+                            del servidor.
+
+                        </p>
+
+
+                        <p>
+
+                            También podremos ofrecer
+                            recompensas a los jugadores
+                            que consigan estar en el
+                            <span class="destacado">
+                                TOP 1 o TOP 2
+                            </span>
+                            del servidor.
+
+                        </p>
+
+
+                        <div class="advertencia">
 
                             <p>
 
-                                Cuando entres por primera vez
-                                a la modalidad podrás reclamar
-                                tu kit inicial utilizando:
+                                <span class="destacado">
+                                ¡Cuidado!
+                                </span>
+
+                                Como indica su nombre,
+                                la MinaPvP es una zona
+                                donde puedes encontrarte
+                                con cualquier jugador.
+
+                                Tanto el jugador más
+                                experimentado como el
+                                más nuevo puede aparecer
+                                para hacer PvP.
 
                             </p>
 
-                            <span class="comando">
-                                /kits
+                        </div>
+
+                    </div>
+
+
+                    <!-- CRATES -->
+
+                    <div class="seccion">
+
+                        <h3>/Warp Crates</h3>
+
+                        <p>
+
+                            El Warp Crates está ubicado
+                            en el Spawn.
+
+                            Allí encontrarás
+                            <span class="destacado">
+                                cajas misteriosas
+                            </span>
+                            que pueden darte recompensas
+                            increíbles... o alguna
+                            recompensa menos afortunada.
+
+                        </p>
+
+
+                        <p>
+
+                            Las cajas se abren utilizando
+                            <span class="destacado">
+                                Keys / Llaves
+                            </span>.
+
+                        </p>
+
+
+                        <p>
+
+                            Podemos entregar llaves
+                            durante eventos como
+                            <span class="destacado">
+                                Key-All y KOTH
+                            </span>.
+
+                        </p>
+
+
+                        <a
+                            href="eventos.html"
+                            class="boton-eventos"
+                        >
+                            Ver información de eventos
+                        </a>
+
+
+                        <p>
+
+                            También existen llaves de
+                            <span class="destacado">
+                                pago
+                            </span>
+                            que pueden ofrecer objetos
+                            únicos y personalizados.
+
+                        </p>
+
+
+                        <p>
+
+                            Además, algunos kits de eventos
+                            pueden ser exclusivos y,
+                            después de cierto tiempo,
+                            dejar de estar disponibles.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- PVP -->
+
+                    <div class="seccion">
+
+                        <h3>/Warp PvP</h3>
+
+                        <p>
+
+                            El Warp PvP es un
+                            <span class="destacado">
+                                minijuego de PvP
+                            </span>
+                            donde podrás enfrentarte
+                            contra tus amigos u otros
+                            jugadores.
+
+                        </p>
+
+
+                        <p>
+
+                            Al entrar recibirás un kit
+                            preparado para combatir.
+
+                        </p>
+
+
+                        <p>
+
+                            Los objetos de tu inventario
+                            no se perderán al participar
+                            en este minijuego.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- PARKOUR -->
+
+                    <div class="seccion">
+
+                        <h3>/Warp Parkour</h3>
+
+                        <p>
+
+                            En este Warp encontrarás
+                            un parkour en espiral.
+
+                        </p>
+
+
+                        <p>
+
+                            Durante el recorrido podrás
+                            encontrar diferentes puntos
+                            de aparición para continuar
+                            desde ellos.
+
+                        </p>
+
+
+                        <p>
+
+                            Si consigues llegar hasta
+                            el final recibirás:
+
+                        </p>
+
+
+                        <span class="comando">$100K</span>
+
+
+                        <p>
+
+                            Con ese dinero podrás comprar
+                            diferentes cosas dentro de
+                            la modalidad.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- PROTECCIONES -->
+
+                    <div class="seccion">
+
+                        <h3>/Protecciones</h3>
+
+                        <p>
+
+                            El comando
+
+                            <span class="comando">/protecciones</span>
+
+                            abrirá un menú donde podrás
+                            comprar diferentes
+                            protecciones para tu casa.
+
+                        </p>
+
+
+                        <p>
+
+                            Existen diferentes tamaños
+                            de protección y diferentes
+                            precios para adaptarse a
+                            cada jugador.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- BANK -->
+
+                    <div class="seccion">
+
+                        <h3>/Bank</h3>
+
+                        <p>
+
+                            El comando
+
+                            <span class="comando">/bank</span>
+
+                            te permitirá guardar tu
+                            dinero en el banco.
+
+                        </p>
+
+
+                        <p>
+
+                            Si llevas tu dinero fuera
+                            del banco y mueres o eres
+                            eliminado, puedes perder
+                            <span class="destacado">
+                                la mitad de tu dinero.
                             </span>
 
-
-                            <p>
-
-                                Además, si encuentras a algún
-                                <span class="destacado">
-                                    Admin u Owner
-                                </span>,
-                                puedes avisarle de que eres
-                                nuevo.
-
-                            </p>
+                        </p>
 
 
-                            <p>
+                        <p>
 
-                                En ocasiones podrán regalarte
-                                llaves para los
-                                <span class="destacado">
-                                    Crates
-                                </span>,
-                                donde podrás conseguir
-                                diferentes recompensas.
+                            Si guardas tu dinero en el
+                            banco, no perderás ese dinero
+                            al morir.
 
-                            </p>
-
-                        </div>
+                        </p>
 
 
-                        <!-- RANGOS -->
+                        <p>
 
-                        <div class="seccion">
-
-                            <h3>
-                                👑 Rangos
-                            </h3>
-
-                            <p>
-
-                                Si quieres conseguir un rango
-                                dentro de la modalidad puedes
-                                utilizar:
-
-                            </p>
-
-                            <span class="comando">
-                                /rangos
+                            Además, cada día recibirás
+                            un
+                            <span class="destacado">
+                                10%
                             </span>
+                            de tu dinero almacenado
+                            en el banco.
 
-
-                            <p>
-
-                                Desde este menú podrás ver los
-                                diferentes rangos disponibles.
-
-                                Algunos rangos podrán
-                                conseguirse utilizando el
-                                dinero del propio juego.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- WARPS -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                🗺️ /Warps
-                            </h3>
-
-                            <p>
-
-                                El comando
-
-                                <span class="comando">
-                                    /warps
-                                </span>
-
-                                abrirá un menú donde podrás
-                                encontrar los diferentes
-                                lugares disponibles de la
-                                modalidad.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- MINA PVP -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                ⛏️ MinaPvP
-                            </h3>
-
-                            <p>
-
-                                La
-                                <span class="destacado">
-                                    MinaPvP
-                                </span>
-                                es una mina donde podrás
-                                conseguir materiales como
-                                diamantes, oro y muchos otros
-                                recursos.
-
-                            </p>
-
-                            <p>
-
-                                Los materiales obtenidos
-                                pueden venderse utilizando:
-
-                            </p>
-
-                            <span class="comando">
-                                /sellgui
-                            </span>
-
-
-                            <p>
-
-                                El objetivo es conseguir
-                                dinero y convertirte en uno
-                                de los jugadores más ricos
-                                del servidor.
-
-                            </p>
-
-
-                            <p>
-
-                                🏆 También podremos ofrecer
-                                recompensas a los jugadores
-                                que consigan estar en el
-                                <span class="destacado">
-                                    TOP 1 o TOP 2
-                                </span>
-                                del servidor.
-
-                            </p>
-
-
-                            <div class="advertencia">
-
-                                <p>
-
-                                    ⚠️ <span class="destacado">
-                                    ¡Cuidado!
-                                    </span>
-
-                                    Como indica su nombre,
-                                    la MinaPvP es una zona
-                                    donde puedes encontrarte
-                                    con cualquier jugador.
-
-                                    Tanto el jugador más
-                                    experimentado como el
-                                    más nuevo puede aparecer
-                                    para hacer PvP.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- CRATES -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                🎁 /Warp Crates
-                            </h3>
-
-                            <p>
-
-                                El Warp Crates está ubicado
-                                en el Spawn.
-
-                                Allí encontrarás
-                                <span class="destacado">
-                                    cajas misteriosas
-                                </span>
-                                que pueden darte recompensas
-                                increíbles... o alguna
-                                recompensa menos afortunada
-                                😅.
-
-                            </p>
-
-
-                            <p>
-
-                                Las cajas se abren utilizando
-                                <span class="destacado">
-                                    Keys / Llaves
-                                </span>.
-
-                            </p>
-
-
-                            <p>
-
-                                Podemos entregar llaves
-                                durante eventos como
-                                <span class="destacado">
-                                    Key-All y KOTH
-                                </span>.
-
-                            </p>
-
-
-                            <a
-                                href="eventos.html"
-                                class="boton-eventos"
-                            >
-                                🎉 Ver información de eventos
-                            </a>
-
-
-                            <p>
-
-                                También existen llaves de
-                                <span class="destacado">
-                                    pago
-                                </span>
-                                que pueden ofrecer objetos
-                                únicos y personalizados.
-
-                            </p>
-
-
-                            <p>
-
-                                Además, algunos kits de eventos
-                                pueden ser exclusivos y,
-                                después de cierto tiempo,
-                                dejar de estar disponibles.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- PVP -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                ⚔️ /Warp PvP
-                            </h3>
-
-                            <p>
-
-                                El Warp PvP es un
-                                <span class="destacado">
-                                    minijuego de PvP
-                                </span>
-                                donde podrás enfrentarte
-                                contra tus amigos u otros
-                                jugadores.
-
-                            </p>
-
-
-                            <p>
-
-                                Al entrar recibirás un kit
-                                preparado para combatir.
-
-                            </p>
-
-
-                            <p>
-
-                                🛡️ Los objetos de tu inventario
-                                no se perderán al participar
-                                en este minijuego.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- PARKOUR -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                🌀 /Warp Parkour
-                            </h3>
-
-                            <p>
-
-                                En este Warp encontrarás
-                                un parkour en espiral.
-
-                            </p>
-
-
-                            <p>
-
-                                Durante el recorrido podrás
-                                encontrar diferentes puntos
-                                de aparición para continuar
-                                desde ellos.
-
-                            </p>
-
-
-                            <p>
-
-                                🏆 Si consigues llegar hasta
-                                el final recibirás:
-
-                            </p>
-
-
-                            <span class="comando">
-                                $100K
-                            </span>
-
-
-                            <p>
-
-                                Con ese dinero podrás comprar
-                                diferentes cosas dentro de
-                                la modalidad.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- PROTECCIONES -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                🏠 /Protecciones
-                            </h3>
-
-                            <p>
-
-                                El comando
-
-                                <span class="comando">
-                                    /protecciones
-                                </span>
-
-                                abrirá un menú donde podrás
-                                comprar diferentes
-                                protecciones para tu casa.
-
-                            </p>
-
-
-                            <p>
-
-                                Existen diferentes tamaños
-                                de protección y diferentes
-                                precios para adaptarse a
-                                cada jugador.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- BANK -->
-
-                        <div class="seccion">
-
-                            <h3>
-                                🏦 /Bank
-                            </h3>
-
-                            <p>
-
-                                El comando
-
-                                <span class="comando">
-                                    /bank
-                                </span>
-
-                                te permitirá guardar tu
-                                dinero en el banco.
-
-                            </p>
-
-
-                            <p>
-
-                                Si llevas tu dinero fuera
-                                del banco y mueres o eres
-                                eliminado, puedes perder
-                                <span class="destacado">
-                                    la mitad de tu dinero.
-                                </span>
-
-                            </p>
-
-
-                            <p>
-
-                                Si guardas tu dinero en el
-                                banco, no perderás ese dinero
-                                al morir.
-
-                            </p>
-
-
-                            <p>
-
-                                💰 Además, cada día recibirás
-                                un
-                                <span class="destacado">
-                                    10%
-                                </span>
-                                de tu dinero almacenado
-                                en el banco.
-
-                            </p>
-
-                        </div>
-
+                        </p>
 
                     </div>
 
 
                 </div>
+
 
             </section>
 
@@ -1160,18 +1233,11 @@
 
             <section class="modalidad vacio">
 
-                <div class="modalidad-contenido vacio-contenido">
+                <div class="vacio-contenido">
 
+                    <div class="icono">❤️</div>
 
-                    <div class="icono">
-                        ❤️
-                    </div>
-
-
-                    <h2>
-                        LIFESTEAL
-                    </h2>
-
+                    <h2>Lifesteal</h2>
 
                     <p>
 
@@ -1180,15 +1246,13 @@
 
                     </p>
 
-
                     <p>
 
-                        🔒 Estamos preparando toda la
+                        Estamos preparando toda la
                         información para añadirla a esta
                         sección.
 
                     </p>
-
 
                 </div>
 
@@ -1206,11 +1270,32 @@
             href="index.html"
             class="volver"
         >
-            🏠 Volver al inicio
+            Volver al inicio
         </a>
 
 
     </div>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        /* LUZ QUE SIGUE AL RATÓN */
+
+        document.addEventListener("mousemove", function (e) {
+
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+
+            document.documentElement.style.setProperty("--x", x + "%");
+            document.documentElement.style.setProperty("--y", y + "%");
+
+        });
+
+    </script>
 
 
 </body>
