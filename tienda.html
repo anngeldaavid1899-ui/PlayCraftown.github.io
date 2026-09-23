@@ -7,7 +7,39 @@
 
     <title>Tienda Tebex - PlayCraftown</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
+        /* ========================================
+           TOKENS
+        ======================================== */
+
+        :root {
+
+            --bg-0: #05070b;
+            --bg-1: #0b0f16;
+            --panel: #10141d;
+            --panel-line: rgba(255, 255, 255, 0.08);
+
+            --text-1: #eef1f6;
+            --text-2: #9aa4b2;
+
+            --accent: #3e7bfa;
+            --accent-dim: rgba(62, 123, 250, 0.18);
+            --accent-line: rgba(62, 123, 250, 0.35);
+
+            --radius: 14px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
 
         /* ========================================
            FONDO
@@ -17,16 +49,34 @@
             margin: 0;
             min-height: 100vh;
 
-            background: linear-gradient(
-                135deg,
-                #000000,
-                #001f3f,
-                #004e9b
+            background:
+                radial-gradient(1100px 600px at 15% -10%, rgba(62, 123, 250, 0.14), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(62, 123, 250, 0.08), transparent 55%),
+                var(--bg-0);
+
+            color: var(--text-1);
+            font-family: 'Inter', Arial, sans-serif;
+            text-align: center;
+        }
+
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        .luz-cursor {
+
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+
+            background: radial-gradient(
+                650px circle at var(--x, 50%) var(--y, 20%),
+                rgba(90, 100, 245, 0.14),
+                transparent 62%
             );
 
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
         }
 
 
@@ -35,10 +85,13 @@
         ======================================== */
 
         .pagina {
+            position: relative;
+            z-index: 1;
+
             min-height: 100vh;
             box-sizing: border-box;
 
-            padding: 60px 20px 80px;
+            padding: 90px 20px 80px;
         }
 
 
@@ -47,20 +100,20 @@
         ======================================== */
 
         .logo {
-            width: 280px;
-            max-width: 80%;
+            width: 160px;
+            max-width: 60%;
 
             height: auto;
 
             display: block;
 
-            margin: 0 auto 20px;
+            margin: 0 auto 22px;
 
-            transition: 0.3s;
+            transition: 0.2s;
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
         }
 
 
@@ -69,25 +122,27 @@
         ======================================== */
 
         .titulo {
-            font-size: 48px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
 
-            margin: 10px 0 15px;
+            font-size: 40px;
 
-            text-shadow:
-                0 0 15px rgba(157, 78, 221, 0.8);
+            margin: 10px 0 14px;
+
+            letter-spacing: 0.3px;
         }
 
 
         .subtitulo {
-            font-size: 21px;
+            font-size: 16px;
 
-            max-width: 800px;
+            max-width: 640px;
 
-            margin: 0 auto 40px;
+            margin: 0 auto 44px;
 
-            color: #dddddd;
+            color: var(--text-2);
 
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
 
@@ -96,28 +151,24 @@
         ======================================== */
 
         .tienda {
-            width: 900px;
-            max-width: 90%;
+            width: 820px;
+            max-width: 92%;
 
             margin: 0 auto;
 
-            padding: 45px;
+            padding: 40px;
 
             box-sizing: border-box;
 
-            background: linear-gradient(
-                135deg,
-                #4b0082,
-                #7b2cbf,
-                #9d4edd
-            );
+            background: var(--panel);
 
-            border-radius: 30px;
+            border-radius: var(--radius);
 
-            box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 
-            border: 2px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--panel-line);
+
+            text-align: left;
         }
 
 
@@ -126,28 +177,36 @@
         ======================================== */
 
         .tebex {
-            font-size: 38px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
 
-            font-weight: bold;
+            font-size: 26px;
 
-            margin-bottom: 15px;
+            margin-bottom: 14px;
+
+            text-align: center;
         }
 
 
         .proximamente {
-            display: inline-block;
+            display: block;
+            width: fit-content;
 
-            padding: 10px 22px;
+            padding: 8px 18px;
 
-            margin-bottom: 25px;
+            margin: 0 auto 26px;
 
-            background: rgba(0, 0, 0, 0.35);
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-line);
 
             border-radius: 30px;
 
-            font-size: 18px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
 
-            font-weight: bold;
+            color: #bcd0ff;
         }
 
 
@@ -156,13 +215,17 @@
         ======================================== */
 
         .descripcion {
-            font-size: 20px;
+            font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.75;
 
-            margin: 15px auto;
+            margin: 14px auto;
 
-            max-width: 750px;
+            max-width: 640px;
+
+            color: var(--text-2);
+
+            text-align: center;
         }
 
 
@@ -173,58 +236,54 @@
         .productos {
             display: grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
-            gap: 20px;
+            gap: 16px;
 
-            margin: 35px auto;
-
-            max-width: 750px;
+            margin: 32px 0;
         }
 
 
         .producto {
-            background: rgba(0, 0, 0, 0.28);
+            background: var(--bg-1);
 
-            padding: 25px 20px;
+            padding: 22px 20px;
 
-            border-radius: 20px;
+            border-radius: 10px;
 
-            transition: 0.3s;
+            border: 1px solid var(--panel-line);
+
+            transition: 0.2s ease;
+
+            text-align: left;
         }
 
 
         .producto:hover {
-            transform: translateY(-6px);
-
-            background: rgba(0, 0, 0, 0.4);
-
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.35);
-        }
-
-
-        .producto .emoji {
-            font-size: 40px;
-
-            margin-bottom: 10px;
+            border-color: var(--accent-line);
+            background: #12161f;
         }
 
 
         .producto h3 {
-            margin: 8px 0;
+            margin: 0 0 8px 0;
 
-            font-size: 22px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+
+            color: var(--text-1);
         }
 
 
         .producto p {
             margin: 0;
 
-            color: #eeeeee;
+            font-size: 14.5px;
 
-            line-height: 1.5;
+            color: var(--text-2);
+
+            line-height: 1.6;
         }
 
 
@@ -233,27 +292,40 @@
         ======================================== */
 
         .pagos {
-            margin-top: 35px;
+            margin-top: 6px;
 
-            padding: 25px;
+            padding: 24px;
 
-            background: rgba(0, 0, 0, 0.3);
+            background: var(--bg-1);
 
-            border-radius: 20px;
+            border: 1px solid var(--panel-line);
+
+            border-radius: 10px;
         }
 
 
         .pagos h2 {
-            font-size: 27px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
 
-            margin-top: 0;
+            font-size: 19px;
+
+            margin: 0 0 16px 0;
+
+            text-align: center;
         }
 
 
         .pago {
-            font-size: 19px;
+            font-size: 15px;
 
-            margin: 12px 0;
+            margin: 10px 0;
+
+            color: var(--text-2);
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
 
@@ -262,13 +334,15 @@
         ======================================== */
 
         .aviso {
-            margin-top: 30px;
+            margin-top: 26px;
 
-            font-size: 18px;
+            font-size: 14.5px;
 
-            line-height: 1.6;
+            line-height: 1.7;
 
-            color: #f0f0f0;
+            color: var(--text-2);
+
+            text-align: center;
         }
 
 
@@ -281,11 +355,11 @@
 
             justify-content: center;
 
-            gap: 18px;
+            gap: 14px;
 
             flex-wrap: wrap;
 
-            margin-top: 35px;
+            margin-top: 28px;
         }
 
 
@@ -296,62 +370,53 @@
 
             align-items: center;
 
-            min-width: 230px;
+            min-width: 210px;
 
-            height: 60px;
+            height: 54px;
 
-            padding: 0 25px;
+            padding: 0 22px;
 
             box-sizing: border-box;
 
-            color: white;
-
             text-decoration: none;
 
-            border-radius: 16px;
+            border-radius: 10px;
 
-            font-size: 19px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
 
-            font-weight: bold;
+            border: 1px solid var(--panel-line);
 
-            transition: 0.3s;
-        }
-
-
-        .boton:hover {
-            transform: scale(1.07);
+            transition: 0.2s ease;
         }
 
 
         /* OWNER */
 
         .owner {
-            background: #5865F2;
-
-            box-shadow:
-                0 0 20px rgba(88, 101, 242, 0.35);
+            background: var(--accent);
+            color: #051022;
+            border-color: var(--accent);
         }
 
 
         .owner:hover {
-            background: #4752C4;
+            background: #5b90ff;
         }
 
 
         /* TICKET */
 
         .ticket {
-            background: #111111;
-
-            border: 2px solid #9d4edd;
+            background: transparent;
+            color: var(--text-1);
         }
 
 
         .ticket:hover {
-            background: #1d1d1d;
-
-            box-shadow:
-                0 0 20px rgba(157, 78, 221, 0.7);
+            border-color: var(--accent-line);
+            background: var(--accent-dim);
         }
 
 
@@ -362,22 +427,18 @@
 
             margin-top: 40px;
 
-            color: #ffffff;
+            color: var(--text-2);
 
             text-decoration: none;
 
-            font-size: 18px;
+            font-size: 15px;
 
-            opacity: 0.85;
-
-            transition: 0.3s;
+            transition: 0.2s ease;
         }
 
 
         .volver:hover {
-            opacity: 1;
-
-            transform: scale(1.05);
+            color: var(--text-1);
         }
 
 
@@ -388,31 +449,27 @@
         @media (max-width: 700px) {
 
             .pagina {
-                padding-top: 35px;
+                padding-top: 80px;
             }
 
             .titulo {
-                font-size: 36px;
+                font-size: 30px;
             }
 
             .subtitulo {
-                font-size: 18px;
+                font-size: 15px;
             }
 
             .tienda {
-                padding: 30px 20px;
+                padding: 26px 20px;
             }
 
             .tebex {
-                font-size: 30px;
+                font-size: 22px;
             }
 
             .productos {
                 grid-template-columns: 1fr;
-            }
-
-            .descripcion {
-                font-size: 18px;
             }
 
             .boton {
@@ -427,6 +484,8 @@
 
 
 <body>
+
+    <div class="luz-cursor" id="luz-cursor"></div>
 
     <div class="pagina">
 
@@ -447,7 +506,7 @@
         ======================================== -->
 
         <h1 class="titulo">
-            🛒 Tienda PlayCraftown
+            Tienda PlayCraftown
         </h1>
 
 
@@ -465,12 +524,12 @@
 
 
             <div class="tebex">
-                🛍️ Tienda Tebex
+                Tienda Tebex
             </div>
 
 
             <div class="proximamente">
-                🚀 PRÓXIMAMENTE
+                PRÓXIMAMENTE
             </div>
 
 
@@ -501,13 +560,7 @@
 
                 <div class="producto">
 
-                    <div class="emoji">
-                        👑
-                    </div>
-
-                    <h3>
-                        Rangos
-                    </h3>
+                    <h3>Rangos</h3>
 
                     <p>
                         Consigue rangos para disfrutar de
@@ -520,13 +573,7 @@
 
                 <div class="producto">
 
-                    <div class="emoji">
-                        ⚔️
-                    </div>
-
-                    <h3>
-                        Items exclusivos
-                    </h3>
+                    <h3>Items exclusivos</h3>
 
                     <p>
                         Items especiales y personalizados
@@ -539,13 +586,7 @@
 
                 <div class="producto">
 
-                    <div class="emoji">
-                        🎁
-                    </div>
-
-                    <h3>
-                        Kits
-                    </h3>
+                    <h3>Kits</h3>
 
                     <p>
                         Kits especiales preparados para
@@ -558,13 +599,7 @@
 
                 <div class="producto">
 
-                    <div class="emoji">
-                        ✨
-                    </div>
-
-                    <h3>
-                        Productos especiales
-                    </h3>
+                    <h3>Productos especiales</h3>
 
                     <p>
                         Productos y novedades exclusivas
@@ -584,7 +619,7 @@
             <div class="pagos">
 
                 <h2>
-                    💳 Métodos de pago actuales
+                    Métodos de pago actuales
                 </h2>
 
 
@@ -602,16 +637,16 @@
                     🎁 Tarjetas regalo
                 </div>
 
-
-                <p class="aviso">
-
-                    Por el momento estos son los métodos
-                    de pago que aceptamos mientras terminamos
-                    de preparar nuestra tienda virtual.
-
-                </p>
-
             </div>
+
+
+            <p class="aviso">
+
+                Por el momento estos son los métodos
+                de pago que aceptamos mientras terminamos
+                de preparar nuestra tienda virtual.
+
+            </p>
 
 
             <!-- ========================================
@@ -620,7 +655,7 @@
 
             <p class="aviso">
 
-                💜 ¿Te interesa algún producto o tienes alguna duda?
+                ¿Te interesa algún producto o tienes alguna duda?
 
                 <br><br>
 
@@ -648,7 +683,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    👑 Contactar con el Owner
+                    Contactar con el Owner
                 </a>
 
 
@@ -658,7 +693,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    🎫 Abrir Ticket
+                    Abrir ticket
                 </a>
 
 
@@ -681,6 +716,25 @@
 
 
     </div>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        document.addEventListener("mousemove", function (e) {
+
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+
+            document.documentElement.style.setProperty("--x", x + "%");
+            document.documentElement.style.setProperty("--y", y + "%");
+
+        });
+
+    </script>
 
 </body>
 
