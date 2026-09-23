@@ -9,11 +9,45 @@
 
     <title>Creadores de Contenido - PlayCraftown</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
 
         /* ========================================
-           FONDO PRINCIPAL
+           TOKENS
+        ======================================== */
+
+        :root {
+
+            --bg-0: #05070b;
+            --panel: #10141d;
+            --panel-2: #151a25;
+            --panel-line: rgba(255, 255, 255, 0.08);
+
+            --text-1: #eef1f6;
+            --text-2: #9aa4b2;
+
+            --accent: #3e7bfa;
+            --accent-dim: rgba(62, 123, 250, 0.14);
+            --accent-line: rgba(62, 123, 250, 0.35);
+
+            --danger: #ef4444;
+            --danger-dim: rgba(239, 68, 68, 0.12);
+
+            --radius: 16px;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        /* ========================================
+           FONDO
         ======================================== */
 
         body {
@@ -23,21 +57,36 @@
             min-height: 100vh;
 
             background:
-                radial-gradient(
-                    circle at top,
-                    rgba(123, 44, 191, 0.25),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #000000,
-                    #001f3f,
-                    #004e9b
-                );
+                radial-gradient(1100px 600px at 15% -10%, rgba(62, 123, 250, 0.12), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(62, 123, 250, 0.07), transparent 55%),
+                var(--bg-0);
 
-            color: white;
+            color: var(--text-1);
 
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
+
+        }
+
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        .luz-cursor {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            background: radial-gradient(
+                650px circle at var(--x, 50%) var(--y, 15%),
+                rgba(90, 100, 245, 0.13),
+                transparent 62%
+            );
 
         }
 
@@ -48,57 +97,58 @@
 
         .pagina {
 
+            position: relative;
+
+            z-index: 1;
+
             width: 100%;
 
             min-height: 100vh;
 
             box-sizing: border-box;
 
-            padding: 45px 25px 80px 25px;
+            padding: 60px 30px 90px 30px;
 
         }
 
 
         /* ========================================
-           TITULO PRINCIPAL
+           CABECERA
         ======================================== */
 
         .cabecera {
 
             text-align: center;
 
-            margin-bottom: 45px;
+            margin-bottom: 46px;
 
         }
 
 
         .cabecera h1 {
 
+            font-family: 'Rajdhani', sans-serif;
+
             margin: 0;
 
-            font-size: 58px;
+            font-size: 44px;
 
-            letter-spacing: 1px;
-
-            text-shadow:
-                0 0 10px #7b2cbf,
-                0 0 25px #7b2cbf,
-                0 0 45px rgba(157, 78, 221, 0.7);
+            font-weight: 700;
 
         }
 
 
         .cabecera p {
 
-            max-width: 850px;
+            max-width: 620px;
 
-            margin: 18px auto 0 auto;
+            margin: 16px auto 0 auto;
 
-            font-size: 19px;
+            font-size: 16px;
 
-            line-height: 1.7;
+            line-height: 1.6;
 
-            color: #e7d5ff;
+            color: var(--text-2);
 
         }
 
@@ -109,7 +159,7 @@
 
         .contenido {
 
-            max-width: 1150px;
+            max-width: 1100px;
 
             margin: 0 auto;
 
@@ -124,71 +174,52 @@
 
             display: grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
-            gap: 25px;
+            gap: 20px;
 
-            margin-bottom: 30px;
+            margin-bottom: 20px;
 
         }
 
 
         .tarjeta {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #4b0082,
-                    #7b2cbf,
-                    #9d4edd
-                );
+            background: var(--panel);
 
-            border-radius: 25px;
+            border-radius: var(--radius);
 
             padding: 30px;
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.15);
-
-            box-shadow:
-                0 12px 35px
-                rgba(0, 0, 0, 0.45);
-
-            transition: 0.3s;
-
-        }
-
-
-        .tarjeta:hover {
-
-            transform: translateY(-6px);
-
-            box-shadow:
-                0 18px 40px
-                rgba(157, 78, 221, 0.45);
+            border: 1px solid var(--panel-line);
 
         }
 
 
         .tarjeta h2 {
 
-            text-align: center;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-size: 28px;
+            text-align: left;
+
+            font-size: 21px;
+
+            font-weight: 700;
 
             margin-top: 0;
 
-            margin-bottom: 18px;
+            margin-bottom: 14px;
 
         }
 
 
         .tarjeta p {
 
-            font-size: 17px;
+            font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.65;
+
+            color: var(--text-2);
 
             margin: 10px 0;
 
@@ -197,9 +228,9 @@
 
         .destacado {
 
-            color: #ffd6ff;
+            color: var(--text-1);
 
-            font-weight: bold;
+            font-weight: 600;
 
         }
 
@@ -210,36 +241,44 @@
 
         .boton-postulaciones {
 
-            display: inline-block;
+            display: inline-flex;
 
-            margin-top: 15px;
+            align-items: center;
 
-            padding: 14px 24px;
+            gap: 8px;
 
-            background: white;
+            margin-top: 12px;
 
-            color: #5a189a;
+            padding: 11px 18px;
+
+            background: var(--panel-2);
+
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             text-decoration: none;
 
-            font-size: 17px;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-weight: bold;
+            font-size: 15px;
 
-            border-radius: 13px;
+            font-weight: 600;
 
-            transition: 0.3s;
+            border-radius: 10px;
+
+            transition: 0.2s ease;
 
         }
 
 
         .boton-postulaciones:hover {
 
-            transform: scale(1.06);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 0 20px
-                rgba(255, 255, 255, 0.55);
+            background: var(--accent-dim);
+
+            transform: translateY(-2px);
 
         }
 
@@ -248,63 +287,30 @@
            VOTACION
         ======================================== */
 
-        .votacion {
-
-            margin-top: 5px;
-
-            margin-bottom: 30px;
-
-            text-align: center;
-
-        }
-
-
-        .votacion h2 {
-
-            font-size: 32px;
-
-            margin-top: 0;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .votacion p {
-
-            max-width: 850px;
-
-            margin: 0 auto;
-
-            font-size: 17px;
-
-            line-height: 1.7;
-
-            color: #f1e5ff;
-
-        }
-
-
         .caja-votacion {
 
-            margin-top: 22px;
+            margin-top: 18px;
 
-            padding: 22px;
+            padding: 18px;
 
-            border-radius: 18px;
+            border-radius: 12px;
 
-            background:
-                rgba(0, 0, 0, 0.28);
+            background: rgba(0, 0, 0, 0.25);
 
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--panel-line);
+
+        }
+
+
+        .caja-votacion p {
+
+            margin: 0;
 
         }
 
 
         /* ========================================
-           ZONA TIKTOK
+           ZONA DE CREADORES
         ======================================== */
 
         .zona-creadores {
@@ -313,32 +319,18 @@
 
             overflow: hidden;
 
-            margin-top: 35px;
+            margin-top: 20px;
 
             padding: 40px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #000000 0%,
-                    #090909 35%,
-                    #1b0a29 68%,
-                    #4b0082 100%
-                );
+            background: var(--panel);
 
-            border-radius: 30px;
+            border-radius: var(--radius);
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.14);
-
-            box-shadow:
-                0 15px 45px
-                rgba(0, 0, 0, 0.65);
+            border: 1px solid var(--panel-line);
 
         }
 
-
-        /* BRILLO MORADO */
 
         .zona-creadores::before {
 
@@ -346,42 +338,17 @@
 
             position: absolute;
 
-            width: 300px;
+            width: 320px;
 
-            height: 300px;
+            height: 320px;
 
-            top: -160px;
+            top: -180px;
 
             right: -100px;
 
-            background:
-                rgba(157, 78, 221, 0.35);
+            background: rgba(62, 123, 250, 0.10);
 
-            filter: blur(90px);
-
-            border-radius: 50%;
-
-        }
-
-
-        .zona-creadores::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 250px;
-
-            height: 250px;
-
-            bottom: -120px;
-
-            left: -80px;
-
-            background:
-                rgba(88, 101, 242, 0.20);
-
-            filter: blur(90px);
+            filter: blur(100px);
 
             border-radius: 50%;
 
@@ -399,34 +366,34 @@
 
         .zona-creadores h2 {
 
+            font-family: 'Rajdhani', sans-serif;
+
             text-align: center;
 
-            font-size: 38px;
+            font-size: 26px;
+
+            font-weight: 700;
 
             margin-top: 0;
 
             margin-bottom: 10px;
-
-            text-shadow:
-                0 0 15px
-                rgba(255, 255, 255, 0.25);
 
         }
 
 
         .descripcion-tiktok {
 
-            max-width: 850px;
+            max-width: 640px;
 
-            margin: 0 auto 35px auto;
+            margin: 0 auto 34px auto;
 
             text-align: center;
 
-            color: #dedede;
+            color: var(--text-2);
 
-            font-size: 17px;
+            font-size: 15px;
 
-            line-height: 1.7;
+            line-height: 1.65;
 
         }
 
@@ -439,10 +406,9 @@
 
             display: grid;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
-            gap: 20px;
+            gap: 18px;
 
         }
 
@@ -453,101 +419,118 @@
 
         .creador {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(20, 20, 20, 0.95),
-                    rgba(45, 10, 65, 0.95)
-                );
+            position: relative;
 
-            border-radius: 20px;
+            background: var(--panel-2);
+
+            border-radius: 14px;
 
             padding: 24px;
 
-            border: 1px solid
-                rgba(255, 255, 255, 0.10);
+            border: 1px solid var(--panel-line);
 
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .creador:hover {
 
-            transform: translateY(-5px);
+            border-color: var(--accent-line);
 
-            border-color:
-                rgba(157, 78, 221, 0.65);
-
-            box-shadow:
-                0 10px 30px
-                rgba(123, 44, 191, 0.25);
+            transform: translateY(-4px);
 
         }
 
 
         .creador h3 {
 
-            margin-top: 0;
+            font-family: 'Rajdhani', sans-serif;
 
-            margin-bottom: 10px;
+            margin: 0 0 4px 0;
 
-            font-size: 23px;
+            font-size: 20px;
+
+            font-weight: 700;
 
         }
 
 
-        .creador p {
+        .creador-minecraft {
 
-            color: #d0d0d0;
+            color: var(--text-2);
+
+            font-size: 13px;
+
+            margin: 0 0 12px 0;
+
+        }
+
+
+        .creador-descripcion {
+
+            color: var(--text-2);
 
             line-height: 1.6;
 
-            font-size: 15px;
+            font-size: 14px;
+
+            margin: 0 0 16px 0;
 
         }
 
 
         /* ========================================
-           BOTON DE RED SOCIAL
+           PLATAFORMAS
         ======================================== */
 
-        .boton-red {
+        .creador-plataformas {
 
-            display: inline-block;
+            display: flex;
 
-            margin-top: 10px;
+            flex-wrap: wrap;
 
-            padding: 11px 18px;
-
-            border-radius: 11px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #00f2ea,
-                    #7b2cbf,
-                    #ff0050
-                );
-
-            color: white;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            transition: 0.3s;
+            gap: 8px;
 
         }
 
 
-        .boton-red:hover {
+        .plataforma-boton {
 
-            transform: scale(1.05);
+            display: inline-flex;
 
-            box-shadow:
-                0 0 20px
-                rgba(255, 0, 80, 0.5);
+            align-items: center;
+
+            gap: 6px;
+
+            padding: 9px 14px;
+
+            border-radius: 9px;
+
+            background: var(--panel);
+
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
+
+            text-decoration: none;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
+
+            font-size: 13px;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .plataforma-boton:hover {
+
+            border-color: var(--accent-line);
+
+            background: var(--accent-dim);
 
         }
 
@@ -564,21 +547,18 @@
 
             text-align: center;
 
-            border-radius: 20px;
+            border-radius: 14px;
 
-            background:
-                rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.2);
 
-            border:
-                1px dashed
-                rgba(157, 78, 221, 0.55);
+            border: 1px dashed var(--panel-line);
 
         }
 
 
         .proximamente .icono {
 
-            font-size: 55px;
+            font-size: 40px;
 
             margin-bottom: 10px;
 
@@ -587,22 +567,26 @@
 
         .proximamente h3 {
 
-            font-size: 25px;
+            font-family: 'Rajdhani', sans-serif;
 
-            margin: 10px 0;
+            font-size: 20px;
+
+            margin: 8px 0;
 
         }
 
 
         .proximamente p {
 
-            max-width: 700px;
+            max-width: 560px;
 
             margin: 0 auto;
 
-            color: #d5d5d5;
+            color: var(--text-2);
 
-            line-height: 1.7;
+            line-height: 1.6;
+
+            font-size: 14px;
 
         }
 
@@ -613,17 +597,17 @@
 
         .zona-footer {
 
-            margin-top: 35px;
+            margin-top: 34px;
 
-            padding-top: 25px;
+            padding-top: 22px;
 
-            border-top:
-                1px solid
-                rgba(255, 255, 255, 0.10);
+            border-top: 1px solid var(--panel-line);
 
             text-align: center;
 
-            color: #cfcfcf;
+            color: var(--text-2);
+
+            font-size: 14px;
 
             line-height: 1.7;
 
@@ -638,50 +622,824 @@
 
             display: block;
 
-            width: 210px;
+            width: fit-content;
 
-            margin: 45px auto 0 auto;
+            margin: 50px auto 0 auto;
 
-            padding: 16px;
+            padding: 14px 28px;
 
             box-sizing: border-box;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #4b0082,
-                    #7b2cbf,
-                    #9d4edd
-                );
+            background: var(--panel);
 
-            color: white;
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
 
             text-decoration: none;
 
             text-align: center;
 
-            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
 
-            font-weight: bold;
+            font-size: 16px;
 
-            border-radius: 15px;
+            font-weight: 600;
 
-            box-shadow:
-                0 8px 20px
-                rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
 
-            transition: 0.3s;
+            transition: 0.2s ease;
 
         }
 
 
         .volver:hover {
 
-            transform: scale(1.07);
+            border-color: var(--accent-line);
 
-            box-shadow:
-                0 0 25px
-                rgba(157, 78, 221, 0.8);
+            background: var(--accent-dim);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* ==================================================
+           ACCESO DE ADMINISTRACIÓN
+        ================================================== */
+
+        .boton-admin {
+
+            position: fixed;
+
+            right: 22px;
+
+            bottom: 22px;
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--panel-line);
+
+            background: var(--panel);
+
+            color: var(--text-2);
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0.55;
+
+            transition: 0.2s ease;
+
+            z-index: 300;
+
+        }
+
+
+        .boton-admin:hover {
+
+            opacity: 1;
+
+            border-color: var(--accent-line);
+
+            color: var(--text-1);
+
+        }
+
+
+        .fondo-admin {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(2, 4, 8, 0.7);
+
+            backdrop-filter: blur(6px);
+
+            -webkit-backdrop-filter: blur(6px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+
+            z-index: 500;
+
+        }
+
+
+        .panel-admin {
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%) scale(0.96);
+
+            width: 460px;
+
+            max-width: 90%;
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            background: var(--panel);
+
+            border: 1px solid var(--panel-line);
+
+            border-radius: 18px;
+
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+            z-index: 501;
+
+            text-align: left;
+
+        }
+
+
+        body.admin-activo .fondo-admin {
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+        body.admin-activo .panel-admin {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: translate(-50%, -50%) scale(1);
+
+        }
+
+
+        .admin-cerrar {
+
+            position: absolute;
+
+            top: 14px;
+
+            right: 14px;
+
+            width: 30px;
+
+            height: 30px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--panel-line);
+
+            background: transparent;
+
+            color: var(--text-2);
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            line-height: 1;
+
+        }
+
+
+        .admin-cerrar:hover {
+
+            color: var(--text-1);
+
+            border-color: var(--accent-line);
+
+        }
+
+
+        .admin-volver {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            background: none;
+
+            border: none;
+
+            color: var(--text-2);
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            padding: 0;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .admin-volver:hover {
+
+            color: var(--text-1);
+
+        }
+
+
+        .admin-titulo {
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            margin: 0 0 6px 0;
+
+        }
+
+
+        .admin-subtitulo {
+
+            font-size: 14px;
+
+            color: var(--text-2);
+
+            margin: 0 0 22px 0;
+
+            line-height: 1.5;
+
+        }
+
+
+        .campo {
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .campo label {
+
+            display: block;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: var(--text-2);
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .campo input,
+        .campo select,
+        .campo textarea {
+
+            width: 100%;
+
+            padding: 11px 13px;
+
+            background: var(--bg-0);
+
+            border: 1px solid var(--panel-line);
+
+            border-radius: 9px;
+
+            color: var(--text-1);
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 14px;
+
+            resize: vertical;
+
+        }
+
+
+        .campo input:focus,
+        .campo select:focus,
+        .campo textarea:focus {
+
+            outline: none;
+
+            border-color: var(--accent-line);
+
+        }
+
+
+        .mensaje-error {
+
+            display: none;
+
+            font-size: 13px;
+
+            color: var(--danger);
+
+            margin: -6px 0 16px 0;
+
+        }
+
+
+        .admin-boton {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: var(--accent);
+
+            color: #051022;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .admin-boton:hover {
+
+            background: #5b90ff;
+
+        }
+
+
+        .admin-boton-secundario {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: var(--panel-2);
+
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
+
+            border-radius: 10px;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .admin-boton-secundario:hover {
+
+            border-color: var(--accent-line);
+
+            background: var(--accent-dim);
+
+        }
+
+
+        /* ========================================
+           MENÚ DE 2 OPCIONES
+        ======================================== */
+
+        .admin-opciones {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+        }
+
+
+        .admin-opcion {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 26px 14px;
+
+            background: var(--panel-2);
+
+            border: 1px solid var(--panel-line);
+
+            border-radius: 12px;
+
+            color: var(--text-1);
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+        }
+
+
+        .admin-opcion .icono-opcion {
+
+            font-size: 26px;
+
+        }
+
+
+        .admin-opcion:hover {
+
+            border-color: var(--accent-line);
+
+            background: var(--accent-dim);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* ========================================
+           LISTA PARA EDITAR
+        ======================================== */
+
+        .lista-editar {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .lista-editar-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 13px 16px;
+
+            background: var(--panel-2);
+
+            border: 1px solid var(--panel-line);
+
+            border-radius: 10px;
+
+            color: var(--text-1);
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .lista-editar-item:hover {
+
+            border-color: var(--accent-line);
+
+            background: var(--accent-dim);
+
+        }
+
+
+        .lista-editar-item span {
+
+            color: var(--text-2);
+
+            font-weight: 400;
+
+        }
+
+
+        .lista-vacia {
+
+            color: var(--text-2);
+
+            font-size: 14px;
+
+            text-align: center;
+
+            padding: 20px 0;
+
+        }
+
+
+        /* ========================================
+           EXPORTAR CÓDIGO
+        ======================================== */
+
+        .admin-nota {
+
+            font-size: 13px;
+
+            color: var(--text-2);
+
+            line-height: 1.6;
+
+            margin: 0 0 16px 0;
+
+            padding: 12px 14px;
+
+            background: rgba(0, 0, 0, 0.25);
+
+            border-radius: 10px;
+
+            border: 1px solid var(--panel-line);
+
+        }
+
+
+        .codigo-generado {
+
+            width: 100%;
+
+            height: 220px;
+
+            padding: 12px;
+
+            background: var(--bg-0);
+
+            border: 1px solid var(--panel-line);
+
+            border-radius: 9px;
+
+            color: var(--text-2);
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            resize: vertical;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .boton-exportar {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: var(--panel-2);
+
+            border: 1px solid var(--panel-line);
+
+            color: var(--text-1);
+
+            border-radius: 10px;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            margin-top: 6px;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .boton-exportar:hover {
+
+            border-color: var(--accent-line);
+
+            background: var(--accent-dim);
+
+        }
+
+
+        /* ========================================
+           PLATAFORMAS EN EL FORMULARIO
+        ======================================== */
+
+        .plataformas-formulario {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .fila-plataforma {
+
+            display: grid;
+
+            grid-template-columns: 110px 1fr auto;
+
+            gap: 8px;
+
+            align-items: center;
+
+        }
+
+
+        .fila-plataforma input,
+        .fila-plataforma select {
+
+            width: 100%;
+
+            padding: 10px 11px;
+
+            background: var(--bg-0);
+
+            border: 1px solid var(--panel-line);
+
+            border-radius: 8px;
+
+            color: var(--text-1);
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 13px;
+
+        }
+
+
+        .fila-plataforma-quitar {
+
+            width: 34px;
+
+            height: 34px;
+
+            border-radius: 8px;
+
+            border: 1px solid var(--panel-line);
+
+            background: transparent;
+
+            color: var(--text-2);
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+        }
+
+
+        .fila-plataforma-quitar:hover {
+
+            color: var(--danger);
+
+            border-color: var(--danger);
+
+        }
+
+
+        .admin-anadir-plataforma {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            background: none;
+
+            border: 1px dashed var(--panel-line);
+
+            color: var(--text-2);
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-weight: 600;
+
+            font-size: 13px;
+
+            padding: 9px 14px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            margin-bottom: 20px;
+
+            width: 100%;
+
+            justify-content: center;
+
+        }
+
+
+        .admin-anadir-plataforma:hover {
+
+            border-color: var(--accent-line);
+
+            color: var(--text-1);
+
+        }
+
+
+        .admin-boton-eliminar {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: var(--danger-dim);
+
+            border: 1px solid rgba(239, 68, 68, 0.4);
+
+            color: #ff8080;
+
+            border-radius: 10px;
+
+            font-family: 'Rajdhani', sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+
+            transition: 0.2s ease;
+
+        }
+
+
+        .admin-boton-eliminar:hover {
+
+            background: rgba(239, 68, 68, 0.22);
 
         }
 
@@ -694,22 +1452,14 @@
 
             .pagina {
 
-                padding:
-                    35px 15px 60px 15px;
+                padding: 45px 16px 70px 16px;
 
             }
 
 
             .cabecera h1 {
 
-                font-size: 40px;
-
-            }
-
-
-            .cabecera p {
-
-                font-size: 17px;
+                font-size: 32px;
 
             }
 
@@ -737,14 +1487,21 @@
 
             .zona-creadores {
 
-                padding: 25px 18px;
+                padding: 26px 18px;
 
             }
 
 
             .zona-creadores h2 {
 
-                font-size: 30px;
+                font-size: 22px;
+
+            }
+
+
+            .fila-plataforma {
+
+                grid-template-columns: 1fr;
 
             }
 
@@ -756,6 +1513,9 @@
 
 
 <body>
+
+
+    <div class="luz-cursor" id="luz-cursor"></div>
 
 
     <div class="pagina">
@@ -798,8 +1558,6 @@
             <div class="fila-info">
 
 
-                <!-- TARJETA INFORMACION -->
-
                 <section class="tarjeta">
 
                     <h2>
@@ -839,9 +1597,7 @@
                 </section>
 
 
-                <!-- TARJETA VOTACION -->
-
-                <section class="tarjeta votacion">
+                <section class="tarjeta">
 
                     <h2>
                         🏆 Votación de la Comunidad
@@ -889,103 +1645,29 @@
 
 
                     <h2>
-                        🎵 CREADORES DE PLAYCRAFTOWN
+                        🎵 Creadores de PlayCraftown
                     </h2>
 
 
                     <p class="descripcion-tiktok">
 
-                        Bienvenido a la zona de creadores.
-
                         Aquí estarán recopilados todos los
                         <span class="destacado">
-                            enlaces de los creadores de
-                            contenido
+                            creadores de contenido
                         </span>
-                        que forman parte de PlayCraftown.
-
-                        Podrás encontrar sus diferentes
-                        plataformas de entretenimiento
-                        y descubrir su contenido relacionado
-                        con nuestro servidor.
+                        que forman parte de PlayCraftown,
+                        con todas sus plataformas y una
+                        breve descripción de cada uno.
 
                     </p>
 
 
-                    <!-- =================================
-                         LISTA DE CREADORES
-                    ================================== -->
+                    <div class="creadores-grid" id="creadores-grid">
 
-                    <div class="creadores-grid">
-
-
-                        <!-- =================================
-                             PLANTILLA DE CREADOR
-                        ================================== -->
-
-                        <div class="proximamente">
-
-                            <div class="icono">
-                                🎥
-                            </div>
-
-                            <h3>
-                                Próximamente...
-                            </h3>
-
-                            <p>
-
-                                Los perfiles y enlaces de
-                                nuestros creadores de
-                                contenido aparecerán aquí.
-
-                                ¡Estate atento para conocer
-                                a todos los creadores de
-                                PlayCraftown!
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- =================================
-                             EJEMPLO DE TARJETA
-                             PARA FUTUROS CREADORES
-                        ================================== -->
-
-                        <!--
-
-                        <div class="creador">
-
-                            <h3>
-                                🎥 Nombre del creador
-                            </h3>
-
-                            <p>
-                                Descripción del creador
-                                y de su contenido.
-                            </p>
-
-                            <a
-                                href="AQUI_EL_ENLACE"
-                                class="boton-red"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                🔗 Ver contenido
-                            </a>
-
-                        </div>
-
-                        -->
-
+                        <!-- Se rellena automáticamente -->
 
                     </div>
 
-
-                    <!-- =================================
-                         PIE DE LA ZONA
-                    ================================== -->
 
                     <div class="zona-footer">
 
@@ -1009,12 +1691,8 @@
         </main>
 
 
-        <!-- ========================================
-             VOLVER AL INICIO
-        ======================================== -->
-
         <a
-            href="Index.html"
+            href="index.html"
             class="volver"
         >
             🏠 Volver al inicio
@@ -1022,6 +1700,749 @@
 
 
     </div>
+
+
+
+    <!-- ==================================================
+         ACCESO DE ADMINISTRACIÓN
+    ================================================== -->
+
+    <button class="boton-admin" id="boton-admin" title="Acceso" type="button">🔑</button>
+
+
+    <div class="fondo-admin" id="fondo-admin"></div>
+
+
+    <div class="panel-admin" id="panel-admin">
+
+        <button class="admin-cerrar" id="admin-cerrar" title="Cerrar" type="button">✕</button>
+
+
+        <!-- PASO 1: CÓDIGO -->
+
+        <div id="paso-codigo">
+
+            <p class="admin-titulo">Acceso restringido</p>
+            <p class="admin-subtitulo">Introduce el código de administración.</p>
+
+            <div class="campo">
+                <label for="input-codigo">Código</label>
+                <input type="password" id="input-codigo" placeholder="••••••••••••••">
+            </div>
+
+            <p class="mensaje-error" id="mensaje-error-codigo">Código incorrecto.</p>
+
+            <button class="admin-boton" id="btn-validar-codigo" type="button">Entrar</button>
+
+        </div>
+
+
+        <!-- PASO 2: MENÚ (AÑADIR / EDITAR) -->
+
+        <div id="paso-menu" style="display: none;">
+
+            <p class="admin-titulo">¿Qué quieres hacer?</p>
+            <p class="admin-subtitulo">Elige una opción para gestionar los creadores de contenido.</p>
+
+            <div class="admin-opciones">
+
+                <div class="admin-opcion" id="opcion-anadir">
+                    <span class="icono-opcion">➕</span>
+                    Añadir
+                </div>
+
+                <div class="admin-opcion" id="opcion-editar">
+                    <span class="icono-opcion">✏️</span>
+                    Editar
+                </div>
+
+            </div>
+
+            <button class="boton-exportar" id="opcion-exportar" type="button">📋 Obtener código actualizado</button>
+
+        </div>
+
+
+        <!-- PASO 3: LISTA PARA EDITAR -->
+
+        <div id="paso-lista" style="display: none;">
+
+            <button class="admin-volver" id="volver-desde-lista" type="button">← Volver</button>
+
+            <p class="admin-titulo">Elige un creador</p>
+            <p class="admin-subtitulo">Selecciona el creador que quieres editar o eliminar.</p>
+
+            <div class="lista-editar" id="lista-editar">
+
+                <!-- Se rellena automáticamente -->
+
+            </div>
+
+        </div>
+
+
+        <!-- PASO 5: CÓDIGO PARA ACTUALIZAR LA WEB -->
+
+        <div id="paso-exportar" style="display: none;">
+
+            <button class="admin-volver" id="volver-desde-exportar" type="button">← Volver</button>
+
+            <p class="admin-titulo">Código actualizado</p>
+
+            <p class="admin-nota">
+                Copia este bloque completo y pégalo en tu archivo <strong>creadores.html</strong>,
+                sustituyendo el contenido de la constante <strong>CREADORES_INICIALES</strong>
+                (búscala con Ctrl+F). Guarda el archivo y súbelo a donde tengas alojada la web
+                para que todos los visitantes vean los cambios.
+            </p>
+
+            <textarea class="codigo-generado" id="codigo-generado" readonly spellcheck="false"></textarea>
+
+            <button class="admin-boton" id="btn-copiar-codigo" type="button">Copiar código</button>
+
+        </div>
+
+
+        <!-- PASO 4: FORMULARIO (AÑADIR O EDITAR) -->
+
+        <div id="paso-formulario" style="display: none;">
+
+            <button class="admin-volver" id="volver-desde-formulario" type="button">← Volver</button>
+
+            <p class="admin-titulo" id="formulario-titulo">Nuevo creador</p>
+            <p class="admin-subtitulo">Estos datos se mostrarán en la sección de creadores de contenido.</p>
+
+            <form id="form-creador">
+
+                <div class="campo">
+                    <label for="campo-nombre">Nombre del creador</label>
+                    <input type="text" id="campo-nombre" required>
+                </div>
+
+                <div class="campo">
+                    <label for="campo-minecraft">Nombre de Minecraft</label>
+                    <input type="text" id="campo-minecraft" required>
+                </div>
+
+                <div class="campo">
+                    <label for="campo-descripcion">Descripción</label>
+                    <textarea id="campo-descripcion" rows="3" placeholder="Breve descripción del creador y su contenido"></textarea>
+                </div>
+
+                <div class="campo">
+                    <label>Plataformas</label>
+
+                    <div class="plataformas-formulario" id="plataformas-formulario">
+
+                        <!-- Filas de plataforma generadas por JS -->
+
+                    </div>
+
+                    <button type="button" class="admin-anadir-plataforma" id="btn-anadir-plataforma">+ Añadir plataforma</button>
+
+                </div>
+
+                <p class="mensaje-error" id="mensaje-error-formulario">Rellena el nombre, el nombre de Minecraft y al menos una plataforma con enlace.</p>
+
+                <button class="admin-boton" id="btn-guardar-creador" type="submit">Añadir creador</button>
+
+                <button class="admin-boton-eliminar" id="btn-eliminar-creador" type="button" style="display: none;">🗑️ Eliminar creador</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        /* ========================================
+           LUZ QUE SIGUE AL RATÓN
+        ======================================== */
+
+        document.addEventListener("mousemove", function (e) {
+
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+
+            document.documentElement.style.setProperty("--x", x + "%");
+            document.documentElement.style.setProperty("--y", y + "%");
+
+        });
+
+
+        /* ========================================
+           DATOS DE CREADORES
+
+           Esta es la lista real que ven todos los
+           visitantes de la web. Para añadir o editar
+           creadores usa el panel (🔑), y al terminar
+           pega aquí el código que te genera el botón
+           "Obtener código actualizado".
+        ======================================== */
+
+     const CREADORES_INICIALES = [
+    {
+        "nombre": "Kaire",
+        "minecraft": "PollazPol",
+        "descripcion": "",
+        "plataformas": [
+            {
+                "tipo": "youtube",
+                "link": "https://www.youtube.com/@Kaire-67/videos"
+            },
+            {
+                "tipo": "discord",
+                "link": "https://discord.gg/bMMq9w5ge"
+            }
+        ]
+    }
+];
+
+        const ADMIN_CODE = "Contraseñaso1100";
+
+        const ETIQUETAS_PLATAFORMA = {
+
+            tiktok: "🎵 TikTok",
+            youtube: "▶️ YouTube",
+            twitch: "🟣 Twitch",
+            instagram: "📸 Instagram",
+            discord: "💬 Discord",
+            otro: "🔗 Otro"
+
+        };
+
+        let adminUnlocked = false;
+        let indiceEnEdicion = null;
+
+        // Copia de trabajo en memoria: aquí es donde el
+        // panel añade, edita y elimina mientras editas.
+        let creadores = CREADORES_INICIALES.map(function (c) {
+
+            if (c.plataformas) {
+
+                return c;
+
+            }
+
+            return {
+                nombre: c.nombre,
+                minecraft: c.minecraft,
+                descripcion: c.descripcion || "",
+                plataformas: c.plataforma ? [{ tipo: c.plataforma, link: c.link }] : []
+            };
+
+        });
+
+
+        function generarCodigoTexto() {
+
+            return "const CREADORES_INICIALES = " + JSON.stringify(creadores, null, 4) + ";";
+
+        }
+
+
+        function escaparTexto(texto) {
+
+            const div = document.createElement("div");
+
+            div.textContent = texto;
+
+            return div.innerHTML;
+
+        }
+
+
+        function renderizarCreadores() {
+
+            const grid = document.getElementById("creadores-grid");
+
+            grid.innerHTML = "";
+
+
+            if (creadores.length === 0) {
+
+                grid.innerHTML =
+                    '<div class="proximamente">' +
+                        '<div class="icono">🎥</div>' +
+                        '<h3>Próximamente...</h3>' +
+                        '<p>Los perfiles de nuestros creadores de contenido aparecerán aquí. ¡Estate atento para conocer a todos los creadores de PlayCraftown!</p>' +
+                    '</div>';
+
+                return;
+
+            }
+
+
+            creadores.forEach(function (creador) {
+
+                const tarjeta = document.createElement("div");
+
+                tarjeta.className = "creador";
+
+                let botonesPlataforma = "";
+
+                (creador.plataformas || []).forEach(function (p) {
+
+                    if (!p.link) { return; }
+
+                    const etiqueta = ETIQUETAS_PLATAFORMA[p.tipo] || ETIQUETAS_PLATAFORMA.otro;
+
+                    botonesPlataforma +=
+                        '<a href="' + escaparTexto(p.link) + '" class="plataforma-boton" target="_blank" rel="noopener noreferrer">' +
+                            etiqueta +
+                        '</a>';
+
+                });
+
+                tarjeta.innerHTML =
+                    '<h3>' + escaparTexto(creador.nombre) + '</h3>' +
+                    '<p class="creador-minecraft">Minecraft: ' + escaparTexto(creador.minecraft) + '</p>' +
+                    (creador.descripcion ? '<p class="creador-descripcion">' + escaparTexto(creador.descripcion) + '</p>' : '') +
+                    '<div class="creador-plataformas">' + botonesPlataforma + '</div>';
+
+                grid.appendChild(tarjeta);
+
+            });
+
+        }
+
+
+        /* ========================================
+           REFERENCIAS DEL PANEL
+        ======================================== */
+
+        const botonAdmin = document.getElementById("boton-admin");
+        const fondoAdmin = document.getElementById("fondo-admin");
+        const cerrarAdmin = document.getElementById("admin-cerrar");
+
+        const pasoCodigo = document.getElementById("paso-codigo");
+        const pasoMenu = document.getElementById("paso-menu");
+        const pasoLista = document.getElementById("paso-lista");
+        const pasoFormulario = document.getElementById("paso-formulario");
+        const pasoExportar = document.getElementById("paso-exportar");
+
+        const inputCodigo = document.getElementById("input-codigo");
+        const btnValidarCodigo = document.getElementById("btn-validar-codigo");
+        const mensajeErrorCodigo = document.getElementById("mensaje-error-codigo");
+
+        const opcionAnadir = document.getElementById("opcion-anadir");
+        const opcionEditar = document.getElementById("opcion-editar");
+        const opcionExportar = document.getElementById("opcion-exportar");
+
+        const volverDesdeLista = document.getElementById("volver-desde-lista");
+        const volverDesdeFormulario = document.getElementById("volver-desde-formulario");
+        const volverDesdeExportar = document.getElementById("volver-desde-exportar");
+        const listaEditar = document.getElementById("lista-editar");
+        const codigoGenerado = document.getElementById("codigo-generado");
+        const btnCopiarCodigo = document.getElementById("btn-copiar-codigo");
+
+        const formularioTitulo = document.getElementById("formulario-titulo");
+        const formCreador = document.getElementById("form-creador");
+        const campoNombre = document.getElementById("campo-nombre");
+        const campoMinecraft = document.getElementById("campo-minecraft");
+        const campoDescripcion = document.getElementById("campo-descripcion");
+        const plataformasFormulario = document.getElementById("plataformas-formulario");
+        const btnAnadirPlataforma = document.getElementById("btn-anadir-plataforma");
+        const mensajeErrorFormulario = document.getElementById("mensaje-error-formulario");
+        const btnGuardarCreador = document.getElementById("btn-guardar-creador");
+        const btnEliminarCreador = document.getElementById("btn-eliminar-creador");
+
+
+        function ocultarTodosPasos() {
+
+            pasoCodigo.style.display = "none";
+            pasoMenu.style.display = "none";
+            pasoLista.style.display = "none";
+            pasoFormulario.style.display = "none";
+            pasoExportar.style.display = "none";
+
+        }
+
+
+        function abrirPanelAdmin() {
+
+            document.body.classList.add("admin-activo");
+
+            if (adminUnlocked) {
+
+                mostrarMenu();
+
+            } else {
+
+                mostrarPasoCodigo();
+
+            }
+
+        }
+
+
+        function cerrarPanelAdmin() {
+
+            document.body.classList.remove("admin-activo");
+
+        }
+
+
+        function mostrarPasoCodigo() {
+
+            ocultarTodosPasos();
+
+            pasoCodigo.style.display = "block";
+
+            mensajeErrorCodigo.style.display = "none";
+
+            inputCodigo.value = "";
+
+            setTimeout(function () { inputCodigo.focus(); }, 50);
+
+        }
+
+
+        function mostrarMenu() {
+
+            ocultarTodosPasos();
+
+            pasoMenu.style.display = "block";
+
+        }
+
+
+        function mostrarLista() {
+
+            ocultarTodosPasos();
+
+            pasoLista.style.display = "block";
+
+            listaEditar.innerHTML = "";
+
+            if (creadores.length === 0) {
+
+                listaEditar.innerHTML = '<p class="lista-vacia">Todavía no hay creadores añadidos.</p>';
+
+                return;
+
+            }
+
+            creadores.forEach(function (creador, indice) {
+
+                const item = document.createElement("div");
+
+                item.className = "lista-editar-item";
+
+                item.innerHTML = escaparTexto(creador.nombre) + ' <span>' + escaparTexto(creador.minecraft) + '</span>';
+
+                item.addEventListener("click", function () {
+
+                    abrirFormularioEdicion(indice);
+
+                });
+
+                listaEditar.appendChild(item);
+
+            });
+
+        }
+
+
+        function mostrarExportar() {
+
+            ocultarTodosPasos();
+
+            pasoExportar.style.display = "block";
+
+            codigoGenerado.value = generarCodigoTexto();
+
+        }
+
+
+        /* ========================================
+           FILAS DE PLATAFORMA EN EL FORMULARIO
+        ======================================== */
+
+        function crearFilaPlataforma(tipo, link) {
+
+            const fila = document.createElement("div");
+
+            fila.className = "fila-plataforma";
+
+            const select = document.createElement("select");
+
+            Object.keys(ETIQUETAS_PLATAFORMA).forEach(function (clave) {
+
+                const opcion = document.createElement("option");
+
+                opcion.value = clave;
+
+                opcion.textContent = ETIQUETAS_PLATAFORMA[clave];
+
+                if (clave === tipo) { opcion.selected = true; }
+
+                select.appendChild(opcion);
+
+            });
+
+            const input = document.createElement("input");
+
+            input.type = "url";
+
+            input.placeholder = "https://";
+
+            input.value = link || "";
+
+            const quitar = document.createElement("button");
+
+            quitar.type = "button";
+
+            quitar.className = "fila-plataforma-quitar";
+
+            quitar.textContent = "✕";
+
+            quitar.addEventListener("click", function () {
+
+                fila.remove();
+
+            });
+
+            fila.appendChild(select);
+            fila.appendChild(input);
+            fila.appendChild(quitar);
+
+            plataformasFormulario.appendChild(fila);
+
+        }
+
+
+        btnAnadirPlataforma.addEventListener("click", function () {
+
+            crearFilaPlataforma("tiktok", "");
+
+        });
+
+
+        function resetearFormulario() {
+
+            formCreador.reset();
+
+            plataformasFormulario.innerHTML = "";
+
+            crearFilaPlataforma("tiktok", "");
+
+            mensajeErrorFormulario.style.display = "none";
+
+        }
+
+
+        function mostrarFormularioNuevo() {
+
+            ocultarTodosPasos();
+
+            pasoFormulario.style.display = "block";
+
+            indiceEnEdicion = null;
+
+            formularioTitulo.textContent = "Nuevo creador";
+
+            btnGuardarCreador.textContent = "Añadir creador";
+
+            btnEliminarCreador.style.display = "none";
+
+            resetearFormulario();
+
+        }
+
+
+        function abrirFormularioEdicion(indice) {
+
+            ocultarTodosPasos();
+
+            pasoFormulario.style.display = "block";
+
+            const creador = creadores[indice];
+
+            if (!creador) { return; }
+
+            indiceEnEdicion = indice;
+
+            formularioTitulo.textContent = "Editar creador";
+
+            btnGuardarCreador.textContent = "Guardar cambios";
+
+            btnEliminarCreador.style.display = "block";
+
+            mensajeErrorFormulario.style.display = "none";
+
+            campoNombre.value = creador.nombre || "";
+            campoMinecraft.value = creador.minecraft || "";
+            campoDescripcion.value = creador.descripcion || "";
+
+            plataformasFormulario.innerHTML = "";
+
+            if (creador.plataformas && creador.plataformas.length > 0) {
+
+                creador.plataformas.forEach(function (p) {
+
+                    crearFilaPlataforma(p.tipo, p.link);
+
+                });
+
+            } else {
+
+                crearFilaPlataforma("tiktok", "");
+
+            }
+
+        }
+
+
+        /* ========================================
+           EVENTOS DE NAVEGACIÓN
+        ======================================== */
+
+        botonAdmin.addEventListener("click", abrirPanelAdmin);
+        fondoAdmin.addEventListener("click", cerrarPanelAdmin);
+        cerrarAdmin.addEventListener("click", cerrarPanelAdmin);
+
+        btnValidarCodigo.addEventListener("click", validarCodigo);
+
+        inputCodigo.addEventListener("keydown", function (e) {
+
+            if (e.key === "Enter") { validarCodigo(); }
+
+        });
+
+
+        function validarCodigo() {
+
+            if (inputCodigo.value === ADMIN_CODE) {
+
+                adminUnlocked = true;
+
+                mostrarMenu();
+
+            } else {
+
+                mensajeErrorCodigo.style.display = "block";
+
+                inputCodigo.value = "";
+
+                inputCodigo.focus();
+
+            }
+
+        }
+
+
+        opcionAnadir.addEventListener("click", mostrarFormularioNuevo);
+        opcionEditar.addEventListener("click", mostrarLista);
+        opcionExportar.addEventListener("click", mostrarExportar);
+
+        volverDesdeLista.addEventListener("click", mostrarMenu);
+        volverDesdeFormulario.addEventListener("click", mostrarMenu);
+        volverDesdeExportar.addEventListener("click", mostrarMenu);
+
+        btnCopiarCodigo.addEventListener("click", function () {
+
+            codigoGenerado.select();
+
+            navigator.clipboard.writeText(codigoGenerado.value).then(function () {
+
+                btnCopiarCodigo.textContent = "¡Copiado!";
+
+                setTimeout(function () {
+
+                    btnCopiarCodigo.textContent = "Copiar código";
+
+                }, 1800);
+
+            });
+
+        });
+
+
+        /* ========================================
+           GUARDAR / ELIMINAR
+        ======================================== */
+
+        formCreador.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            const nombre = campoNombre.value.trim();
+            const minecraft = campoMinecraft.value.trim();
+            const descripcion = campoDescripcion.value.trim();
+
+            const filas = plataformasFormulario.querySelectorAll(".fila-plataforma");
+
+            const plataformas = [];
+
+            filas.forEach(function (fila) {
+
+                const tipo = fila.querySelector("select").value;
+                const link = fila.querySelector("input").value.trim();
+
+                if (link) {
+
+                    plataformas.push({ tipo: tipo, link: link });
+
+                }
+
+            });
+
+            if (!nombre || !minecraft || plataformas.length === 0) {
+
+                mensajeErrorFormulario.style.display = "block";
+
+                return;
+
+            }
+
+            const nuevoCreador = {
+                nombre: nombre,
+                minecraft: minecraft,
+                descripcion: descripcion,
+                plataformas: plataformas
+            };
+
+            if (indiceEnEdicion === null) {
+
+                creadores.push(nuevoCreador);
+
+            } else {
+
+                creadores[indiceEnEdicion] = nuevoCreador;
+
+            }
+
+            renderizarCreadores();
+
+            mostrarExportar();
+
+        });
+
+
+        btnEliminarCreador.addEventListener("click", function () {
+
+            if (indiceEnEdicion === null) { return; }
+
+            creadores.splice(indiceEnEdicion, 1);
+
+            renderizarCreadores();
+
+            mostrarExportar();
+
+        });
+
+
+        /* ========================================
+           INICIO
+        ======================================== */
+
+        renderizarCreadores();
+
+    </script>
 
 
 </body>
